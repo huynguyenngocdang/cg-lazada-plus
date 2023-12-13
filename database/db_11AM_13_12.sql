@@ -29,7 +29,16 @@ insert into `user`
     values
     ('huy', '123', 2),
     ('tu', '123', 1);
+    
+create table customer_membership(
+customer_membership_id int primary key auto_increment,
+customer_membership_name varchar(15),
+customer_membership_point_reference int,
+customer_membership_promotion_percent int
+);
 
+
+ 
 create table customer(
 customer_id int primary key auto_increment,
 user_id int,
@@ -44,12 +53,7 @@ foreign key (customer_membership_id)
 references customer_membership(customer_membership_id)
 );
 
-create table customer_membership(
-customer_membership_id int primary key auto_increment,
-customer_membership_name varchar(15),
-customer_membership_point_reference int,
-customer_membership_promotion_percent int
-);
+
 
 create table admin(
 admin_id int primary key auto_increment,
@@ -71,11 +75,23 @@ foreign key (user_id)
 references user(user_id)
 );
 
+insert into product(user_id,product_name,product_quantity,product_cost)
+values (1, 'điện thoại', 5, 5000),
+		(2, 'laptop', 10, 1000),
+		(2, 'mascara', 3, 2000),
+		(1, 'giày', 1, 3000),
+		(1, 'nước hoa', 2, 6000);
+
 create table category(
 category_id int primary key auto_increment,
 category_name varchar(50),
 is_delete bit default 0
 );
+
+insert into category (category_name) 
+values ('Thiết bị điện tử'),
+('Sức khỏe & Làm đẹp'),
+('Thời trang');
 
 create table product_category(
 product_id int,
@@ -86,6 +102,10 @@ references product(product_id),
 foreign key (category_id)
 references category(category_id)
 );
+
+
+-- insert into product_category (product_id, category_id) 
+-- values (
 
 create table purchase_order(
 purchase_order_id int primary key auto_increment,
