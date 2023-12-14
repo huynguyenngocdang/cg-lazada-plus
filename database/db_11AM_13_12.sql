@@ -101,11 +101,14 @@ foreign key (product_id)
 references product(product_id),
 foreign key (category_id)
 references category(category_id)
-);
+); 
 
-
--- insert into product_category (product_id, category_id) 
--- values (
+insert into product_category (product_id, category_id) 
+values (1,1),
+	 (2,1),
+	 (3,2),
+	 (4,3),
+	 (5,3);
 
 create table purchase_order(
 purchase_order_id int primary key auto_increment,

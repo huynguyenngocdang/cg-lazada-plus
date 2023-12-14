@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="cg-lazada-plus-project.cg-lazada-plus-project.main~1" target="1.8" />
+      <module name="cg-lazada-plus-project.cg-lazada-plus-project.test~1" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

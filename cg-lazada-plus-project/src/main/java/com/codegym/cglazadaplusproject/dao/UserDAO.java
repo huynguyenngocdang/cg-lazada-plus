@@ -38,7 +38,6 @@ public class UserDAO implements IUserDAO {
     public User getUserById(int id) {
         User selectUser = null;
         try {
-
             PreparedStatement preparedStatement = connection.prepareStatement(Query.get_user_by_id);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
