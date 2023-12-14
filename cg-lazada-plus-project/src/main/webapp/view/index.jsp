@@ -2,13 +2,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Lazada plus</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
+
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<p>
+    <c:if test='${requestScope["message"] != null}'>
+        <span class="message">${requestScope["message"]} </span>
+    </c:if>
+</p>
+
+<form action="/users?action=login" method="post">
+    <fieldset>
+        <legend>Login information</legend>
+        <table>
+            <tr>
+                <td>Username</td>
+                <td>
+                    <input type="text" name="username" id="username" placeholder="Input your username">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" name="password" id="password">
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit">Login</button> </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
 <a href="/users">List all user</a>
 </body>
 </html>
