@@ -3,6 +3,8 @@ package com.codegym.cglazadaplusproject.controller;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
 import com.codegym.cglazadaplusproject.model.User;
+import com.codegym.cglazadaplusproject.service.UserLoginValidator;
+import com.codegym.cglazadaplusproject.service.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -66,11 +68,35 @@ public class UserServlet extends HttpServlet {
         }
 
         switch (action) {
+            case "login":
+                login(request, response);
+                break;
             case "edit":
                 editUser(request, response);
                 break;
             default:
                 break;
+        }
+    }
+
+    private void login(HttpServletRequest request, HttpServletResponse response) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Validator validator = new UserLoginValidator(username, password);
+        try {
+            String message = null;
+            if (validator.isCheck()) {
+                message = "Login successfully";
+
+            } else {
+                message = "Wrong username or password";;
+            }
+            request.setAttribute("message", message);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
