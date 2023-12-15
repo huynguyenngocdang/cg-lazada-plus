@@ -13,30 +13,35 @@
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <link rel="stylesheet" type="text/css" href="../css/user.css">
 <body>
-<div class="noti-container" id="noti-container">
-    <div class="noti-content">
-        <div class="noti-icon">
-            <img src="../images/logo/logo-heart.png" alt="this is lazada icon">
-        </div>
 
-        <div class="noti-title">
-            <p>Bạn có thông báo mới!</p>
-        </div>
 
-        <div class="noti-description">
-            <p>Write something here. Write something here. Write something here.</p>
+<c:if test='${not empty requestScope["message"]}'>
+    <div class="noti-container" id="noti-container">
+        <div class="noti-content">
+            <div class="noti-icon">
+                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+            </div>
+
+            <div class="noti-title">
+                <p>Bạn có thông báo mới!</p>
+            </div>
+
+            <div class="noti-description">
+                <p>${requestScope["message"]}</p>
+            </div>
+        </div>
+        <div class="noti-exit-button">
+            <button id="hide-noti">Bỏ qua</button>
         </div>
     </div>
-    <div class="noti-exit-button">
-        <button id="hide-noti">Bỏ qua</button>
-    </div>
-</div>
+</c:if>
+
 
 
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/head-banner/head-banner-1.webp" alt="">
+            <img src="/images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -91,8 +96,8 @@
     <div class="menu">
         <div class="menu-logo">
             <a href="">
-                <img src="/images/logo/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="/images/logo/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                <img src="/images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                <img src="/images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
             </a>
         </div>
         <div class="menu-bar">
@@ -119,7 +124,7 @@
 
             <div class="menu-ad">
                 <a href="">
-                    <img src="../images/vib.png" alt="">
+                    <img src="../images/header/vib.png" alt="">
                 </a>
             </div>
         </div>
@@ -152,5 +157,7 @@
         </div>
     </div>
 </div>
+
+<script src="../js/animation.js"></script>
 </body>
 </html>

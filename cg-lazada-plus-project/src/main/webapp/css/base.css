@@ -312,8 +312,8 @@ a {
   flex-direction: column;
   justify-content: space-between;
   z-index: 9;
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
 }
 
 .noti-content {

@@ -21,5 +21,7 @@ function showNoti(event) {
 function cartUpdate() {
 
 }
+
+
 document.getElementById("hide-noti").addEventListener("click", hideNoti);
 
