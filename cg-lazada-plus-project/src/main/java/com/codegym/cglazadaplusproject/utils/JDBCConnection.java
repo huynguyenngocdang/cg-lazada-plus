@@ -1,6 +1,6 @@
 package com.codegym.cglazadaplusproject.utils;
 
-import com.codegym.cglazadaplusproject.constant.Variable;
+import com.codegym.cglazadaplusproject.constant.VarConstant;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,8 +10,8 @@ public class JDBCConnection {
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName(Variable.jdbc_driver);
-            connection = DriverManager.getConnection(Variable.jdbc_url, Variable.jdbc_user, Variable.jdbc_password);
+            Class.forName(VarConstant.jdbc_driver);
+            connection = DriverManager.getConnection(VarConstant.jdbc_url, VarConstant.jdbc_user, VarConstant.jdbc_password);
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

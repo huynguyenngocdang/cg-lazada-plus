@@ -1,6 +1,6 @@
 package com.codegym.cglazadaplusproject.dao;
 
-import com.codegym.cglazadaplusproject.constant.Query;
+import com.codegym.cglazadaplusproject.constant.QueryConstant;
 import com.codegym.cglazadaplusproject.model.Product;
 import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
@@ -17,7 +17,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(Query.get_all_product);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_all_product);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 

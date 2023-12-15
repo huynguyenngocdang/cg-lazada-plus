@@ -3,8 +3,8 @@ package com.codegym.cglazadaplusproject.controller;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
 import com.codegym.cglazadaplusproject.model.User;
-import com.codegym.cglazadaplusproject.service.UserLoginValidator;
-import com.codegym.cglazadaplusproject.service.Validator;
+import com.codegym.cglazadaplusproject.validator.UserValidator;
+import com.codegym.cglazadaplusproject.validator.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
-public class UserServlet extends HttpServlet {
+public class UserController extends HttpServlet {
     private final IUserDAO userDAO = new UserDAO();
 
     @Override
@@ -109,7 +109,7 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User currentUser = null;
-        Validator validator = new UserLoginValidator(username, password);
+        Validator validator = new UserValidator(username, password);
         try {
             String message = null;
             if (validator.isCheck()) {
