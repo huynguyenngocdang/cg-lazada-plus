@@ -1,9 +1,7 @@
 body {
   height: 100vh;
 }
-.body-container {
-  height: 100%;
-}
+
 .user-container {
   width: 1000px;
   margin: 0 auto;
@@ -14,15 +12,6 @@ body {
   font-size: 6em;
   margin-left: 8rem;
   margin-bottom: 6rem;
-}
-
-.user-frame {
-  padding: 10rem 8rem;
-  background-color: white;
-  box-shadow: 3px 4px 25px 3px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  border: none;
-  border-radius: 15px;
 }
 
 form, form div {
