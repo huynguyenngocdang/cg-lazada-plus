@@ -15,24 +15,27 @@
     <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-<div class="noti-container" id="noti-container">
-    <div class="noti-content">
-        <div class="noti-icon">
-            <img src="../images/logo/logo-heart.png" alt="this is lazada icon">
-        </div>
 
-        <div class="noti-title">
-            <p>Bạn có thông báo mới!</p>
-        </div>
+<c:if test='${not empty requestScope["message"]}'>
+    <div class="noti-container" id="noti-container">
+        <div class="noti-content">
+            <div class="noti-icon">
+                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+            </div>
 
-        <div class="noti-description">
-            <p>Write something here. Write something here. Write something here.</p>
+            <div class="noti-title">
+                <p>Bạn có thông báo mới!</p>
+            </div>
+
+            <div class="noti-description">
+                <p>${requestScope["message"]}</p>
+            </div>
+        </div>
+        <div class="noti-exit-button">
+            <button id="hide-noti">Bỏ qua</button>
         </div>
     </div>
-    <div class="noti-exit-button">
-        <button id="hide-noti">Bỏ qua</button>
-    </div>
-</div>
+</c:if>
 
 <div class="header">
     <div class="header-ad">
@@ -164,12 +167,6 @@
 
 <div class="body-container">
     <div class="body">
-        <p>
-            <c:if test='${requestScope["message"] != null}'>
-                <span class="message" style="font-size: 20px">${requestScope["message"]} </span>
-            </c:if>
-        </p>
-
         <div class="body-column-1 categories-container">
             <div class="categories-title">
                 <p>Danh mục</p>
