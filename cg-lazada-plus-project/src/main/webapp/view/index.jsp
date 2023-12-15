@@ -1,4 +1,11 @@
 <%@ page import="com.codegym.cglazadaplusproject.model.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.Category" %>
+<%@ page import="com.codegym.cglazadaplusproject.dao.ICategoryDAO" %>
+<%@ page import="com.codegym.cglazadaplusproject.dao.CategoryDAO" %>
+<%@ page import="com.codegym.cglazadaplusproject.dao.IProductDAO" %>
+<%@ page import="com.codegym.cglazadaplusproject.dao.ProductDAO" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.Product" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -167,51 +174,59 @@
 
 <div class="body-container">
     <div class="body">
+
         <div class="body-column-1 categories-container">
             <div class="categories-title">
                 <p>Danh mục</p>
             </div>
             <div class="categories-content">
-                <p>Thiết bị điện tử</p>
-                <p>Thiết bị điện tử</p>
-                <p>Thiết bị điện tử</p>
+                <%
+                    ICategoryDAO categoryDAO = new CategoryDAO();
+                    List<Category> categories = categoryDAO.getAllCategory();
+                    for (Category category : categories
+                    ) { %>
+                <p><%=category.getCategoryName()%>
+                </p>
+                <% } %>
             </div>
-
         </div>
 
         <div class="body-column-2">
-        <div class="just-for-you product-section">
-            <div class="title-bar">
-                <div class="title">
-                    <p>Dành riêng cho bạn</p>
+            <div class="just-for-you product-section">
+                <div class="title-bar">
+                    <div class="title">
+                        <p>Dành riêng cho bạn</p>
+                    </div>
+                </div>
+
+                <%--            List product dùng c:forEach--%>
+                <div class="product-container">
+                    <%
+                        IProductDAO productDAO = new ProductDAO();
+                        List<Product> products = productDAO.getAllProduct();
+                        for (Product product : products
+                        ) { %>
+                    <a href="">
+                        <div class="product-item">
+                            <div class="product-thumbnail">
+                                <img src="/images/just-for-you/product1.webp" alt="product-thumbnail">
+                            </div>
+
+                            <div class="product-description">
+                                <div class="product-name">
+                                    <p><%=product.getProductName()%>
+                                    </p>
+                                </div>
+                                <div class="product-price">
+                                    <p><%=product.getProductCost()%>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
                 </div>
             </div>
-
-            <%--            List product dùng c:forEach--%>
-            <div class="product-container">
-                <a href="">
-                    <div class="product-item">
-                        <div class="product-thumbnail">
-                            <img src="/images/just-for-you/product1.webp" alt="product-thumbnail">
-                        </div>
-
-                        <div class="product-description">
-                            <div class="product-name">
-                                <p>Cây thông NOEL cao 1m5 1m6 1m8 - Cây thông Giáng Sinh noel 1,5m 1,6m 1,8m đủ phụ kiện
-                                    đèn led, chữ MERRY CHRISTMAS , dây kim tuyến , chuông giáng sinh , nơ và nhiều phụ
-                                    kiện khác</p>
-                            </div>
-                            <div class="product-price">
-                                <p>đ144.000</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-
         </div>
     </div>
 </div>
