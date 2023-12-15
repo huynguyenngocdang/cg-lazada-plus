@@ -1,4 +1,4 @@
-package com.codegym.cglazadaplusproject.service;
+package com.codegym.cglazadaplusproject.validator;
 
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
@@ -6,11 +6,11 @@ import com.codegym.cglazadaplusproject.model.User;
 
 import java.util.List;
 
-public class UserLoginValidator implements Validator{
+public class UserValidator implements Validator{
     private String username;
     private String password;
 
-    public UserLoginValidator(String username, String password) {
+    public UserValidator(String username, String password) {
         this.username = username;
         this.password = password;
     }

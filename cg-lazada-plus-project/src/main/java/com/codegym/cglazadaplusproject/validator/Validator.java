@@ -1,4 +1,4 @@
-package com.codegym.cglazadaplusproject.service;
+package com.codegym.cglazadaplusproject.validator;
 
 public interface Validator {
     boolean isCheck();

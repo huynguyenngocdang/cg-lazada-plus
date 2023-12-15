@@ -1,6 +1,6 @@
 package com.codegym.cglazadaplusproject.constant;
 
-public interface Query {
+public interface QueryConstant {
     String get_all_user = "Select * from user";
     String get_user_by_id = "Select * from user where user_id = ?";
     String get_user_by_name = "Select * from user where user_name = ?";
