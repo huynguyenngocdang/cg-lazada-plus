@@ -24,8 +24,8 @@ public class UserDAO implements IUserDAO {
                  String username = resultSet.getString("user_name");
                  String userPassword = resultSet.getString("user_password");
                  int userRoleId = resultSet.getInt("user_role_id");
-                 int isActive = resultSet.getInt("is_active");
-                 int isDelete = resultSet.getInt("is_delete");
+                boolean isActive = resultSet.getBoolean("is_active");
+                boolean isDelete = resultSet.getBoolean("is_delete");
                 users.add(new User(userId,username,userPassword,userRoleId,isActive,isDelete));
             }
         } catch (SQLException e) {
@@ -47,14 +47,36 @@ public class UserDAO implements IUserDAO {
                 String username = resultSet.getString("user_name");
                 String userPassword = resultSet.getString("user_password");
                 int userRoleId = resultSet.getInt("user_role_id");
-                int isActive = resultSet.getInt("is_active");
-                int isDelete = resultSet.getInt("is_delete");
+                boolean isActive = resultSet.getBoolean("is_active");
+                boolean isDelete = resultSet.getBoolean("is_delete");
                 selectUser = new User(userId, username, userPassword, userRoleId, isActive, isDelete);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return selectUser;
+    }
+
+    @Override
+    public User getUserByName(String username) {
+        User user = null;
+        try {
+            Connection connection = JDBCConnection.getConnection();
+            PreparedStatement preparedStatement  = connection.prepareStatement(Query.get_user_by_name);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int userId = resultSet.getInt("user_id");
+                String userPassword = resultSet.getString("user_password");
+                int userRoleId = resultSet.getInt("user_role_id");
+                boolean isActive = resultSet.getBoolean("is_active");
+                boolean isDelete = resultSet.getBoolean("is_delete");
+                user = new User(userId, username, userPassword, userRoleId, isActive, isDelete);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override

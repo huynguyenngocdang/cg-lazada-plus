@@ -6,10 +6,10 @@ public class User {
     private String username;
     private String userPassword;
     private int userRoleId;
-    private int isActive;
-    private int isDelete;
+    private boolean isActive;
+    private boolean isDelete;
 
-    public User(int userId, String username, String userPassword, int userRoleId, int isActive, int isDelete) {
+    public User(int userId, String username, String userPassword, int userRoleId, boolean isActive, boolean isDelete) {
         this.userId = userId;
         this.username = username;
         this.userPassword = userPassword;
@@ -50,19 +50,19 @@ public class User {
         this.userRoleId = userRoleId;
     }
 
-    public int getIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(int isActive) {
+    public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
 
-    public int getIsDelete() {
+    public boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(int isDelete) {
+    public void setIsDelete(boolean isDelete) {
         this.isDelete = isDelete;
     }
 
