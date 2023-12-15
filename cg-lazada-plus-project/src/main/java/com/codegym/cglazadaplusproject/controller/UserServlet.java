@@ -17,7 +17,7 @@ import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
-    private IUserDAO userDAO = new UserDAO();
+    private final IUserDAO userDAO = new UserDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,15 +27,41 @@ public class UserServlet extends HttpServlet {
         }
 
         switch (action) {
+            case "displayLogin":
+                displayLogin(request, response);
+                break;
+            case "logOut":
+                logOut(request, response);
+                break;
             case "showEdit":
                 showEdit(request, response);
                 break;
+
             default:
-                displayAllUser(request, response);
+//                displayAllUser(request, response);
                 break;
         }
     }
 
+    private void displayLogin(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/login/login.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void logOut(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.getSession().invalidate();
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
+//            dispatcher.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/view/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) {
         int userId = Integer.parseInt(  request.getParameter("userId"));
@@ -82,10 +108,15 @@ public class UserServlet extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        User currentUser = null;
         Validator validator = new UserLoginValidator(username, password);
         try {
             String message = null;
             if (validator.isCheck()) {
+                currentUser = userDAO.getUserByName(username);
+                System.out.println(currentUser.toString());
+
+                request.getSession().setAttribute("currentUser", currentUser);
                 message = "Login successfully";
 
             } else {

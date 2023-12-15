@@ -7,5 +7,8 @@ import java.util.List;
 public interface IUserDAO {
     List<User> getAllUser();
     User getUserById(int id);
+
+    User getUserByName(String username);
+
     boolean updateUser(int userId, String newUsername, String newUserPassword);
 }
