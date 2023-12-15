@@ -1,47 +1,43 @@
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In </title>
+    <title>Product detail</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title.png">
     <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/productDetail.css">
+</head>
 <body>
-
-
-<c:if test='${not empty requestScope["message"]}'>
-    <div class="noti-container" id="noti-container">
-        <div class="noti-content">
-            <div class="noti-icon">
-                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
-            </div>
-
-            <div class="noti-title">
-                <p>Bạn có thông báo mới!</p>
-            </div>
-
-            <div class="noti-description">
-                <p>${requestScope["message"]}</p>
-            </div>
+<div class="noti-container" id="noti-container">
+    <div class="noti-content">
+        <div class="noti-icon">
+            <img src="../images/logo/logo-heart.png" alt="this is lazada icon">
         </div>
-        <div class="noti-exit-button">
-            <button id="hide-noti">Bỏ qua</button>
+
+        <div class="noti-title">
+            <p>Bạn có thông báo mới!</p>
+        </div>
+
+        <div class="noti-description">
+            <p>Write something here. Write something here. Write something here.</p>
         </div>
     </div>
-</c:if>
-
-
+    <div class="noti-exit-button">
+        <button id="hide-noti">Bỏ qua</button>
+    </div>
+</div>
 
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="/images/head-banner/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -92,12 +88,13 @@
         </div>
     </div>
 </div>
+
 <div class="menu-container">
     <div class="menu">
         <div class="menu-logo">
             <a href="">
-                <img src="/images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="/images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                <img src="../images/logo/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                <img src="../images/logo/logo-text.png" alt="This is Lazada logo text" class="logo-text">
             </a>
         </div>
         <div class="menu-bar">
@@ -124,40 +121,58 @@
 
             <div class="menu-ad">
                 <a href="">
-                    <img src="../images/header/vib.png" alt="">
+                    <img src="../images/vib.png" alt="">
                 </a>
             </div>
         </div>
     </div>
 </div>
-
 <div class="body-container">
     <div class="body">
-        <div class="user-container">
-            <div class="user-title">
-                <p>Chào mừng đến với Lazada. Đăng nhập ngay!</p>
-            </div>
-            <div class="content-frame">
-                <form action="/users?action=login" method="post">
-                    <div class="username form-input">
-                        <label for="username">Tên đăng nhập*</label>
-                        <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên đăng nhập" required>
+        <div class="content-frame">
+            <form action="" method="post" onsubmit="showNoti(event); " id="addToCartForm">
+                <div class="product-detail-thumbnail">
+                    <img src="../images/just-for-you/product1.webp" alt="This is product thumbnail">
+                </div>
+
+                <div class="product-detail-description">
+                    <div class="product-detail-title-container">
+                        <div class="product-detail-title">
+                            <p>Cây thông NOEL cao 1m5 1m6 1m8 - Cây thông Giáng Sinh noel 1,5m 1,6m 1,8m đủ phụ kiện đèn led,
+                                chữ MERRY CHRISTMAS , dây kim tuyến , chuông giáng sinh , nơ và nhiều phụ kiện khác</p>
+                        </div>
+
+                        <div class="product-detail-stars">
+                            <i class="fa-solid fa-star" style="color: #faca51"></i>
+                            <i class="fa-solid fa-star" style="color: #faca51"></i>
+                            <i class="fa-solid fa-star" style="color: #faca51"></i>
+                            <i class="fa-solid fa-star" style="color: #faca51"></i>
+                            <i class="fa-solid fa-star" style="color: #faca51"></i>
+                        </div>
                     </div>
 
-                    <div class="password form-input">
-                        <label for="password">Mật khẩu*</label>
-                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" required>
-                    </div>
+                    <div class="product-detail-cart-container">
+                        <div class="product-detail-price">
+                            <p>đ144.000</p>
+                        </div>
 
-                    <div class="submit-button">
-                        <button type="submit">ĐĂNG NHẬP</button>
+                        <div class="product-detail-quantity">
+                            <div class="product-quantity-input">
+                                <label for="quantity">Số lượng:</label>
+                                <input type="number" name="quantity" id="quantity" min="0" max="99" value="1">
+                            </div>
+
+                            <button type="submit">THÊM VÀO GIỎ HÀNG</button>
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
 
 <script src="../js/animation.js"></script>
+
 </body>
 </html>
