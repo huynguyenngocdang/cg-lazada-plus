@@ -64,6 +64,12 @@
     border-radius: 5px;
 }
 
+.product-quantity-input input:invalid {
+    outline: solid 1px red;
+    box-shadow: 0px 0px 7px 1px rgba(224, 5, 5, 0.58);
+
+}
+
 .product-detail-quantity {
     display: flex;
     flex-direction: column;

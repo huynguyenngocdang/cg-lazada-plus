@@ -7,8 +7,8 @@
 .body-column-1 {
     grid-column: 1;
     position: sticky;
-    top: 0;
-    left: 0;
+    height: 800px;
+    top: 22rem;
     width: 100%;
     background-color: white;
     box-shadow: 2px 2px 45px 10px rgba(0, 0, 0, 0.07);
@@ -23,5 +23,16 @@
 
 .body-column-2 {
     grid-column: 2;
+}
+
+.categories-title p {
+    /*font-weight: 600;*/
+    font-size: 1.2em;
+}
+
+.categories-content {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
 }
 
