@@ -40,7 +40,7 @@ form label {
   font-size: 4em;
 }
 
-button {
+.content-frame form button {
   border-radius: 7px;
   border: none;
   background: #F57224;
