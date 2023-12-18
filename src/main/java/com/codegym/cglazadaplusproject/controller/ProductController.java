@@ -24,7 +24,7 @@ public class ProductController extends HttpServlet {
             case "showProductById":
                 break;
             default:
-//                listProduct(request, response);
+                listProduct(request, response);
                 break;
         }
     }
@@ -34,14 +34,14 @@ public class ProductController extends HttpServlet {
 
     }
 
-//    private void listProduct(HttpServletRequest req, HttpServletResponse res) {
-//        List<Product> products = new ProductDAO().getAllProduct();
-//        try {
-//            req.setAttribute("products", products);
-//            RequestDispatcher dispatcher = req.getRequestDispatcher("../webapp/view/index.jsp");
-//            dispatcher.forward(req, res);
-//        } catch (ServletException | IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private void listProduct(HttpServletRequest req, HttpServletResponse res) {
+        List<Product> products = new ProductDAO().getAllProduct();
+        try {
+            req.setAttribute("products", products);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("../webapp/view/index.jsp");
+            dispatcher.forward(req, res);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
