@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -133,9 +133,9 @@
     <div class="menu-container">
         <div class="menu">
             <div class="menu-logo">
-                <a href="">
-                    <img src="/images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="/images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                <a href="../index">
+                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -155,14 +155,14 @@
                 </form>
 
                 <div class="menu-cart">
-                    <a href="">
+                    <a href="${pageContext.request.contextPath}/checkOut">
                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                     </a>
                 </div>
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="/images/header/vib.png" alt="">
+                        <img src="../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -206,10 +206,10 @@
                         List<Product> products = productDAO.getAllProduct();
                         for (Product product : products
                         ) { %>
-                    <a href="">
+                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">
                         <div class="product-item">
                             <div class="product-thumbnail">
-                                <img src="/images/just-for-you/product1.webp" alt="product-thumbnail">
+                                <img src="../images/just-for-you/<%= product.getProductId()%>.jpg" alt="product-thumbnail">
                             </div>
 
                             <div class="product-description">
