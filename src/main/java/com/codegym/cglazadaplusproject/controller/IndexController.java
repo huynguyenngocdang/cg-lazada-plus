@@ -29,7 +29,7 @@ public class IndexController extends HttpServlet {
         switch (action) {
             default:
                 displayIndex(req, resp);
-                break;
+//                break;
         }
     }
 

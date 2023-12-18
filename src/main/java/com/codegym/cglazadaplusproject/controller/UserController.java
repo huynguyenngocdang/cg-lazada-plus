@@ -38,7 +38,6 @@ public class UserController extends HttpServlet {
                 break;
 
             default:
-//                displayAllUser(request, response);
                 break;
         }
     }

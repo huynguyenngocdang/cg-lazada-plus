@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/productDetail.css">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/productDetail.css">
 </head>
 <body>
 <div class="noti-container" id="noti-container">
@@ -69,16 +69,8 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
-                <div class="navbar-item">
-                    <a href="">
-                        <span>ĐĂNG NHẬP</span>
-                    </a>
-                </div>
-                <div class="navbar-item">
-                    <a href="">
-                        <span>ĐĂNG KÝ</span>
-                    </a>
-                </div>
+
+
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -132,7 +124,7 @@
         <div class="content-frame">
             <form action="" method="post" onsubmit="showNoti(event); " id="addToCartForm">
                 <div class="product-detail-thumbnail">
-                    <img src="../images/just-for-you/product1.webp" alt="This is product thumbnail">
+                    <img src="../../images/just-for-you/product1.webp" alt="This is product thumbnail">
                 </div>
 
                 <div class="product-detail-description">
@@ -172,7 +164,7 @@
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
 
 </body>
 </html>
