@@ -4,8 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="bd967239-0afd-4533-9dc4-2c01bb3b7ea9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+=======
+    <list default="true" id="97d04abf-86cd-4b5c-b3b2-c845e926d841" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +38,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+<<<<<<< HEAD
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+=======
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
         <projects_view>
           <tree_state>
             <expand />
@@ -32,6 +53,7 @@
       </state>
     </system>
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -41,6 +63,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -52,9 +76,15 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectColorInfo">{
+<<<<<<< HEAD
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2ZW2QhRajIu2ePfWDm2kYowLjnI" />
+=======
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ZYofJ9xEVL3s6BKlcQzQx9GUJb" />
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,20 +94,40 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+<<<<<<< HEAD
     &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Huy/CodeGym/Project lazada/cg-lazada-plus&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;giang&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vuhuo/Desktop/OneDrive (vuhuonggiang9a)/OneDrive/CODEGYM/cg-lazada-plus/cg-lazada-plus-project/src/main/webapp/css&quot;,
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+<<<<<<< HEAD
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.34367815&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Huy\CodeGym\Project lazada\cg-lazada-plus\cg-lazada-plus-project\src\main\java\com\codegym\cglazadaplusproject\dao" />
       <recent name="C:\Huy\CodeGym\Project lazada\cg-lazada-plus\cg-lazada-plus-project\src\main\java\com\codegym\cglazadaplusproject\service" />
     </key>
@@ -204,10 +254,46 @@
         <item itemvalue="Gradle.cg-lazada-plus-project [clean]" />
       </list>
     </recent_temporary>
+=======
+      <recent name="C:\Users\vuhuo\Desktop\OneDrive (vuhuonggiang9a)\OneDrive\CODEGYM\cg-lazada-plus\cg-lazada-plus-project\src\main\webapp\css" />
+      <recent name="C:\Users\vuhuo\Desktop\OneDrive (vuhuonggiang9a)\OneDrive\CODEGYM\cg-lazada-plus\cg-lazada-plus-project\src\main\webapp\view" />
+      <recent name="C:\Users\vuhuo\Desktop\OneDrive (vuhuonggiang9a)\OneDrive\CODEGYM\cg-lazada-plus\cg-lazada-plus-project\src\main\webapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vuhuo\Desktop\OneDrive (vuhuonggiang9a)\OneDrive\CODEGYM\cg-lazada-plus\cg-lazada-plus-project\src\main\webapp" />
+      <recent name="C:\Users\vuhuo\Desktop\OneDrive (vuhuonggiang9a)\OneDrive\CODEGYM\cg-lazada-plus\cg-lazada-plus-project\src\main\webapp\css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\vuhuo\.SmartTomcat\cg-lazada-plus-project\cg-lazada-plus-project.main" />
+      <option name="contextPath" value="/" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.84" />
+          <option name="path" value="$PROJECT_DIR$/../../../../../../../../tomcat/apache-tomcat-9.0.84" />
+          <option name="version" value="9.0.84.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="cg-lazada-plus-project.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="bd967239-0afd-4533-9dc4-2c01bb3b7ea9" name="Changes" comment="" />
       <created>1702523499452</created>
       <option name="number" value="Default" />
@@ -217,6 +303,20 @@
       <workItem from="1702536343884" duration="86000" />
       <workItem from="1702542919326" duration="11253000" />
       <workItem from="1702863046056" duration="37000" />
+=======
+      <changelist id="97d04abf-86cd-4b5c-b3b2-c845e926d841" name="Changes" comment="" />
+      <created>1702608475692</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702608475692</updated>
+      <workItem from="1702608476979" duration="1267000" />
+      <workItem from="1702609819530" duration="1899000" />
+      <workItem from="1702616804688" duration="2065000" />
+      <workItem from="1702624673336" duration="1896000" />
+      <workItem from="1702632463667" duration="1572000" />
+      <workItem from="1702697644980" duration="495000" />
+      <workItem from="1702698154844" duration="364000" />
+>>>>>>> 5359114915dee5920488b08db82574da50669fb1
     </task>
     <servers />
   </component>
