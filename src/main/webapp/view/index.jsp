@@ -1,11 +1,3 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Category" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ICategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.CategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.IProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Product" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -46,8 +38,8 @@
 
 <div class="header">
     <div class="header-ad">
-        <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+        <a href="#">
+            <img src="../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -79,19 +71,10 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
-                <%
-                    User currentUser = (User) request.getSession().getAttribute("currentUser");
-                    String currentUsername = (currentUser != null) ? currentUser.getUsername() : null;
-                    boolean isLoggedIn = (currentUsername != null);
-                %>
 
-                <%
-                    if (isLoggedIn) {
-                        // User is logged in, display username
-                %>
                 <div class="navbar-item">
                     <a href="">
-                        <span>XIN CHÀO, <%= currentUsername %> </span>
+                        <span>XIN CHÀO, </span>
                     </a>
                 </div>
                 <div class="navbar-item">
@@ -101,10 +84,6 @@
                 </div>
 
 
-                <%
-                } else {
-                    // User is not logged in, display login link
-                %>
                 <div class="navbar-item">
                     <a href="/users?action=displayLogin">
                         <span>ĐĂNG NHẬP</span>
@@ -116,9 +95,6 @@
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
-                <%
-                    }
-                %>
 
 
                 <div class="navbar-item">
@@ -168,26 +144,17 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <div class="body-container">
     <div class="body">
-
         <div class="body-column-1 categories-container">
             <div class="categories-title">
                 <p>Danh mục</p>
             </div>
             <div class="categories-content">
-                <%
-                    ICategoryDAO categoryDAO = new CategoryDAO();
-                    List<Category> categories = categoryDAO.getAllCategory();
-                    for (Category category : categories
-                    ) { %>
-                <p><%=category.getCategoryName()%>
+                <p>
                 </p>
-                <% } %>
             </div>
         </div>
 
@@ -201,11 +168,7 @@
 
                 <%--            List product dùng c:forEach--%>
                 <div class="product-container">
-                    <%
-                        IProductDAO productDAO = new ProductDAO();
-                        List<Product> products = productDAO.getAllProduct();
-                        for (Product product : products
-                        ) { %>
+
                     <a href="">
                         <div class="product-item">
                             <div class="product-thumbnail">
@@ -214,23 +177,23 @@
 
                             <div class="product-description">
                                 <div class="product-name">
-                                    <p><%=product.getProductName()%>
+                                    <p>
                                     </p>
                                 </div>
                                 <div class="product-price">
-                                    <p><%=product.getProductCost()%>
+                                    <p>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <% } %>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../js/animation.js" crossorigin="anonymous"></script>
 </body>
 </html>

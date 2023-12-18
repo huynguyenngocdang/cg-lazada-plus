@@ -371,6 +371,16 @@ a {
   float: right;
   color: black;
 }
+.content-frame form button {
+  border-radius: 7px;
+  border: none;
+  background: #F57224;
+  color: white;
+  font-size: 6em;
+  padding: 1em 0;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 1em;
+}
 
 .noti-exit-button button:hover {
   background-color: #ececec;

@@ -5,21 +5,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Log In </title>
-    <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
+    <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        .user-container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .user-title p {
+            color: #414141;
+            font-size: 6em;
+            margin-left: 8rem;
+            margin-bottom: 6rem;
+        }
+
+        form, form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form {
+            gap: 6em;
+        }
+
+        .form-input {
+            gap: 2em;
+        }
+
+        .form-input input {
+            border-radius: 5px;
+            border: 1px solid #B1B1B1;
+            color: rgba(177, 177, 177, 1);
+            padding: 0.7em;
+            color: black;
+            font-size: 5em;
+        }
+
+        form label {
+            font-size: 4em;
+        }
+
+        .content-frame form button {
+            border-radius: 7px;
+            border: none;
+            background: #F57224;
+            color: white;
+            font-size: 6em;
+            padding: 1em 0;
+            font-family: 'Roboto', sans-serif;
+            margin-top: 1em;
+        }
+    </style>
+</head>
 <body>
-
-
 <c:if test='${not empty requestScope["message"]}'>
     <div class="noti-container" id="noti-container">
         <div class="noti-content">
             <div class="noti-icon">
-                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+                <img src="../../images/header/logo-heart.png" alt="this is lazada icon">
             </div>
 
             <div class="noti-title">
@@ -35,7 +88,6 @@
         </div>
     </div>
 </c:if>
-
 
 
 <div class="header">
@@ -141,12 +193,14 @@
                 <form action="/users?action=login" method="post">
                     <div class="username form-input">
                         <label for="username">Tên đăng nhập*</label>
-                        <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên đăng nhập" required>
+                        <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên đăng nhập"
+                               required>
                     </div>
 
                     <div class="password form-input">
                         <label for="password">Mật khẩu*</label>
-                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" required>
+                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu"
+                               required>
                     </div>
 
                     <div class="submit-button">
@@ -158,6 +212,6 @@
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
 </body>
 </html>
