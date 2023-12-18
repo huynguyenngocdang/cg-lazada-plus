@@ -122,7 +122,7 @@
 <div class="body-container">
     <div class="body">
         <div class="content-frame">
-            <form action="" method="post" onsubmit="showNoti(event); " id="addToCartForm">
+            <form action="" method="post" onsubmit="" id="addToCartForm">
                 <div class="product-detail-thumbnail">
                     <img src="../../images/just-for-you/product1.webp" alt="This is product thumbnail">
                 </div>
