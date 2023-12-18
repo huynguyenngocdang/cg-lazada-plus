@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hgiang
-  Date: 16/12/2023
-  Time: 4:13 CH
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/cartCheckOut.css">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/cartCheckOut.css">
 </head>
 <body>
 <div class="noti-container" id="noti-container">
     <div class="noti-content">
         <div class="noti-icon">
-            <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+            <img src="../../images/header/logo-heart.png" alt="this is lazada icon">
         </div>
 
         <div class="noti-title">
@@ -42,7 +36,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -96,9 +90,9 @@
 <div class="menu-container">
     <div class="menu">
         <div class="menu-logo">
-            <a href="">
-                <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+            <a href="${pageContext.request.contextPath}/index">
+                <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
             </a>
         </div>
         <div class="menu-bar">
@@ -118,14 +112,14 @@
             </form>
 
             <div class="menu-cart">
-                <a href="">
+                <a href="${pageContext.request.contextPath}/checkOut">
                     <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                 </a>
             </div>
 
             <div class="menu-ad">
                 <a href="">
-                    <img src="../images/vib.png" alt="">
+                    <img src="../../images/header/vib.png" alt="">
                 </a>
             </div>
         </div>
@@ -137,26 +131,30 @@
         <div class="cart-product-list content-frame">
 
             <!--        Bắt đầu vòng lặp forEach-->
+            <c:forEach var="cartItem" items="${cartItems}">
             <div class="product-checkout-item">
                 <div class="product-checkout-info">
                     <div class="product-checkout-thumbnail">
-                        <img src="/images/just-for-you/product2.webp" alt="">
+                        <img src="../../images/just-for-you/${cartItem.product.productId}.jpg" alt="">
                     </div>
 
                     <div class="product-checkout-description">
-                        <div class="product-checkout-name">
-                            <p>Cây thông NOEL cao 1m5 1m6 1m8 - Cây thông Giáng Sinh noel 1,5m 1,6m 1,8m đủ phụ kiện đèn led, chữ
-                                MERRY CHRISTMAS , dây kim tuyến , chuông giáng sinh , nơ và nhiều phụ kiện khác</p>
-                        </div>
 
-                        <div class="product-checkout-detail">
-                            <p class="product-checkout-price">đ144,000</p>
-                            <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
-                            <div class="product-checkout-quantity">
-                                <label for="product-id-quantity">Số lượng:</label>
-                                <input type="number" name="product-id-quantity" id="product-id-quantity" min="1" max="99">
+
+                            <div class="product-checkout-name">
+                                <p><c:out value="${cartItem.product.productName}"></c:out> </p>
                             </div>
-                        </div>
+
+                            <div class="product-checkout-detail">
+                                <p class="product-checkout-price"><c:out value="${cartItem.product.productCost}"></c:out> </p>
+                                <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
+                                <div class="product-checkout-quantity">
+                                    <label for="product-id-quantity">Số lượng:</label>
+                                    <input type="number" name="product-id-quantity" id="product-id-quantity" min="1" max="99" value="${cartItem.productQuantity}">
+                                </div>
+                            </div>
+
+
                     </div>
                 </div>
 
@@ -166,6 +164,7 @@
             </div>
 
             <hr>
+            </c:forEach>
             <!--        Kết thúc vòng lặp-->
 
         </div>
@@ -177,13 +176,13 @@
                 <div class="product-checkout-bill-detail">
                     <div class="bill-product">
                         <!--              Đếm số lượng sản phẩm-->
-                        <p>Tạm tính (<span class="prouct-count">3</span> sản phẩm)</p>
-                        <p>1.000.000đ</p>
+                        <p>Tạm tính (<span class="prouct-count">${totalCartQuantity}</span> sản phẩm)</p>
+                        <p>${totalCartCost}</p>
                     </div>
 
                     <div class="bill-shipment">
                         <p>Phí vận chuyển</p>
-                        <p>15.000đ</p>
+                        <p>${deliveryFee}</p>
                     </div>
                 </div>
             </div>
@@ -193,7 +192,7 @@
             <div class="product-checkout-bill-overall">
                 <div class="bill-overall">
                     <p>Tổng cộng</p>
-                    <p>đ1,015,000</p>
+                    <p>${totalCartCostWithDeliveryFee}</p>
                 </div>
 
                 <div class="bill-confirm">
@@ -205,7 +204,8 @@
     </form>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
+
 
 </body>
 </html>
