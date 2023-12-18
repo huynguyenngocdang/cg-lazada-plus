@@ -222,16 +222,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../images/title.png">
-<%--    <link rel="stylesheet" type="text/css" href="<c:url value='../css/base.css'/>">--%>
-<%--    <link rel="stylesheet" type="text/css" href="/css/base.css">--%>
-<%--    <link rel="stylesheet" type="text/css" href="/css/home.css">--%>
-<%--    <link rel="stylesheet" type="text/css" href="<c:url value='../css/home.css'/>">--%>
-<%--    <style type="text/css">--%>
-<%--        <%@include file="/css/base.css" %>--%>
-<%--    </style>--%>
-<%--    <style type="text/css">--%>
-<%--        <%@include file="/css/home.css" %>--%>
-<%--    </style>--%>
+    <link rel="stylesheet" type="text/css" href="<c:url value='../css/base.css'/>">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='../css/home.css'/>">
+    <style type="text/css">
+        <%@include file="/css/base.css" %>
+    </style>
+    <style type="text/css">
+        <%@include file="/css/home.css" %>
+    </style>
 
 </head>
 <body>
