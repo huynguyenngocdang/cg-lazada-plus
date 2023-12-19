@@ -124,18 +124,9 @@ foreign key (product_id)
 references product(product_id),
 foreign key (category_id)
 references category(category_id)
-); 
+);
 
-<<<<<<< HEAD:src/main/resources/db/db_11AM_13_12.sql
 
-=======
-insert into product_category (product_id, category_id) 
-values (1,1),
-	 (2,1),
-	 (3,2),
-	 (4,3),
-	 (5,3);
->>>>>>> b531d509370960c9c7f54efc27300b1dce3411be:database/db_11AM_13_12.sql
 
 create table purchase_order(
 purchase_order_id int primary key auto_increment,
