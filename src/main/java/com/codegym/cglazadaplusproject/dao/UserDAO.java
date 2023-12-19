@@ -94,4 +94,33 @@ public class UserDAO implements IUserDAO {
         }
         return rowStatement;
     }
+
+    @Override
+    public boolean insertUser(String userName, String password) {
+        boolean rowUpdate = false;
+        try {
+            PreparedStatement statement = connection.prepareStatement(QueryConstant.insert_user);
+            statement.setString(1, userName);
+            statement.setString(2, password);
+            System.out.println(statement);
+            rowUpdate = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdate;
+    }
+    @Override
+    public boolean deleteUser(int userId) {
+        boolean rowDeleted;
+        try {
+            PreparedStatement statement = connection.prepareStatement(QueryConstant.delete_user);
+            statement.setInt(1,userId);
+            rowDeleted = statement.executeUpdate() > 0;
+            return rowDeleted;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return  false;
+    }
 }
+
