@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a81d244-7ce6-45ec-b8a2-8d47dc18b64e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/CategoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/ICategoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/IProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/ProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/cartCheckOut.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/productDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/animation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/cartCheckOut.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/login/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/product/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project LazadaPlus overall description ver.1.2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/srs/Project LazadaPlus overall description ver.1.2.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/8.2/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/HelloServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/constant/Query.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/constant/Variable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/controller/UserServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/dao/IUserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/classes/java/main/com/codegym/cglazadaplusproject/utils/JDBCConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/libs/cg-lazada-plus-project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/build/libs/cg-lazada-plus-project-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cg-lazada-plus-project/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/constant/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/constant/QueryConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/constant/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/constant/VarConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/dao/IUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/IUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/service/UserLoginValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/validator/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/service/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/validator/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/utils/JDBCConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/cglazadaplusproject/utils/JDBCConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/css/edit.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/edit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/css/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/css/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/header/head-banner-1.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/header/head-banner-1.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/header/logo-heart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/header/logo-heart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/header/logo-text.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/header/logo-text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/header/vib.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/header/vib.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product1.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product1.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product11.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product11.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product12.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product12.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product13.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product13.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product14.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product14.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product15.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product15.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product16.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product16.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product17.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product17.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product18.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product18.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product2.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product2.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product6.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product6.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/images/just-for-you/product9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/just-for-you/product9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/view/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/view/login/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/view/users/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/users/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cg-lazada-plus-project/src/main/webapp/view/users/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/users/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db_11AM_13_12.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/db_11AM_13_12.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2ZhEUPBEwFHOapl3rA94opP4cPI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Module 03/cg_lazada_plus_project_git&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a81d244-7ce6-45ec-b8a2-8d47dc18b64e" name="Changes" comment="" />
+      <created>1702865926026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702865926026</updated>
+      <workItem from="1702865927202" duration="49000" />
+      <workItem from="1702866299722" duration="94000" />
+      <workItem from="1702866744113" duration="118000" />
+      <workItem from="1702867205106" duration="1440000" />
+      <workItem from="1702872608496" duration="41000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
