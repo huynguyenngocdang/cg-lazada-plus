@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ProductDAO implements IProductDAO {
     private final Connection connection = JDBCConnection.getConnection();
+
     @Override
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
@@ -35,6 +36,7 @@ public class ProductDAO implements IProductDAO {
         }
         return products;
     }
+
     @Override
     public Product getProductById(int id) {
         Product product = null;
@@ -78,5 +80,26 @@ public class ProductDAO implements IProductDAO {
             e.printStackTrace();
         }
         return searchResult;
+    }
+
+    public List<Product> getProductByCategory(int categoryID) {
+        List<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.select_product_by_category);
+            preparedStatement.setInt(1, categoryID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int productID = resultSet.getInt("product_id");
+                int userID = resultSet.getInt("user_id");
+                String productName = resultSet.getString("product_name");
+                int productQuantity = resultSet.getInt("product_quantity");
+                double productCost = resultSet.getDouble("product_cost");
+                boolean isDelete = resultSet.getBoolean("is_delete");
+                products.add(new Product(productID, userID, productName, productQuantity, productCost, isDelete));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
     }
 }

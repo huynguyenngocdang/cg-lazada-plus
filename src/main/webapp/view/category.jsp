@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -155,14 +155,14 @@
                 </form>
 
                 <div class="menu-cart">
-                    <a href="">
+                    <a href="${pageContext.request.contextPath}/checkOut">
                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                     </a>
                 </div>
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="/images/header/vib.png" alt="">
+                        <img src="../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -177,9 +177,6 @@
             <div class="categories-title">
                 <p>Danh mục</p>
             </div>
-
-            <hr>
-
             <div class="categories-content">
                 <%
                     ICategoryDAO categoryDAO = new CategoryDAO();

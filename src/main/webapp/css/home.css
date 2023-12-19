@@ -36,3 +36,14 @@
     flex-direction: column;
 }
 
+.categories-content button {
+    background: none;
+    border: none;
+    text-align: left;
+}
+
+.categories-content button a {
+    color: black;
+    font-size: 1em;
+}
+

@@ -1,0 +1,127 @@
+diff a/src/main/webapp/view/index.jsp b/src/main/webapp/view/index.jsp	(rejected hunks)
+@@ -17,9 +17,10 @@
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+-    <link rel="shortcut icon" href="../images/title.png">
++    <link rel="shortcut icon" href="../images/titleIcon.png">
+     <link rel="stylesheet" type="text/css" href="../css/base.css">
+     <link rel="stylesheet" type="text/css" href="../css/home.css">
++
+ </head>
+ <body>
+ 
+@@ -47,7 +48,7 @@
+ <div class="header">
+     <div class="header-ad">
+         <a href="">
+-            <img src="/images/header/head-banner-1.webp" alt="">
++            <img src="../images/header/head-banner-1.webp" alt="">
+         </a>
+     </div>
+ 
+@@ -133,13 +134,13 @@
+     <div class="menu-container">
+         <div class="menu">
+             <div class="menu-logo">
+-                <a href="">
+-                    <img src="/images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+-                    <img src="/images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
++                <a href="../index">
++                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
++                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                 </a>
+             </div>
+             <div class="menu-bar">
+-                <form class="menu-search-bar" action="" method="get">
++                <form class="menu-search-bar" action="${pageContext.request.contextPath}/products" method="get">
+                     <div class="search-input">
+                         <label for="search-input"></label>
+                         <input type="text" name="search-input" id="search-input"
+@@ -155,14 +156,14 @@
+                 </form>
+ 
+                 <div class="menu-cart">
+-                    <a href="">
++                    <a href="${pageContext.request.contextPath}/checkOut">
+                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+                     </a>
+                 </div>
+ 
+                 <div class="menu-ad">
+                     <a href="">
+-                        <img src="/images/header/vib.png" alt="">
++                        <img src="../images/header/vib.png" alt="">
+                     </a>
+                 </div>
+             </div>
+@@ -201,48 +202,30 @@
+ 
+                 <%--            List product dùng c:forEach--%>
+                 <div class="product-container">
+-                    <%--                    <%--%>
+-                    <%--                        IProductDAO productDAO = new ProductDAO();--%>
+-                    <%--                        List<Product> products = productDAO.getAllProduct();--%>
+-                    <%--                        for (Product product : products--%>
+-                    <%--                        ) { %>--%>
+-                    <%--                    <a href="">--%>
+-                    <%--                        <div class="product-item">--%>
+-                    <%--                            <div class="product-thumbnail">--%>
+-                    <%--                                <img src="/images/just-for-you/product1.webp" alt="product-thumbnail">--%>
+-                    <%--                            </div>--%>
+-
+-                    <%--                            <div class="product-description">--%>
+-                    <%--                                <div class="product-name">--%>
+-                    <%--                                    <p><%=product.getProductName()%>--%>
+-                    <%--                                    </p>--%>
+-                    <%--                                </div>--%>
+-                    <%--                                <div class="product-price">--%>
+-                    <%--                                    <p><%=product.getProductCost()%>--%>
+-                    <%--                                    </p>--%>
+-                    <%--                                </div>--%>
+-                    <%--                            </div>--%>
+-                    <%--                        </div>--%>
+-                    <%--                    </a>--%>
+-                    <%--                    <% } %>--%>
+-                    <c:forEach var="product" items="${products}">
+-                        <a href="">
+-                            <div class="product-item">
+-                                <div class="product-thumbnail">
+-                                    <img src="../images/just-for-you/product1.webp" alt="product-thumbnail">
+-                                </div>
++                    <%
++                        IProductDAO productDAO = new ProductDAO();
++                        List<Product> products = productDAO.getAllProduct();
++                        for (Product product : products
++                        ) { %>
++                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">
++                        <div class="product-item">
++                            <div class="product-thumbnail">
++                                <img src="../images/products/<%= product.getProductId()%>.jpg" alt="product-thumbnail">
++                            </div>
+ 
+-                                <div class="product-description">
+-                                    <div class="product-name">
+-                                        <p><c:out value="${product.getProductName()}"/></p>
+-                                    </div>
+-                                    <div class="product-price">
+-                                        <p><c:out value="${product.getProductCost()}"/></p>
+-                                    </div>
++                            <div class="product-description">
++                                <div class="product-name">
++                                    <p><%=product.getProductName()%>
++                                    </p>
++                                </div>
++                                <div class="product-price">
++                                    <p>đ<%=product.getProductCost()%>
++                                    </p>
+                                 </div>
+                             </div>
+-                        </a>
+-                    </c:forEach>
++                        </div>
++                    </a>
++                    <% } %>
+                 </div>
+             </div>
+         </div>

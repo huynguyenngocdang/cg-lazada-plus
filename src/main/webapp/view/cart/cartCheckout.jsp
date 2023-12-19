@@ -191,7 +191,11 @@
                 </div>
 
                 <div class="product-checkout-delete">
-                    <button>Xóa sản phẩm</button>
+                    <form action="${pageContext.request.contextPath}/checkOut" method="post">
+                        <input type="hidden" name="action" value="removeCartItem">
+                        <input type="hidden" name="productId" value="${cartItem.product.productId}">
+                        <button type="submit">Xóa sản phẩm</button>
+                    </form>
                 </div>
             </div>
 

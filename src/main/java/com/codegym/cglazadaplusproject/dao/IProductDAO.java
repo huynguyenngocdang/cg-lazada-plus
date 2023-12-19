@@ -8,4 +8,5 @@ public interface IProductDAO {
     List<Product> getAllProduct();
     Product getProductById(int id);
     List<Product> searchProductByName(String keyword);
+    List<Product> getProductByCategory(int categoryID);
 }

@@ -32,6 +32,9 @@ public class ProductController extends HttpServlet {
 //            case "searchProduct":
 //                searchProduct(request, response);
 //                break;
+            case "displayProductByCategory":
+                displayProductByCategory(request, response);
+                break;
             default:
                 searchProduct(request, response);
                 break;
@@ -66,6 +69,18 @@ public class ProductController extends HttpServlet {
         }
 
         try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayProductByCategory(HttpServletRequest request, HttpServletResponse response) {
+        int categoryID = Integer.parseInt(request.getParameter("categoryId"));
+        List<Product> products = productDAO.getProductByCategory(categoryID);
+        request.setAttribute("products", products);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
