@@ -64,7 +64,7 @@ public class UserController extends HttpServlet {
         int userId = Integer.parseInt(  request.getParameter("userId"));
         User selectUser = userDAO.getUserById(userId);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/user/edit.jsp");
             request.setAttribute("selectUser", selectUser);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -76,7 +76,7 @@ public class UserController extends HttpServlet {
         List<User> users = userDAO.getAllUser();
         request.setAttribute("users", users);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/user/list.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -143,7 +143,7 @@ public class UserController extends HttpServlet {
             selectUser = userDAO.getUserById(userId);
             request.setAttribute("selectUser", selectUser);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/user/edit.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
