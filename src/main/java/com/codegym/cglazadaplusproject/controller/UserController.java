@@ -63,8 +63,6 @@ public class UserController extends HttpServlet {
     private void logOut(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.getSession().invalidate();
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
-//            dispatcher.forward(request, response);
             response.sendRedirect(request.getContextPath() + "/view/index.jsp");
         } catch (IOException e) {
             e.printStackTrace();

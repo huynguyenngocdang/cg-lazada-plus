@@ -10,4 +10,5 @@ public interface QueryConstant {
     String delete_user = "update user set is_delete = 1 where user_id = ?;";
     String get_all_category = "Select * from category WHERE is_delete = ? ";
     String get_all_product = "Select * from product WHERE is_delete = 0";
+    String get_product_by_id = "Select * from product WHERE product_id = ? ";
 }

@@ -29,10 +29,6 @@ public class CategoryDAO implements ICategoryDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            for (Category category: categories
-                 ) {
-                System.out.println(category.toString());
-            }
             return categories;
         }
 }
