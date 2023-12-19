@@ -8,4 +8,6 @@ public interface IProductDAO {
     List<Product> getAllProduct();
 
     Product getProductById(int id);
+
+    List<Product> getProductByCategory(int categoryID);
 }

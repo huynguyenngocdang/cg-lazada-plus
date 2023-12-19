@@ -36,9 +36,7 @@ public class UserController extends HttpServlet {
             case "showEdit":
                 showEdit(request, response);
                 break;
-            case "displayCreate":
-                displayCreate(request,response);
-                break;
+
             default:
                 break;
         }
@@ -52,14 +50,7 @@ public class UserController extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
+
     private void logOut(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.getSession().invalidate();
@@ -105,9 +96,6 @@ public class UserController extends HttpServlet {
                 break;
             case "edit":
                 editUser(request, response);
-                break;
-            case "create":
-                addUser(request,response);
                 break;
             default:
                 break;
@@ -158,43 +146,6 @@ public class UserController extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void addUser(HttpServletRequest request,HttpServletResponse response){
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User newUser = new User(username,password);
-        Validator validator = new UserValidator(username,password);
-        try {
-            String message = null;
-            if (validator.checkUser()){
-                message = "Account already exists";
-                request.setAttribute("message",message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
-                dispatcher.forward(request,response);
-            } else {
-                userDAO.insertUser(username,password);
-                message= "Successful account registration";
-                request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
-                dispatcher.forward(request,response);
-            }
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void deleteUser(HttpServletRequest request,HttpServletResponse response){
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        try {
-            userDAO.deleteUser(userId);
-
-            List<User> listUser = userDAO.getAllUser();
-            request.getSession().setAttribute("users", listUser);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e){
             e.printStackTrace();
         }
     }

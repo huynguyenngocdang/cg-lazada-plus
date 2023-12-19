@@ -4,6 +4,9 @@ public class CartItem {
     private Product product;
     private double productQuantity;
 
+    public CartItem() {
+    }
+
     public CartItem(Product product, double productQuantity) {
         this.product = product;
         this.productQuantity = productQuantity;
