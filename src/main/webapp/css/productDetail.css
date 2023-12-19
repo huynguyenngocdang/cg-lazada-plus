@@ -3,15 +3,25 @@
     gap: 8em;
 }
 
-.product-detail-thumbnail img {
-    width: 100em;
-    height: auto;
+.product-detail-thumbnail {
+    width: 100rem;
+    height: 100rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     border: none;
     border-radius: 10px;
 }
 
-.product-detail-description {
+.product-detail-thumbnail img {
     width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.product-detail-description {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

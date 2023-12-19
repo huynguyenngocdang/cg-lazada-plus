@@ -1,5 +1,6 @@
 package com.codegym.cglazadaplusproject.controller;
 
+import com.codegym.cglazadaplusproject.constant.VarConstant;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
 import com.codegym.cglazadaplusproject.model.User;
@@ -54,8 +55,6 @@ public class UserController extends HttpServlet {
     private void logOut(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.getSession().invalidate();
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
-//            dispatcher.forward(request, response);
             response.sendRedirect(request.getContextPath() + "/view/index.jsp");
         } catch (IOException e) {
             e.printStackTrace();
@@ -116,13 +115,13 @@ public class UserController extends HttpServlet {
                 System.out.println(currentUser.toString());
 
                 request.getSession().setAttribute("currentUser", currentUser);
-                message = "Login successfully";
+                message = VarConstant.login_success_noti;
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
                 dispatcher.forward(request, response);
 
             } else {
-                message = "Wrong username or password";
+                message = VarConstant.login_failed_noti;
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/login/login.jsp");
                 dispatcher.forward(request, response);

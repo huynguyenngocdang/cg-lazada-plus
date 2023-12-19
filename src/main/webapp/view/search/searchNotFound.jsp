@@ -1,18 +1,26 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Log In </title>
+    <!--  Thay keyword vào title-->
+    <title><c:out value="${keyword}"/> - Tìm kiếm</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
-    <link rel="stylesheet" type="text/css" href="../../css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
-
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/searchProduct.css">
+    <link rel="stylesheet" type="text/css" href="../../css/searchNotFound.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -35,7 +43,6 @@
         </div>
     </div>
 </c:if>
-
 
 <div class="header">
     <div class="header-ad">
@@ -91,12 +98,13 @@
         </div>
     </div>
 </div>
+
 <div class="menu-container">
     <div class="menu">
         <div class="menu-logo">
-            <a href="">
-                <img src="/images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="/images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+            <a href="${pageContext.request.contextPath}/index">
+                <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
             </a>
         </div>
         <div class="menu-bar">
@@ -116,7 +124,7 @@
             </form>
 
             <div class="menu-cart">
-                <a href="">
+                <a href="${pageContext.request.contextPath}/checkOut">
                     <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                 </a>
             </div>
@@ -132,33 +140,47 @@
 
 <div class="body-container">
     <div class="body">
-        <div class="user-container">
-            <div class="user-title">
-                <p>Chào mừng đến với Lazada. Đăng nhập ngay!</p>
+        <div class="bookmark">
+            <a href="${pageContext.request.contextPath}/index">
+                <span>Trang chủ</span>
+            </a>
+            <span>></span>
+            <span>Kết quả tìm kiếm</span>
+        </div>
+
+        <hr>
+
+        <div class="search-result">
+            <div class="search-keyword-setting">
+                <div class="keyword-setting">
+                    <!--            Thay keyword-->
+                    <p><c:out value="${keyword}"/></p>
+                </div>
+
+                <div class="search-result-setting">
+                    <p><c:out value="${searchResult.size()}"/> kết quả cho "<c:out value="${keyword}"/>"</p>
+                </div>
             </div>
-            <div class="content-frame">
-                <form action="/users?action=login" method="post">
-                    <div class="username form-input">
-                        <label for="username">Tên đăng nhập*</label>
-                        <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên đăng nhập"
-                               required>
-                    </div>
+        </div>
 
-                    <div class="password form-input">
-                        <label for="password">Mật khẩu*</label>
-                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu"
-                               required>
-                    </div>
+        <div class="search-not-found-content">
+            <div class="search-not-found-text">
+                <p>Tìm kiếm không có kết quả...</p>
+                <p>Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</p>
+            </div>
 
-                    <div class="submit-button">
-                        <button type="submit">ĐĂNG NHẬP</button>
-                    </div>
-                </form>
+            <div class="search-not-found-image">
+                <div class="search-not-found-icon">
+                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal" style="color: #bababa;"></i>          </div>
+
+                <div class="back-to-main-button">
+                    <a href="${pageContext.request.contextPath}/index">
+                        <button>Trở về</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<script src="../../js/animation.js"></script>
 </body>
 </html>
