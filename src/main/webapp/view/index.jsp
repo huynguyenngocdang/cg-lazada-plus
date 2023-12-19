@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="/users?action=displayCreate">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
