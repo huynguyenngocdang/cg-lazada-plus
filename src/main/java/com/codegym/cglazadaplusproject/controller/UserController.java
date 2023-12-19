@@ -137,15 +137,12 @@ public class UserController extends HttpServlet {
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
                 dispatcher.forward(request, response);
-
             } else {
                 message = "Wrong username or password";
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/login/login.jsp");
                 dispatcher.forward(request, response);
             }
-
-
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
