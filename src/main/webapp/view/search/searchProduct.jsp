@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Hgiang
   Date: 19/12/2023
@@ -46,7 +46,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -78,16 +78,48 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
+                <%
+                    User currentUser = (User) request.getSession().getAttribute("currentUser");
+                    String currentUsername = (currentUser != null) ? currentUser.getUsername() : null;
+                    boolean isLoggedIn = (currentUsername != null);
+                %>
+
+                <%
+                    if (isLoggedIn) {
+                        // User is logged in, display username
+                %>
                 <div class="navbar-item">
                     <a href="">
+                        <span>XIN CHÀO, <%= currentUsername %> </span>
+                    </a>
+                </div>
+                <div class="navbar-item">
+                    <a href="${pageContext.request.contextPath}/users?action=logOut">
+                        <span>ĐĂNG XUẤT</span>
+                    </a>
+                </div>
+
+
+                <%
+                } else {
+                    // User is not logged in, display login link
+                %>
+                <div class="navbar-item">
+                    <a href="${pageContext.request.contextPath}/users?action=displayLogin">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
+
                 <div class="navbar-item">
                     <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
+                <%
+                    }
+                %>
+
+
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -111,7 +143,7 @@
                 <div class="search-input">
                     <label for="search-input"></label>
                     <input type="text" name="search-input" id="search-input"
-                           placeholder="Tìm kiếm trên Lazada">
+                           placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
                 </div>
 
                 <div class="search-icon">
@@ -130,7 +162,7 @@
 
             <div class="menu-ad">
                 <a href="">
-                    <img src="../images/header/vib.png" alt="">
+                    <img src="../../images/header/vib.png" alt="">
                 </a>
             </div>
         </div>
@@ -138,7 +170,7 @@
 </div>
 
 <div class="body-container">
-    <form class="body" name="sortResultForm">
+    <form class="body" name="sortResultForm" action="${pageContext.request.contextPath}/products?action=sortSearchResult" method="post">
         <div class="bookmark">
             <a href="${pageContext.request.contextPath}/index">
                 <span>Trang chủ</span>
@@ -148,6 +180,7 @@
         </div>
 
         <hr>
+        <input type="text" hidden="hidden" name="keyword" value="${keyword}">
 
         <div class="search-result">
             <div class="search-keyword-setting">
@@ -162,10 +195,24 @@
                     <div class="display-sort-result">
                         <div class="sort-result">
                             <p>Sắp xếp theo: </p>
-                            <select name="sort" id="sort" class="sort-result">
-                                <option value="sortById">Phù hợp nhất</option>
-                                <option value="sortByPriceMin" onsubmit="">Giá từ thấp tới cao</option>
-                                <option value="sortByPriceMax" onsubmit="">Giá từ cao xuống thấp</option>
+                            <select name="sort" id="sort" class="sort-result" onchange="sortResultForm.submit()">
+                                <c:choose>
+                                    <c:when test="${sortMode=='sortByPriceMin'}">
+                                        <option value="sortById">Phù hợp nhất</option>
+                                        <option value="sortByPriceMin" selected>Giá từ thấp tới cao</option>
+                                        <option value="sortByPriceMax">Giá từ cao xuống thấp</option>
+                                    </c:when>
+                                    <c:when test="${sortMode=='sortByPriceMax'}">
+                                        <option value="sortById">Phù hợp nhất</option>
+                                        <option value="sortByPriceMin">Giá từ thấp tới cao</option>
+                                        <option value="sortByPriceMax" selected>Giá từ cao xuống thấp</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="sortById" selected>Phù hợp nhất</option>
+                                        <option value="sortByPriceMin">Giá từ thấp tới cao</option>
+                                        <option value="sortByPriceMax">Giá từ cao xuống thấp</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </select>
                         </div>
                         <div class="display-result">
@@ -182,10 +229,11 @@
             <div class="search-result-list">
                 <div class="product-container">
                     <c:forEach var="product" items="${searchResult}">
-                        <a href="/products?action=showProductById&productId=<c:out value="${product.getProductId()}"/>">
+                        <a href="${pageContext.request.contextPath}/products?action=showProductById&productId=<c:out value="${product.getProductId()}"/>">
                             <div class="product-item">
                                 <div class="product-thumbnail">
-                                    <img src="../../images/products/<c:out value="${product.getProductId()}"/>.jpg" alt="product-thumbnail">
+                                    <img src="../../images/products/<c:out value="${product.getProductId()}"/>.jpg"
+                                         alt="product-thumbnail">
                                 </div>
 
                                 <div class="product-description">

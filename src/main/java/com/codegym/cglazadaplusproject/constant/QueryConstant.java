@@ -7,6 +7,8 @@ public interface QueryConstant {
     String update_user_by_id =
             "UPDATE `user` SET `user_name` = ?, `user_password` = ? WHERE (`user_id` = ?);";
     String search_product_by_name = "Select * from product WHERE product_name LIKE ? ORDER BY product_id";
+    String search_product_sort_by_price_max = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost DESC";
+    String search_product_sort_by_price_min = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
     String get_all_category = "Select * from category WHERE is_delete = ? ";
     String get_all_product = "Select * from product WHERE is_delete = 0";
     String get_product_by_id = "Select * from product WHERE product_id = ? ";

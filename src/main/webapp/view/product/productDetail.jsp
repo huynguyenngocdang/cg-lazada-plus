@@ -154,7 +154,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -167,7 +167,7 @@
 <div class="body-container">
     <div class="body">
         <div class="content-frame">
-            <form action="/carts?action=addToCart&productId=${currentProduct.productId}" method="post" id="addToCartForm">
+            <form action="${pageContext.request.contextPath}/carts?action=addToCart&productId=${currentProduct.productId}" method="post" id="addToCartForm">
                 <div class="product-detail-thumbnail">
                     <img src="../../images/products/${currentProduct.productId}.jpg" alt="This is product thumbnail">
                 </div>
@@ -189,7 +189,7 @@
 
                     <div class="product-detail-cart-container">
                         <div class="product-detail-price">
-                            <p>đ<c:out value="${currentProduct.productCost}"></c:out> </p>
+                            <p>đ<c:out value="${currentProduct.productCost}"></c:out></p>
                         </div>
 
                         <div class="product-detail-quantity">

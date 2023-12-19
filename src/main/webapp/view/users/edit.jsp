@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/users?action=edit&userId=${selectUser.getUserId()}" method="post">
+<form action="${pageContext.request.contextPath}/users?action=edit&userId=${selectUser.getUserId()}" method="post">
 
     <table>
         <tr>

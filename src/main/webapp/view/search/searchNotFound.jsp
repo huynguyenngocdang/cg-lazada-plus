@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Hgiang
   Date: 19/12/2023
@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -79,16 +79,48 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
+                <%
+                    User currentUser = (User) request.getSession().getAttribute("currentUser");
+                    String currentUsername = (currentUser != null) ? currentUser.getUsername() : null;
+                    boolean isLoggedIn = (currentUsername != null);
+                %>
+
+                <%
+                    if (isLoggedIn) {
+                        // User is logged in, display username
+                %>
                 <div class="navbar-item">
                     <a href="">
+                        <span>XIN CHÀO, <%= currentUsername %> </span>
+                    </a>
+                </div>
+                <div class="navbar-item">
+                    <a href="${pageContext.request.contextPath}/users?action=logOut">
+                        <span>ĐĂNG XUẤT</span>
+                    </a>
+                </div>
+
+
+                <%
+                } else {
+                    // User is not logged in, display login link
+                %>
+                <div class="navbar-item">
+                    <a href="${pageContext.request.contextPath}/users?action=displayLogin">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
+
                 <div class="navbar-item">
                     <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
+                <%
+                    }
+                %>
+
+
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -112,7 +144,7 @@
                 <div class="search-input">
                     <label for="search-input"></label>
                     <input type="text" name="search-input" id="search-input"
-                           placeholder="Tìm kiếm trên Lazada">
+                           placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
                 </div>
 
                 <div class="search-icon">
@@ -131,7 +163,7 @@
 
             <div class="menu-ad">
                 <a href="">
-                    <img src="../images/header/vib.png" alt="">
+                    <img src="../../images/header/vib.png" alt="">
                 </a>
             </div>
         </div>

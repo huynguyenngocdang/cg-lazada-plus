@@ -22,7 +22,7 @@
             <tr>
                 <td> <c:out value="${user.getUsername()}" /> </td>
                 <td> <c:out value="${user.getUserPassword()}" /> </td>
-                <td><a href="/users?action=showEdit&userId=${user.getUserId()}"> Edit </a> </td>
+                <td><a href="${pageContext.request.contextPath}/users?action=showEdit&userId=${user.getUserId()}"> Edit </a> </td>
             </tr>
         </c:forEach>
     </table>

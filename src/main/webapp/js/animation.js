@@ -8,8 +8,12 @@ function hideNoti() {
   }, 1000);
 }
 
-function showNoti(event) {
+function preventSubmit(event) {
   event.preventDefault();
+}
+
+function showNoti(event) {
+  preventSubmit(event);
 
   notiContainer.style.visibility = "visible";
   notiContainer.style.animation = "fadeIn 0.5s ease";

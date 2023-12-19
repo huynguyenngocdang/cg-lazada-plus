@@ -29,6 +29,7 @@ public class ProductController extends HttpServlet {
             case "showProductById":
                 showProductById(request, response);
                 break;
+
 //            case "searchProduct":
 //                searchProduct(request, response);
 //                break;
@@ -75,6 +76,62 @@ public class ProductController extends HttpServlet {
         }
     }
 
+    private void sortProduct(HttpServletRequest request, HttpServletResponse response) {
+        String sortMode = request.getParameter("sort");
+        switch (sortMode) {
+            case "sortByPriceMin":
+                sortProductByPriceMin(request, response);
+                break;
+            case "sortByPriceMax":
+                sortProductByPriceMax(request, response);
+                break;
+            default:
+                sortProductById(request, response);
+        }
+    }
+
+    private void sortProductById(HttpServletRequest request, HttpServletResponse response) {
+        String keyword = request.getParameter("keyword");
+        List<Product> searchResult = productDAO.searchProductByName(keyword);
+        request.setAttribute("keyword", keyword);
+        request.setAttribute("searchResult", searchResult);
+        request.setAttribute("sortMode", request.getParameter("sort"));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/search/searchProduct.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sortProductByPriceMin(HttpServletRequest request, HttpServletResponse response) {
+        String keyword = request.getParameter("keyword");
+        List<Product> searchResult = productDAO.searchProductByPriceMin(keyword);
+        request.setAttribute("keyword", keyword);
+        request.setAttribute("searchResult", searchResult);
+        request.setAttribute("sortMode", request.getParameter("sort"));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/search/searchProduct.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sortProductByPriceMax(HttpServletRequest request, HttpServletResponse response) {
+        String keyword = request.getParameter("keyword");
+        List<Product> searchResult = productDAO.searchProductByPriceMax(keyword);
+        request.setAttribute("keyword", keyword);
+        request.setAttribute("searchResult", searchResult);
+        request.setAttribute("sortMode", request.getParameter("sort"));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/search/searchProduct.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void displayProductByCategory(HttpServletRequest request, HttpServletResponse response) {
         int categoryID = Integer.parseInt(request.getParameter("categoryId"));
         List<Product> products = productDAO.getProductByCategory(categoryID);
@@ -96,6 +153,9 @@ public class ProductController extends HttpServlet {
         switch (action) {
             case "addProductToCart":
                 addProductToCart(request, response);
+                break;
+            case "sortSearchResult":
+                sortProduct(request, response);
                 break;
         }
     }

@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="/images/header/head-banner-1.webp" alt="">
+            <img src="../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="/users?action=logOut">
+                    <a href="${pageContext.request.contextPath}/users?action=logOut">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-                    <a href="/users?action=displayLogin">
+                    <a href="${pageContext.request.contextPath}/users?action=displayLogin">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -139,7 +139,7 @@
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="" method="get">
+                <form class="menu-search-bar" action="${pageContext.request.contextPath}/products?action=searchProduct" method="get">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
@@ -162,7 +162,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="/images/header/vib.png" alt="">
+                        <img src="../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -186,7 +186,7 @@
                     List<Category> categories = categoryDAO.getAllCategory();
                     for (Category category : categories) { %>
                 <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
-                    <a href="/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%>
+                    <a href="${pageContext.request.contextPath}/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%>
                     </a>
                 </button>
                 <% } %>
@@ -212,7 +212,7 @@
 
                     <c:if test="${not empty products}">
                         <c:forEach items="${products}" var="product">
-                            <a href="/products?action=showProductById&productId=${product.getProductId()}">
+                            <a href="${pageContext.request.contextPath}/products?action=showProductById&productId=${product.getProductId()}">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
                                         <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg" alt="product-thumbnail">

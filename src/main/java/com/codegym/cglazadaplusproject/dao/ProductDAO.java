@@ -8,8 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ProductDAO implements IProductDAO {
     private final Connection connection = JDBCConnection.getConnection();
@@ -58,13 +57,9 @@ public class ProductDAO implements IProductDAO {
         }
         return product;
     }
-
-    @Override
-    public List<Product> searchProductByName(String keyword) {
-        List<Product> searchResult = new ArrayList<>();
-        String queryKeyword = "%" + keyword + "%";
+    private void generateSearchResult(String queryKeyword, String sortQuery, List<Product> searchResult) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.search_product_by_name);
+            PreparedStatement preparedStatement = connection.prepareStatement(sortQuery);
             preparedStatement.setString(1, queryKeyword);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -79,8 +74,29 @@ public class ProductDAO implements IProductDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public List<Product> searchProductByName(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.search_product_by_name, searchResult);
         return searchResult;
     }
+
+    @Override
+    public List<Product> searchProductByPriceMin(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.search_product_sort_by_price_min, searchResult);
+        return searchResult;
+    }
+
+    @Override
+    public List<Product> searchProductByPriceMax(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.search_product_sort_by_price_max, searchResult);
+        return searchResult;    }
 
     public List<Product> getProductByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
