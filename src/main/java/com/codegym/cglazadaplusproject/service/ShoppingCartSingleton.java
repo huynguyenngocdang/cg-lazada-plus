@@ -53,4 +53,8 @@ public class ShoppingCartSingleton {
         }
         return false;
     }
+
+    public void removeFromCart(CartItem cartItemRemove) {
+        cartItems.removeIf(cartItem -> cartItem.getProduct().getProductId() == cartItemRemove.getProduct().getProductId());
+    }
 }

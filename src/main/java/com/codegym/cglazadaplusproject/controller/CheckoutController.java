@@ -1,7 +1,10 @@
 package com.codegym.cglazadaplusproject.controller;
 
 import com.codegym.cglazadaplusproject.constant.VarConstant;
+import com.codegym.cglazadaplusproject.dao.IProductDAO;
+import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.model.CartItem;
+import com.codegym.cglazadaplusproject.model.Product;
 import com.codegym.cglazadaplusproject.service.ShoppingCartSingleton;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +18,8 @@ import java.util.List;
 
 @WebServlet(name = "CheckoutController", urlPatterns = "/checkOut")
 public class CheckoutController extends HttpServlet {
+    CartItem cartItemRemove = new CartItem();
+    IProductDAO productDAO = new ProductDAO();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        String action = request.getParameter("action");
@@ -29,7 +34,13 @@ public class CheckoutController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if(action == null) {
+            action = "";
+        }
+        if (action.equals("removeCartItem")) {
+            removeCartItem(request, response);
+        }
     }
     private void displayCart(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -54,5 +65,11 @@ public class CheckoutController extends HttpServlet {
         }
     }
 
-
+    private void removeCartItem(HttpServletRequest request, HttpServletResponse response) {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+            Product productRemove = productDAO.getProductById(productId);
+            cartItemRemove.setProduct(productRemove);
+            ShoppingCartSingleton.getInstance().removeFromCart(cartItemRemove);
+            displayCart(request, response);
+    }
 }

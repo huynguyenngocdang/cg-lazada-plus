@@ -18,9 +18,6 @@ public class User {
         this.isDelete = isDelete;
     }
 
-    public User(String username, String password) {
-    }
-
     public int getUserId() {
         return userId;
     }
