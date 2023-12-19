@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ProductController", urlPatterns = "/products")
 public class ProductController extends HttpServlet {
@@ -24,6 +25,9 @@ public class ProductController extends HttpServlet {
         switch (action) {
             case "showProductById":
                 showProductById(request, response);
+                break;
+            case "displayProductByCategory":
+                displayProductByCategory(request, response);
                 break;
             default:
                 break;
@@ -41,6 +45,18 @@ public class ProductController extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    private void displayProductByCategory(HttpServletRequest request, HttpServletResponse response) {
+        int categoryID = Integer.parseInt(request.getParameter("categoryId"));
+        List<Product> products = productDAO.getProductByCategory(categoryID);
+        request.setAttribute("products", products);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

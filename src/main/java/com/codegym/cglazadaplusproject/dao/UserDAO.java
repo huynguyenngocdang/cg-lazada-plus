@@ -38,8 +38,12 @@ public class UserDAO implements IUserDAO {
     public User getUserById(int id) {
         User selectUser = null;
         try {
+<<<<<<< HEAD:src/main/java/com/codegym/cglazadaplusproject/dao/UserDAO.java
 
             PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_user_by_id);
+=======
+            PreparedStatement preparedStatement = connection.prepareStatement(Query.get_user_by_id);
+>>>>>>> b531d509370960c9c7f54efc27300b1dce3411be:cg-lazada-plus-project/src/main/java/com/codegym/cglazadaplusproject/dao/UserDAO.java
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -95,33 +99,4 @@ public class UserDAO implements IUserDAO {
         }
         return rowStatement;
     }
-    @Override
-    public boolean insertUser(String userName, String password) {
-        boolean rowUpdate = false;
-        try {
-            PreparedStatement statement = connection.prepareStatement(QueryConstant.insert_user);
-            statement.setString(1, userName);
-            statement.setString(2, password);
-            System.out.println(statement);
-            rowUpdate = statement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return rowUpdate;
-    }
-    @Override
-    public boolean deleteUser(int userId) {
-        boolean rowDeleted;
-        try {
-            PreparedStatement statement = connection.prepareStatement(QueryConstant.delete_user);
-            statement.setInt(1,userId);
-            rowDeleted = statement.executeUpdate() > 0;
-            return rowDeleted;
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return  false;
-    }
 }
-
-

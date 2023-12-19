@@ -27,17 +27,4 @@ public class UserValidator implements Validator{
         }
         return false;
     }
-
-    @Override
-    public boolean checkUser(){
-        IUserDAO userDAO = new UserDAO();
-        List<User> users = userDAO.getAllUser();
-        for (User user: users
-        ) {
-            if(user.getUsername().equals(username)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

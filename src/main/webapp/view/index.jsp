@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="/users?action=displayCreate">
+                    <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -183,12 +183,17 @@
                 <%
                     ICategoryDAO categoryDAO = new CategoryDAO();
                     List<Category> categories = categoryDAO.getAllCategory();
-                    for (Category category : categories
-                    ) { %>
-                <p><%=category.getCategoryName()%>
-                </p>
+                    for (Category category : categories) { %>
+                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
+                    <a href="/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a>
+                </button>
                 <% } %>
             </div>
+<%--            <c:if test="${not empty products}">--%>
+<%--                <c:forEach items="${products}" var="product">--%>
+<%--                    <p><c:out value="${product.productName}"></c:out></p>--%>
+<%--                </c:forEach>--%>
+<%--            </c:if>--%>
         </div>
 
         <div class="body-column-2">
@@ -199,32 +204,62 @@
                     </div>
                 </div>
 
-                <%--            List product dùng c:forEach--%>
-                <div class="product-container">
-                    <%
-                        IProductDAO productDAO = new ProductDAO();
-                        List<Product> products = productDAO.getAllProduct();
-                        for (Product product : products
-                        ) { %>
-                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">
-                        <div class="product-item">
-                            <div class="product-thumbnail">
-                                <img src="../images/just-for-you/<%= product.getProductId()%>.jpg" alt="product-thumbnail">
-                            </div>
+<%--                            List product dùng c:forEach--%>
+<%--                <div class="product-container">--%>
+<%--                    <%--%>
+<%--                        IProductDAO productDAO = new ProductDAO();--%>
+<%--                        List<Product> products = productDAO.getAllProduct();--%>
+<%--                        for (Product product : products--%>
+<%--                        ) { %>--%>
+<%--                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">--%>
+<%--                        <div class="product-item">--%>
+<%--                            <div class="product-thumbnail">--%>
+<%--                                <img src="../images/just-for-you/<%= product.getProductId()%>.jpg" alt="product-thumbnail">--%>
+<%--                            </div>--%>
 
-                            <div class="product-description">
-                                <div class="product-name">
-                                    <p><%=product.getProductName()%>
-                                    </p>
+<%--                            <div class="product-description">--%>
+<%--                                <div class="product-name">--%>
+<%--                                    <p><%=product.getProductName()%>--%>
+<%--                                    </p>--%>
+<%--                                </div>--%>
+<%--                                <div class="product-price">--%>
+<%--                                    <p><%=product.getProductCost()%>--%>
+<%--                                    </p>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </a>--%>
+<%--                    <% } %>--%>
+<%--                </div>--%>
+                <div class="product-container">
+                    <c:if test="${empty param.categoryId}">
+                        <%
+                            IProductDAO productDAO = new ProductDAO();
+                            List<Product> products = productDAO.getAllProduct();
+                        %>
+                        <c:set var="products" value="<%= products %>" scope="request" />
+                    </c:if>
+
+                    <c:if test="${not empty products}">
+                        <c:forEach items="${products}" var="product">
+                            <a href="/products?action=showProductById&productId=${product.getProductId()}">
+                                <div class="product-item">
+                                    <div class="product-thumbnail">
+                                        <img src="../images/just-for-you/${product.getProductId()}.jpg" alt="product-thumbnail">
+                                    </div>
+
+                                    <div class="product-description">
+                                        <div class="product-name">
+                                            <p>${product.getProductName()}</p>
+                                        </div>
+                                        <div class="product-price">
+                                            <p>${product.getProductCost()}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="product-price">
-                                    <p><%=product.getProductCost()%>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <% } %>
+                            </a>
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
         </div>
