@@ -1,18 +1,26 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
+    <!--  Thay keyword vào title-->
+    <title><c:out value="${keyword}"/> - Tìm kiếm</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/cartCheckOut.css">
+    <link rel="stylesheet" type="text/css" href="../../css/searchProduct.css">
+    <link rel="stylesheet" type="text/css" href="../../css/searchNotFound.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -35,6 +43,7 @@
         </div>
     </div>
 </c:if>
+
 <div class="header">
     <div class="header-ad">
         <a href="">
@@ -91,14 +100,13 @@
                     </a>
                 </div>
 
+
                 <%
                 } else {
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-
                     <a href="<c:url value="/users?action=displayLogin"/>">
-
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -111,6 +119,7 @@
                 <%
                     }
                 %>
+
 
                 <div class="navbar-item">
                     <a href="">
@@ -134,7 +143,7 @@
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada">
+                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
                     </div>
 
                     <div class="search-icon">
@@ -162,86 +171,48 @@
 </div>
 
 <div class="body-container">
-
-    <form action="<c:url value="/checkOut?action=purchase"/>" method="post" class="body">
-
-        <div class="cart-product-list content-frame">
-
-            <!--        Bắt đầu vòng lặp forEach-->
-            <c:forEach var="cartItem" items="${cartItems}">
-                <div class="product-checkout-item">
-                    <div class="product-checkout-info">
-                        <div class="product-checkout-thumbnail">
-                            <img src="../../images/products/${cartItem.product.productId}.jpg" alt="">
-                        </div>
-
-                        <div class="product-checkout-description">
-
-                            <div class="product-checkout-name">
-                                <p><c:out value="${cartItem.product.productName}"/></p>
-                            </div>
-
-                            <div class="product-checkout-detail">
-                                <p class="product-checkout-price"><c:out value="đ${cartItem.product.productCost}"/></p>
-                                <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
-                                <div class="product-checkout-quantity">
-                                    <label for="product-id-quantity">Số lượng:</label>
-                                    <input type="number" name="product-id-quantity" id="product-id-quantity" min="1"
-                                           max="99" value="${cartItem.productQuantity}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-checkout-delete">
-                        <a style="font-size: medium"
-                           href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${cartItem.product.productId}">
-                            Xóa sản phẩm</a>
-                    </div>
-                </div>
-                <hr>
-            </c:forEach>
-            <!--        Kết thúc vòng lặp-->
-
+    <div class="body">
+        <div class="bookmark">
+            <a href="${pageContext.request.contextPath}/index">
+                <span>Trang chủ</span>
+            </a>
+            <span>></span>
+            <span>Kết quả tìm kiếm</span>
         </div>
 
-        <div class="product-checkout-bill-confirm content-frame">
-            <div class="product-checkout-bill-info">
-                <p>Thông tin đơn hàng</p>
-                <p> Address </p>
-                <input type="text" id="deliveryAddress" name="deliveryAddress" value="${currentCustomer.customerAddress}">
-                <div class="product-checkout-bill-detail">
-                    <div class="bill-product">
-                        <!--              Đếm số lượng sản phẩm-->
-                        <p>Tạm tính (<span class="product-count"><c:out value="${totalCartQuantity}"/></span> sản phẩm)
-                        </p>
-                        <p><c:out value="đ${totalCartCost}"/></p>
-                    </div>
+        <hr>
 
-                    <div class="bill-shipment">
-                        <p>Phí vận chuyển</p>
-                        <p><c:out value="đ${deliveryFee}"/></p>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="product-checkout-bill-overall">
-                <div class="bill-overall">
-                    <p>Tổng cộng</p>
-                    <p><c:out value="đ${totalCartCostWithDeliveryFee}"/></p>
+        <div class="search-result">
+            <div class="search-keyword-setting">
+                <div class="keyword-setting">
+                    <!--            Thay keyword-->
+                    <p><c:out value="${keyword}"/></p>
                 </div>
 
-                <div class="bill-confirm">
-                    <button type="submit">THANH TOÁN</button>
-                    <p>đã bao gồm VAT (nếu có)</p>
+                <div class="search-result-setting">
+                    <p><c:out value="${searchResult.size()}"/> kết quả cho "<c:out value="${keyword}"/>"</p>
                 </div>
             </div>
         </div>
-    </form>
+
+        <div class="search-not-found-content">
+            <div class="search-not-found-text">
+                <p>Tìm kiếm không có kết quả...</p>
+                <p>Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</p>
+            </div>
+
+            <div class="search-not-found-image">
+                <div class="search-not-found-icon">
+                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal" style="color: #bababa;"></i>          </div>
+
+                <div class="back-to-main-button">
+                    <a href="<c:url value="/index"/>">
+                        <button>Trở về</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<script src="../../js/animation.js"></script>
-
-
 </body>
 </html>

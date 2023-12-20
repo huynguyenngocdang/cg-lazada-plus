@@ -4,7 +4,6 @@ import com.codegym.cglazadaplusproject.constant.QueryConstant;
 import com.codegym.cglazadaplusproject.model.CartItem;
 import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.PurchaseOrder;
-import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class CheckOutDAO implements ICheckOutDAO {
     public boolean updateProductPurchase(CartItem cartItem) {
         boolean rowStatement = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.update_purchase_product);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_PRODUCT);
             preparedStatement.setDouble(1, cartItem.getProduct().getProductQuantity() - cartItem.getProductQuantity());
             preparedStatement.setInt(2, cartItem.getProduct().getProductId());
             rowStatement = preparedStatement.executeUpdate() > 0;
@@ -31,7 +30,7 @@ public class CheckOutDAO implements ICheckOutDAO {
     public boolean updateSeller(CartItem cartItem, double cost, Customer seller) {
         boolean rowStatement = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.update_purchase_seller);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_SELLER);
             preparedStatement.setDouble(1, seller.getCustomerBalance() + cost);
             preparedStatement.setInt(2, seller.getUserId());
             rowStatement = preparedStatement.executeUpdate() > 0;
@@ -45,7 +44,7 @@ public class CheckOutDAO implements ICheckOutDAO {
     public boolean updateBuyer(CartItem cartItem, double cost, Customer buyer) {
         boolean rowStatement = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.update_purchase_buyer);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_BUYER);
             preparedStatement.setDouble(1,  buyer.getCustomerBalance() - cost);
             preparedStatement.setInt(2, buyer.getUserId());
             rowStatement = preparedStatement.executeUpdate() > 0;
@@ -58,7 +57,7 @@ public class CheckOutDAO implements ICheckOutDAO {
     public boolean addNewPO(PurchaseOrder po) {
         boolean rowStatement = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.insert_new_po);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.INSERT_NEW_PO);
             preparedStatement.setInt(1, po.getProductId());
             preparedStatement.setInt(2, po.getBuyerId());
             preparedStatement.setInt(3, po.getSellerId());

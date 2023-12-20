@@ -1,0 +1,49 @@
+body {
+    height: 100vh;
+
+}
+
+.body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15rem;
+}
+
+.checkout-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.checkout-content p:first-child {
+    font-size: 7em;
+}
+
+.checkout-content p:last-child {
+    font-size: 4em;
+    color: #757575;
+}
+
+.checkout-image .fa-solid {
+    font-size: 40em;
+}
+
+.checkout-image {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+}
+
+.back-to-main-button button {
+    width: 5em;
+    border-radius: 7px;
+    border: none;
+    background: #F57224;
+    color: white;
+    font-size: 5em;
+    padding: 0.5em 0;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 1em;
+}

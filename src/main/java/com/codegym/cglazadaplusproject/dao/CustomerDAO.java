@@ -15,7 +15,7 @@ public class CustomerDAO implements ICustomerDAO {
     public Customer getCustomerByUserid(int userId) {
         Customer customer = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.select_customer_by_userId);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.SELECT_CUSTOMER_BY_USERID);
             preparedStatement.setInt(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

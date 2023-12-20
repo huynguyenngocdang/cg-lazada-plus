@@ -6,9 +6,7 @@ import com.codegym.cglazadaplusproject.dao.CustomerDAO;
 import com.codegym.cglazadaplusproject.dao.ICheckOutDAO;
 import com.codegym.cglazadaplusproject.dao.ICustomerDAO;
 import com.codegym.cglazadaplusproject.dao.IProductDAO;
-import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
-import com.codegym.cglazadaplusproject.dao.UserDAO;
 import com.codegym.cglazadaplusproject.model.CartItem;
 import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.Product;
@@ -144,8 +142,8 @@ public class CheckoutController extends HttpServlet {
                 request.setAttribute("cartItems", cartItems);
                 request.setAttribute("totalCartCost", totalCartCost);
                 request.setAttribute("totalCartAmount", totalCartQuantity);
-                request.setAttribute("deliveryFee", VarConstant.deliveryFee);
-                request.setAttribute("totalCartCostWithDeliveryFee", totalCartCost + VarConstant.deliveryFee);
+                request.setAttribute("deliveryFee", VarConstant.DELIVERYFEE);
+                request.setAttribute("totalCartCostWithDeliveryFee", totalCartCost + VarConstant.DELIVERYFEE);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/cart/cartCheckout.jsp");
                 dispatcher.forward(request, response);
             }

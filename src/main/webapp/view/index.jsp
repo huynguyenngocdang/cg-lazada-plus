@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/title.png">
+    <link rel="shortcut icon" href="../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="/users?action=logOut">
+                    <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-                    <a href="/users?action=displayLogin">
+                    <a href="<c:url value="/users?action=displayLogin"/>">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -133,13 +133,13 @@
     <div class="menu-container">
         <div class="menu">
             <div class="menu-logo">
-                <a href="../index">
+                <a href="<c:url value="/index"/>">
                     <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
                     <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="" method="get">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
@@ -155,7 +155,7 @@
                 </form>
 
                 <div class="menu-cart">
-                    <a href="${pageContext.request.contextPath}/checkOut">
+                    <a href="<c:url value="/checkOut"/>">
                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                     </a>
                 </div>
@@ -168,8 +168,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <div class="body-container">
@@ -179,21 +177,20 @@
             <div class="categories-title">
                 <p>Danh mục</p>
             </div>
+
+            <hr>
+
             <div class="categories-content">
                 <%
                     ICategoryDAO categoryDAO = new CategoryDAO();
                     List<Category> categories = categoryDAO.getAllCategory();
                     for (Category category : categories) { %>
                 <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
-                    <a href="/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a>
+                    <a href="${pageContext.request.contextPath}/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%>
+                    </a>
                 </button>
                 <% } %>
             </div>
-<%--            <c:if test="${not empty products}">--%>
-<%--                <c:forEach items="${products}" var="product">--%>
-<%--                    <p><c:out value="${product.productName}"></c:out></p>--%>
-<%--                </c:forEach>--%>
-<%--            </c:if>--%>
         </div>
 
         <div class="body-column-2">
@@ -204,56 +201,31 @@
                     </div>
                 </div>
 
-<%--                            List product dùng c:forEach--%>
-<%--                <div class="product-container">--%>
-<%--                    <%--%>
-<%--                        IProductDAO productDAO = new ProductDAO();--%>
-<%--                        List<Product> products = productDAO.getAllProduct();--%>
-<%--                        for (Product product : products--%>
-<%--                        ) { %>--%>
-<%--                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">--%>
-<%--                        <div class="product-item">--%>
-<%--                            <div class="product-thumbnail">--%>
-<%--                                <img src="../images/just-for-you/<%= product.getProductId()%>.jpg" alt="product-thumbnail">--%>
-<%--                            </div>--%>
 
-<%--                            <div class="product-description">--%>
-<%--                                <div class="product-name">--%>
-<%--                                    <p><%=product.getProductName()%>--%>
-<%--                                    </p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-price">--%>
-<%--                                    <p><%=product.getProductCost()%>--%>
-<%--                                    </p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </a>--%>
-<%--                    <% } %>--%>
-<%--                </div>--%>
                 <div class="product-container">
                     <c:if test="${empty param.categoryId}">
                         <%
                             IProductDAO productDAO = new ProductDAO();
                             List<Product> products = productDAO.getAllProduct();
                         %>
-                        <c:set var="products" value="<%= products %>" scope="request" />
+                        <c:set var="products" value="<%= products %>" scope="request"/>
                     </c:if>
 
                     <c:if test="${not empty products}">
                         <c:forEach items="${products}" var="product">
-                            <a href="/products?action=showProductById&productId=${product.getProductId()}">
+                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
-                                        <img src="../images/just-for-you/${product.getProductId()}.jpg" alt="product-thumbnail">
+                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
+                                             alt="product-thumbnail">
                                     </div>
 
                                     <div class="product-description">
                                         <div class="product-name">
-                                            <p>${product.getProductName()}</p>
+                                            <p><c:out value="${product.getProductName()}"/></p>
                                         </div>
                                         <div class="product-price">
-                                            <p>${product.getProductCost()}</p>
+                                            <p><c:out value="đ${product.getProductCost()}"/></p>
                                         </div>
                                     </div>
                                 </div>
