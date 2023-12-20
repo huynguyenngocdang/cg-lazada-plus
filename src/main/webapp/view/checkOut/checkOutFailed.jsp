@@ -87,24 +87,39 @@
                     if (isLoggedIn) {
                         // User is logged in, display username
                 %>
-                <div class="navbar-item">
-                    <a href="">
+                <div class="navbar-item user-overlay">
+                    <a href="" id="AccountOverlayButton">
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
+
+                    <div class="account-overlay-container" id="AccountOverlay">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
+                            <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+                        <a href="">
+                            <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
+                            <span>Danh sách mặt hàng</span>
+                        </a>
+                        <a href="">
+                            <i class="fa-regular fa-credit-card" style="color: #d6d6d6;"></i>
+                            <span>Lịch sử giao dịch</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="navbar-item">
                     <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
-
-
                 <%
                 } else {
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -117,7 +132,6 @@
                 <%
                     }
                 %>
-
 
                 <div class="navbar-item">
                     <a href="">
@@ -160,7 +174,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>

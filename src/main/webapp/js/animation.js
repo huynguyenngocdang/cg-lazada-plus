@@ -2,6 +2,8 @@ let notiContainer = document.getElementById("noti-container");
 let cellViewButton = document.getElementById("CellViewButton");
 let listViewButton = document.getElementById("ListViewButton");
 let viewCSS = document.getElementById("viewMode");
+let accountOverlayButton = document.getElementById("AccountOverlayButton");
+let accountOverlay = document.getElementById("AccountOverlay");
 function hideNoti() {
   notiContainer.style.animation = "fadeOut 1s ease";
   setTimeout(() => {
@@ -25,7 +27,6 @@ function showNoti(event) {
 }
 
 function displayCellView() {
-
   viewCSS.href = "../../css/searchProductCellView.css";
 }
 
@@ -33,8 +34,30 @@ function displayListView() {
   viewCSS.href = "../../css/searchProductListView.css";
 }
 
+function displayAccountOverlay() {
+  accountOverlay.style.opacity = "1";
+  accountOverlay.style.visibility = "visible";
+}
+
+function inDisplayAccountOverlay() {
+  accountOverlay.style.opacity = "0";
+  accountOverlay.style.visibility = "hidden";
+}
+
+function displayOrangeAccountButton() {
+  accountOverlayButton.style.color = "#f25c05";
+}
+
+function inDisplayOrangeAccountButton() {
+  accountOverlayButton.style.color = "#9d9d9d";
+}
+
+
+document.getElementById("hide-noti").addEventListener("click", hideNoti);
+accountOverlayButton.addEventListener("mouseover", displayAccountOverlay);
+accountOverlayButton.addEventListener("mouseout", inDisplayAccountOverlay);
+accountOverlay.addEventListener("mouseover", displayAccountOverlay, displayOrangeAccountButton);
+accountOverlay.addEventListener("mouseout", inDisplayAccountOverlay, inDisplayOrangeAccountButton);
 
 cellViewButton.addEventListener("click", displayCellView);
 listViewButton.addEventListener("click", displayListView);
-document.getElementById("hide-noti").addEventListener("click", hideNoti);
-
