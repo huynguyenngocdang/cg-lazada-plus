@@ -91,13 +91,14 @@
                     </a>
                 </div>
 
-
                 <%
                 } else {
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -110,7 +111,6 @@
                 <%
                     }
                 %>
-
 
                 <div class="navbar-item">
                     <a href="">
@@ -162,7 +162,9 @@
 </div>
 
 <div class="body-container">
+
     <form action="<c:url value="/checkOut?action=purchase"/>" method="post" class="body">
+
         <div class="cart-product-list content-frame">
 
             <!--        Bắt đầu vòng lặp forEach-->
@@ -174,7 +176,6 @@
                         </div>
 
                         <div class="product-checkout-description">
-
 
                             <div class="product-checkout-name">
                                 <p><c:out value="${cartItem.product.productName}"/></p>
@@ -189,18 +190,14 @@
                                            max="99" value="${cartItem.productQuantity}">
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
                     <div class="product-checkout-delete">
                         <a style="font-size: medium"
                            href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${cartItem.product.productId}">
                             Xóa sản phẩm</a>
                     </div>
                 </div>
-
                 <hr>
             </c:forEach>
             <!--        Kết thúc vòng lặp-->
@@ -210,7 +207,8 @@
         <div class="product-checkout-bill-confirm content-frame">
             <div class="product-checkout-bill-info">
                 <p>Thông tin đơn hàng</p>
-
+                <p> Address </p>
+                <input type="text" id="deliveryAddress" name="deliveryAddress" value="${currentCustomer.customerAddress}">
                 <div class="product-checkout-bill-detail">
                     <div class="bill-product">
                         <!--              Đếm số lượng sản phẩm-->

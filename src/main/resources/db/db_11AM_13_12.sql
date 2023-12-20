@@ -66,9 +66,9 @@ references customer_membership(customer_membership_id)
 insert into customer
 (user_id, customer_name, customer_address, customer_balance, customer_point, customer_membership_id)
 values
-(1, 'Nguyen Ngoc Dang Huy', 'HCMC', 0, 1000, 4),
-(1, 'Vu Phuong Giang', 'HCMC', 0, 120, 2),
-(1, 'Le Phi Long', 'HCMC', 0, 0, 1)
+(1, 'Nguyen Ngoc Dang Huy', 'HCMC', 1000000, 1000, 4),
+(2, 'Vu Phuong Giang', 'HCMC', 0, 120, 2),
+(4, 'Le Phi Long', 'HCMC', 0, 0, 1)
 ;
 
 create table `admin`(
@@ -92,9 +92,9 @@ is_delete bit(1) default 0
 );
 
 insert into category (category_name) 
-values ('Thiết bị điện tử'),
-('Sức khỏe & Làm đẹp'),
-('Thời trang');
+values ('Electronic device'),
+('Healthcare'),
+('Fashion');
 
 create table product(
 product_id int primary key auto_increment,
@@ -108,11 +108,11 @@ references user(user_id)
 );
 
 insert into product(user_id,product_name,product_quantity,product_cost)
-values (1, 'điện thoại', 5, 5000),
+values (1, 'phone', 5, 5000),
 		(2, 'laptop', 10, 1000),
 		(2, 'mascara', 3, 2000),
-		(1, 'giày', 1, 3000),
-		(1, 'nước hoa', 2, 6000);
+		(1, 'sport shoe', 1, 3000),
+		(1, 'perfume', 2, 6000);
 
 
 
@@ -126,6 +126,15 @@ foreign key (category_id)
 references category(category_id)
 );
 
+insert into product_category
+(product_id, category_id)
+values
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 3),
+(5, 2);
+
 
 
 create table purchase_order(
@@ -134,6 +143,7 @@ product_id int,
 buyer_id int,
 seller_id int,
 purchase_order_date datetime,
+purchase_order_address varchar(255),
 purchase_order_quantity int,
 purchase_order_unit_price varchar(10),
 purchase_order_total_cost double,
