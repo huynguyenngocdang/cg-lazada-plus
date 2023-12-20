@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="<c:url value="/users?action=displayCreate"/>">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -184,7 +184,7 @@
                 <p>Chào mừng đến với Lazada. Đăng ký ngay!</p>
             </div>
             <div class="content-frame">
-                <form action="<c:url value="/users?action=create"/>" method="post">
+                <form action="<c:url value="/users?action=create"/>" method="post" id="signInForm">
                     <div class="form-input">
                         <label for="username">Tên đăng ký*</label>
                         <input type="text" name="username" id="username" placeholder="Vui lòng nhập tên đăng ký"
@@ -199,8 +199,8 @@
                     <div class="form-input">
                         <label for="passwordConfirm">Nhập lại mật khẩu*</label>
                         <input type="password" name="passwordConfirm" id="passwordConfirm"
-                               placeholder="Vui lòng nhập lại mật khẩu"
-                               required>
+                               placeholder="Vui lòng nhập lại mật khẩu" required/>
+                        <p class="re-enter-confirm-password" id="passwordNoti">Mật khẩu không trùng khớp</p>
                     </div>
 
                     <div class="form-checkbox">
@@ -211,7 +211,7 @@
                     </div>
 
                     <div class="submit-button">
-                        <button type="submit">ĐĂNG KÝ</button>
+                        <button type="submit" id="submitButton">ĐĂNG KÝ</button>
                     </div>
                 </form>
             </div>
@@ -223,6 +223,7 @@
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/signInPasswordConfirm.js"></script>
+<script src="../../js/animation.js"></script>
 </body>
 </html>

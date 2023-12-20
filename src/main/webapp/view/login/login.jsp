@@ -93,7 +93,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
+                        <a href="">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="<c:url value="/users?action=displayCreate"/>">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -204,7 +204,8 @@
                 </form>
             </div>
             <div class="other-option">
-                <p>Bạn là thành viên mới? <a href="<c:url value="/users?action=displayLogin"/>">Đăng ký</a> tại đây</p>
+                <p>Bạn là thành viên mới? <a href="<c:url value="/users?action=displayCreate"/>">
+                    Đăng ký</a> tại đây</p>
             </div>
         </div>
     </div>
