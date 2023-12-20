@@ -5,35 +5,19 @@ public class Customer {
     private int userId;
     private String customerName;
     private String customerAddress;
-<<<<<<< HEAD
-    private int customerPoint;
-    private int customerMembershipId;
-    private boolean isDelete;
-
-    public Customer(){
-    }
-
-    public Customer(int customerId, int userId, String customerName, String customerAddress, int customerPoint, int customerMembershipId,boolean isDelete) {
-=======
     private double customerBalance;
     private int customerPoint;
     private int customerMemebershipId;
     private boolean isDelete;
 
     public Customer(int customerId, int userId, String customerName, String customerAddress, double customerBalance, int customerPoint, int customerMemebershipId, boolean isDelete) {
->>>>>>> 27cd8a35bc26d282d6ce9900430f3402e25ad951
         this.customerId = customerId;
         this.userId = userId;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
-<<<<<<< HEAD
-        this.customerPoint = customerPoint;
-        this.customerMembershipId = customerMembershipId;
-=======
         this.customerBalance = customerBalance;
         this.customerPoint = customerPoint;
         this.customerMemebershipId = customerMemebershipId;
->>>>>>> 27cd8a35bc26d282d6ce9900430f3402e25ad951
         this.isDelete = isDelete;
     }
 
@@ -69,8 +53,6 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-<<<<<<< HEAD
-=======
     public double getCustomerBalance() {
         return customerBalance;
     }
@@ -79,7 +61,6 @@ public class Customer {
         this.customerBalance = customerBalance;
     }
 
->>>>>>> 27cd8a35bc26d282d6ce9900430f3402e25ad951
     public int getCustomerPoint() {
         return customerPoint;
     }
@@ -88,21 +69,12 @@ public class Customer {
         this.customerPoint = customerPoint;
     }
 
-<<<<<<< HEAD
-    public int getCustomerMembershipId() {
-        return customerMembershipId;
-    }
-
-    public void setCustomerMembershipId(int customerMembershipId) {
-        this.customerMembershipId = customerMembershipId;
-=======
     public int getCustomerMemebershipId() {
         return customerMemebershipId;
     }
 
     public void setCustomerMemebershipId(int customerMemebershipId) {
         this.customerMemebershipId = customerMemebershipId;
->>>>>>> 27cd8a35bc26d282d6ce9900430f3402e25ad951
     }
 
     public boolean getIsDelete() {
@@ -120,16 +92,10 @@ public class Customer {
                 ", userId=" + userId +
                 ", customerName='" + customerName + '\'' +
                 ", customerAddress='" + customerAddress + '\'' +
-<<<<<<< HEAD
-                ", customerPoint=" + customerPoint +
-                ", customerMembershipId=" + customerMembershipId +
-                '}' + isDelete;
-=======
                 ", customerBalance=" + customerBalance +
                 ", customerPoint=" + customerPoint +
                 ", customerMemebershipId=" + customerMemebershipId +
                 ", isDelete=" + isDelete +
                 '}';
->>>>>>> 27cd8a35bc26d282d6ce9900430f3402e25ad951
     }
 }

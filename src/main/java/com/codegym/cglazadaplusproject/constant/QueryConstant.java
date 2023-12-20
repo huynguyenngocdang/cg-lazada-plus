@@ -9,11 +9,6 @@ public interface QueryConstant {
 
     String INSERT_USER = "INSERT INTO `user`(user_name,user_password) VALUES(?,?)";
     String DELETE_USER = "update user set is_delete = 1 where user_id = ?;";
-    String get_all_category = "Select * from category WHERE is_delete = ? ";
-    String get_all_product = "Select * from product WHERE is_delete = 0";
-    String get_product_by_id = "Select * from product WHERE product_id = ? ";
-    String select_product_by_category = "SELECT * FROM product p JOIN product_category pc ON p.product_id = pc.product_id WHERE pc.category_id = ? AND p.is_delete = 0 AND pc.is_delete = 0;";
-
     String SEARCH_PRODUCT_BY_NAME = "Select * from product WHERE product_name LIKE ? ORDER BY product_id";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MAX = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost DESC";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MIN = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
