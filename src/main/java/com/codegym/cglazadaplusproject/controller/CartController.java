@@ -1,5 +1,6 @@
 package com.codegym.cglazadaplusproject.controller;
 
+import com.codegym.cglazadaplusproject.constant.VarConstant;
 import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.model.CartItem;
@@ -45,7 +46,7 @@ public class CartController extends HttpServlet {
             request.setAttribute("productAmount", productAmount);
 
             ShoppingCartSingleton.getInstance().addToCart(new CartItem(currentProduct, productAmount));
-            String message = "Product has added to cart";
+            String message = VarConstant.ADD_TO_CART_NOTI;
             request.setAttribute("message", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/productDetail.jsp");
             dispatcher.forward(request, response);

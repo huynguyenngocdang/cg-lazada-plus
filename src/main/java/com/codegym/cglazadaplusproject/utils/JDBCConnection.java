@@ -10,8 +10,8 @@ public class JDBCConnection {
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName(VarConstant.jdbc_driver);
-            connection = DriverManager.getConnection(VarConstant.jdbc_url, VarConstant.jdbc_user, VarConstant.jdbc_password);
+            Class.forName(VarConstant.JDBC_DRIVER);
+            connection = DriverManager.getConnection(VarConstant.JDBC_URL, VarConstant.JDBC_USER, VarConstant.JDBC_PASSWORD);
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
