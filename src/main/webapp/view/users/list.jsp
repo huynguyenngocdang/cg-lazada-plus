@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>List all user</title>
+    <title></title>
 </head>
 <body>
     <table>
@@ -22,7 +22,10 @@
             <tr>
                 <td> <c:out value="${user.getUsername()}" /> </td>
                 <td> <c:out value="${user.getUserPassword()}" /> </td>
-                <td><a href="/users?action=showEdit&userId=${user.getUserId()}"> Edit </a> </td>
+                <td><a href="/users?action=showEdit&userId=${user.getUserId()}"> Edit </a>
+                    <a href="/users?action=deleteUser&userId=${user.getUserId()}">Delete</a>
+                </td>
+
             </tr>
         </c:forEach>
     </table>

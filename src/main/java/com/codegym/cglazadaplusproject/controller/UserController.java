@@ -42,8 +42,10 @@ public class UserController extends HttpServlet {
             case "deleteUser":
                 deleteUser(request,response);
                 break;
+            case "displayUser":
+                displayUser(request,response);
+                break;
             default:
-                displayAllUser(request, response);
                 break;
         }
     }
@@ -57,6 +59,18 @@ public class UserController extends HttpServlet {
         }
     }
 
+    private void displayUser(HttpServletRequest request, HttpServletResponse response){
+//        int userId = Integer.parseInt(  request.getParameter("userId"));
+//        List<User> users = userDAO.getUserById(userId);
+//        request.setAttribute("users", users);
+        
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
@@ -116,7 +130,6 @@ public class UserController extends HttpServlet {
                 break;
 
             default:
-                displayAllUser(request,response);
                 break;
         }
     }
@@ -192,9 +205,11 @@ public class UserController extends HttpServlet {
     private void deleteUser(HttpServletRequest request,HttpServletResponse response){
         int userId = Integer.parseInt(request.getParameter("userId"));
         try {
-            userDAO.deleteUser(userId);
-
+            String message = null;
             List<User> listUser = userDAO.getAllUser();
+            userDAO.deleteUser(userId);
+            message= "The account has been successfully deleted";
+            request.setAttribute("message", message);
             request.getSession().setAttribute("users", listUser);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
             dispatcher.forward(request,response);

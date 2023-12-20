@@ -90,7 +90,7 @@
                         // User is logged in, display username
                 %>
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="/users?action=displayUser">
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
                 </div>
