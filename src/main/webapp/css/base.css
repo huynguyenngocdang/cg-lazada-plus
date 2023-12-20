@@ -90,8 +90,8 @@ a {
 }
 
 .account-overlay-container {
-  display: flex;
-  visibility: hidden;
+  display: none;
+  /*visibility: hidden;*/
   position: absolute;
   top: 5rem;
   left: 0;
