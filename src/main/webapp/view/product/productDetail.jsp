@@ -87,7 +87,7 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <a href="">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
@@ -111,7 +111,9 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -124,7 +126,6 @@
                 <%
                     }
                 %>
-
 
                 <div class="navbar-item">
                     <a href="">
@@ -167,7 +168,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -206,7 +207,7 @@
                         <div class="product-detail-quantity">
                             <div class="product-quantity-input">
                                 <label for="productQuantity">Số lượng:</label>
-                                <input type="number" name="productQuantity" id="productQuantity" min="0" max=${currentProduct.productQuantity} value="1">
+                                <input type="number" name="productQuantity" id="productQuantity" min="0" max="${empty productAmount ? currentProduct.productQuantity : productAmount}" value="1">
                             </div>
                             <button type="submit">THÊM VÀO GIỎ HÀNG</button>
                         </div>

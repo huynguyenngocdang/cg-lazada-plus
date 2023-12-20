@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -95,7 +95,7 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <a href="">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
@@ -114,14 +114,14 @@
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
-
-
                 <%
                 } else {
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -134,7 +134,6 @@
                 <%
                     }
                 %>
-
 
                 <div class="navbar-item">
                     <a href="">
@@ -177,7 +176,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>

@@ -1,18 +1,24 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
+    <title>Thanh toán</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/cartCheckOut.css">
+    <link rel="stylesheet" type="text/css" href="../../css/checkout.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -35,6 +41,7 @@
         </div>
     </div>
 </c:if>
+
 <div class="header">
     <div class="header-ad">
         <a href="">
@@ -176,86 +183,24 @@
 </div>
 
 <div class="body-container">
-
-    <form action="<c:url value="/checkOut?action=purchase"/>" method="post" class="body">
-
-        <div class="cart-product-list content-frame">
-
-            <!--        Bắt đầu vòng lặp forEach-->
-            <c:forEach var="cartItem" items="${cartItems}">
-                <div class="product-checkout-item">
-                    <div class="product-checkout-info">
-                        <div class="product-checkout-thumbnail">
-                            <img src="../../images/products/${cartItem.product.productId}.jpg" alt="">
-                        </div>
-
-                        <div class="product-checkout-description">
-
-                            <div class="product-checkout-name">
-                                <p><c:out value="${cartItem.product.productName}"/></p>
-                            </div>
-
-                            <div class="product-checkout-detail">
-                                <p class="product-checkout-price"><c:out value="đ${cartItem.product.productCost}"/></p>
-                                <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
-                                <div class="product-checkout-quantity">
-                                    <label for="product-id-quantity">Số lượng:</label>
-                                    <input type="number" name="product-id-quantity" id="product-id-quantity" min="1"
-                                           max="99" value="${cartItem.productQuantity}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-checkout-delete">
-                        <a style="font-size: medium"
-                           href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${cartItem.product.productId}">
-                            Xóa sản phẩm</a>
-                    </div>
-                </div>
-                <hr>
-            </c:forEach>
-            <!--        Kết thúc vòng lặp-->
-
+    <div class="body">
+        <div class="checkout-content">
+            <p>Thanh toán thất bại</p>
+            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>
         </div>
 
-        <div class="product-checkout-bill-confirm content-frame">
-            <div class="product-checkout-bill-info">
-                <p>Thông tin đơn hàng</p>
-                <p>Địa chỉ </p>
-                <input type="text" id="deliveryAddress" name="deliveryAddress" value="${currentCustomer.customerAddress}">
-                <div class="product-checkout-bill-detail">
-                    <div class="bill-product">
-                        <!--              Đếm số lượng sản phẩm-->
-                        <p>Tạm tính (<span class="product-count"><c:out value="${totalCartQuantity}"/></span> sản phẩm)
-                        </p>
-                        <p><c:out value="đ${totalCartCost}"/></p>
-                    </div>
-
-                    <div class="bill-shipment">
-                        <p>Phí vận chuyển</p>
-                        <p><c:out value="đ${deliveryFee}"/></p>
-                    </div>
-                </div>
+        <div class="checkout-image">
+            <div class="checkout-icon">
+                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>
             </div>
 
-            <hr>
-
-            <div class="product-checkout-bill-overall">
-                <div class="bill-overall">
-                    <p>Tổng cộng</p>
-                    <p><c:out value="đ${totalCartCostWithDeliveryFee}"/></p>
-                </div>
-
-                <div class="bill-confirm">
-                    <button type="submit">THANH TOÁN</button>
-                    <p>đã bao gồm VAT (nếu có)</p>
-                </div>
+            <div class="back-to-main-button">
+                <a href="<c:url value="/index"/>">
+                    <button>Trở về</button>
+                </a>
             </div>
         </div>
-    </form>
+    </div>
 </div>
-<script src="../../js/animation.js"></script>
-
-
 </body>
 </html>

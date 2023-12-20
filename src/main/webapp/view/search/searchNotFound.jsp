@@ -95,7 +95,7 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <a href="">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
@@ -119,7 +119,9 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -132,7 +134,6 @@
                 <%
                     }
                 %>
-
 
                 <div class="navbar-item">
                     <a href="">
@@ -147,8 +148,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -156,7 +157,7 @@
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
+                               placeholder="Tìm kiếm trên Lazada">
                     </div>
 
                     <div class="search-icon">
@@ -175,7 +176,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>

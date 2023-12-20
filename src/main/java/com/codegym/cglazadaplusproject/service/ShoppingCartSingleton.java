@@ -1,6 +1,7 @@
 package com.codegym.cglazadaplusproject.service;
 
 import com.codegym.cglazadaplusproject.model.CartItem;
+import com.codegym.cglazadaplusproject.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ShoppingCartSingleton {
         return cartItems;
     }
 
+
     public void setProductItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
     }
@@ -44,7 +46,17 @@ public class ShoppingCartSingleton {
         }
     }
 
-    private boolean itemExistInCart(CartItem cartItem) {
+    public CartItem getCartItem(CartItem cartItem) {
+        for (CartItem currentCartItem: cartItems
+             ) {
+            if(cartItem.getProduct().getProductId() == currentCartItem.getProduct().getProductId()) {
+                return currentCartItem;
+            }
+        }
+        return null;
+    }
+
+    public boolean itemExistInCart(CartItem cartItem) {
         for (CartItem currentCartItem : cartItems
         ) {
             if (cartItem.getProduct().getProductId() == currentCartItem.getProduct().getProductId()) {

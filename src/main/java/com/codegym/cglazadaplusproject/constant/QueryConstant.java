@@ -13,4 +13,10 @@ public interface QueryConstant {
     String GET_ALL_PRODUCT = "Select * from product WHERE is_delete = 0";
     String GET_PRODUCT_BY_ID = "Select * from product WHERE product_id = ? ";
     String SELECT_PRODUCT_BY_CATEGORY = "SELECT * FROM product p JOIN product_category pc ON p.product_id = pc.product_id WHERE pc.category_id = ? AND p.is_delete = 0 AND pc.is_delete = 0;";
+    String SELECT_CUSTOMER_BY_USERID = "SELECT * FROM customer WHERE user_id = ?";
+    String UPDATE_PURCHASE_PRODUCT = "UPDATE product SET product_quantity = ? WHERE product_id = ?";
+    String UPDATE_PURCHASE_SELLER = "UPDATE customer SET customer_balance = ? WHERE user_id = ? ";
+    String UPDATE_PURCHASE_BUYER = "UPDATE customer SET customer_balance = ? WHERE user_id = ?";
+    String INSERT_NEW_PO = "INSERT INTO purchase_order (product_id, buyer_id, seller_id, purchase_order_date, purchase_order_address, purchase_order_quantity, purchase_order_unit_price, purchase_order_total_cost, purchase_order_final_cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 }
