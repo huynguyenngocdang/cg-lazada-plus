@@ -203,6 +203,9 @@
                     </div>
                 </form>
             </div>
+            <div class="other-option">
+                <p>Bạn là thành viên mới? <a href="<c:url value="/users?action=displayLogin"/>">Đăng ký</a> tại đây</p>
+            </div>
         </div>
     </div>
 </div>

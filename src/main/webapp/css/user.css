@@ -17,7 +17,7 @@ form, form div {
 }
 
 form {
-  gap: 6em;
+  gap: 5em;
 }
 
 .form-input {
@@ -46,4 +46,28 @@ form label {
   padding: 1em 0;
   font-family: 'Roboto', sans-serif;
   margin-top: 1em;
+}
+
+.form-checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+}
+
+.form-checkbox input {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.form-checkbox label {
+  color: #8F8F8F;
+  line-height: 1.5;
+}
+
+.form-checkbox a {
+  color: #224EB7;
+}
+
+.other-option {
+
 }
