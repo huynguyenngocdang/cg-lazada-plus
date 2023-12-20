@@ -63,7 +63,6 @@ public class CartController extends HttpServlet {
             } else {
                 // If the cart item does not exist, add it to the cart
                 request.setAttribute("productAmount", Math.max(0, currentProduct.getProductQuantity() - productAmount));
-                ShoppingCartSingleton.getInstance().addToCart(currentCartItem);
             }
 
             ShoppingCartSingleton.getInstance().addToCart(currentCartItem);

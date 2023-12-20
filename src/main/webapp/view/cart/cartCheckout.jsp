@@ -226,15 +226,21 @@
                 <div class="product-checkout-bill-detail">
                     <div class="bill-product">
                         <!--              Đếm số lượng sản phẩm-->
-                        <p>Tạm tính (<span class="product-count"><c:out value="${totalCartQuantity}"/></span> sản phẩm)
+                        <p>Tạm tính (<span class="product-count"><c:out value="${totalCartAmount}"/></span> sản phẩm)
                         </p>
-                        <p><c:out value="đ${totalCartCost}"/></p>
+                        <p><c:out value="$${totalCartCost}"/></p>
+
+                    </div>
+                    <div class="bill-shipment">
+                        <p>Khuyến mãi</p>
+                        <p><c:out value="$${totalCartReduction}" /> </p>
                     </div>
 
                     <div class="bill-shipment">
                         <p>Phí vận chuyển</p>
-                        <p><c:out value="đ${deliveryFee}"/></p>
+                        <p><c:out value="$${deliveryFee}"/></p>
                     </div>
+
                 </div>
             </div>
 
@@ -243,7 +249,7 @@
             <div class="product-checkout-bill-overall">
                 <div class="bill-overall">
                     <p>Tổng cộng</p>
-                    <p><c:out value="đ${totalCartCostWithDeliveryFee}"/></p>
+                    <p><c:out value="$${totalCartCostWithDeliveryFee}"/></p>
                 </div>
 
                 <div class="bill-confirm">
