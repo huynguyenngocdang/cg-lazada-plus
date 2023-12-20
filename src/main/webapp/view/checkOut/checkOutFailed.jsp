@@ -1,18 +1,24 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product detail</title>
+    <title>Thanh toán</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/productDetail.css">
+    <link rel="stylesheet" type="text/css" href="../../css/checkout.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -164,48 +170,23 @@
 
 <div class="body-container">
     <div class="body">
-        <div class="content-frame">
-            <form action="<c:url value="/carts?action=addToCart&productId=${currentProduct.productId}"/>" method="post" id="addToCartForm">
-                <div class="product-detail-thumbnail">
-                    <img src="../../images/products/${currentProduct.productId}.jpg" alt="This is product thumbnail">
-                </div>
+        <div class="checkout-content">
+            <p>Thanh toán thất bại</p>
+            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>
+        </div>
 
-                <div class="product-detail-description">
-                    <div class="product-detail-title-container">
-                        <div class="product-detail-title">
-                            <p><c:out value="${currentProduct.productName}"/></p>
-                        </div>
+        <div class="checkout-image">
+            <div class="checkout-icon">
+                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>
+            </div>
 
-                        <div class="product-detail-stars">
-                            <i class="fa-solid fa-star" style="color: #faca51"></i>
-                            <i class="fa-solid fa-star" style="color: #faca51"></i>
-                            <i class="fa-solid fa-star" style="color: #faca51"></i>
-                            <i class="fa-solid fa-star" style="color: #faca51"></i>
-                            <i class="fa-solid fa-star" style="color: #faca51"></i>
-                        </div>
-                    </div>
-
-                    <div class="product-detail-cart-container">
-                        <div class="product-detail-price">
-                            <p><c:out value="đ${currentProduct.productCost}"/></p>
-                        </div>
-
-                        <div class="product-detail-quantity">
-                            <div class="product-quantity-input">
-                                <label for="productQuantity">Số lượng:</label>
-                                <input type="number" name="productQuantity" id="productQuantity" min="0" max="${empty productAmount ? currentProduct.productQuantity : productAmount}" value="1">
-                            </div>
-                            <button type="submit">THÊM VÀO GIỎ HÀNG</button>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
+            <div class="back-to-main-button">
+                <a href="<c:url value="/index"/>">
+                    <button>Trở về</button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
-
-<script src="../../js/animation.js"></script>
-
 </body>
 </html>
