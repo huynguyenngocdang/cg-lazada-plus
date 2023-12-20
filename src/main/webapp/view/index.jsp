@@ -89,8 +89,13 @@
                     if (isLoggedIn) {
                         // User is logged in, display username
                 %>
+
+                <div class="navbar-item">
+                    <a href="/users?action=displayUser">
+
                 <div class="navbar-item user-overlay">
                     <a href="" id="AccountOverlayButton">
+
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
 
@@ -127,7 +132,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="/users?action=displayCreate">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>

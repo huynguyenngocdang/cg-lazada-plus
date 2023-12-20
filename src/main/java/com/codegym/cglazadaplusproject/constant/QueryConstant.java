@@ -6,6 +6,9 @@ public interface QueryConstant {
     String GET_USER_BY_NAME = "Select * from user where user_name = ?";
     String UPDATE_USER_BY_ID =
             "UPDATE `user` SET `user_name` = ?, `user_password` = ? WHERE (`user_id` = ?);";
+
+    String INSERT_USER = "INSERT INTO `user`(user_name,user_password) VALUES(?,?)";
+    String DELETE_USER = "update user set is_delete = 1 where user_id = ?;";
     String SEARCH_PRODUCT_BY_NAME = "Select * from product WHERE product_name LIKE ? ORDER BY product_id";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MAX = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost DESC";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MIN = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
@@ -22,5 +25,4 @@ public interface QueryConstant {
     String UPDATE_PURCHASE_SELLER = "UPDATE customer SET customer_balance = ? WHERE user_id = ? ";
     String UPDATE_PURCHASE_BUYER = "UPDATE customer SET customer_balance = ? WHERE user_id = ?";
     String INSERT_NEW_PO = "INSERT INTO purchase_order (product_id, buyer_id, seller_id, purchase_order_date, purchase_order_address, purchase_order_quantity, purchase_order_unit_price, purchase_order_total_cost, purchase_order_final_cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
 }
