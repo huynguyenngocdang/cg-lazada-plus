@@ -68,8 +68,7 @@ insert into customer
 values
 (1, 'Nguyen Ngoc Dang Huy', 'HCMC', 1000000, 499, 3),
 (2, 'Vu Phuong Giang', 'HCMC', 0, 120, 2),
-(4, 'Le Phi Long', 'HCMC', 0, 0, 1)
-;
+(4, 'Le Phi Long', 'HCMC', 0, 0, 1);
 
 create table `admin`(
 admin_id int primary key auto_increment,
