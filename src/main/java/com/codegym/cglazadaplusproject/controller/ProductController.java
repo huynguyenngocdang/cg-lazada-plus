@@ -3,7 +3,6 @@ package com.codegym.cglazadaplusproject.controller;
 import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.model.Product;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +28,18 @@ public class ProductController extends HttpServlet {
             case "displayProductByCategory":
                 displayProductByCategory(request, response);
                 break;
+            case "showCreateProductForm":
+                showCreateProductForm(request, response);
+                break;
+            case "showEditProductForm":
+                showEditProductForm(request, response);
+                break;
+            case "deleteProduct":
+                deleteProduct(request, response);
+                break;
+            case "displayProductByUserId":
+                displayProductByUserId(request, response);
+                break;
             default:
                 break;
         }
@@ -44,8 +55,9 @@ public class ProductController extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
 
     private void displayProductByCategory(HttpServletRequest request, HttpServletResponse response) {
         int categoryID = Integer.parseInt(request.getParameter("categoryId"));
@@ -69,10 +81,104 @@ public class ProductController extends HttpServlet {
                 case "addProductToCart":
                     addProductToCart(request, response);
                     break;
+                case "createProduct":
+                    createProduct(request, response);
+                    break;
+                case "editProduct":
+                    editProduct(request, response);
+                    break;
+                default:
+                    break;
             }
     }
 
     private void addProductToCart(HttpServletRequest request, HttpServletResponse response) {
 
+    }
+
+    public void createProduct(HttpServletRequest request, HttpServletResponse response) {
+        int userID = Integer.parseInt(request.getParameter("userID"));
+        String productName = request.getParameter("productName");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        Product newProduct = new Product(userID,productName,quantity,price);
+        productDAO.createProduct(newProduct);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCreateProductForm(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/createProduct.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showEditProductForm(HttpServletRequest request, HttpServletResponse response) {
+        int productId = Integer.parseInt(request.getParameter("productID"));
+        Product product = productDAO.getProductById(productId);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/editProduct.jsp");
+            request.setAttribute("selectProduct", product);
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        String newProductName = request.getParameter("productName");
+        double newQuantity = Double.parseDouble((request.getParameter("quantity")));
+        double newPrice = Double.parseDouble(request.getParameter("price"));
+        String message = null;
+        try {
+            boolean isUpdate =  productDAO.updateProduct(productID,newProductName, newQuantity, newPrice);
+            if(isUpdate) {
+                message = "Updated successfully";
+
+            } else {
+                message = "Something is wrong";
+            }
+            Product product = productDAO.getProductById(productID);
+            request.setAttribute("selectProduct", product);
+            request.setAttribute("message", message);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        try {
+            productDAO.deleteProduct(productId);
+            List<Product> products = productDAO.getProductByUserId();
+            request.setAttribute("products", products);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayProductByUserId(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products = productDAO.getProductByUserId();
+        request.setAttribute("products", products);
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

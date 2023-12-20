@@ -9,5 +9,15 @@ public interface IProductDAO {
 
     Product getProductById(int id);
 
+
+    List<Product> getProductByUserId();
+
     List<Product> getProductByCategory(int categoryID);
+
+
+    boolean updateProduct(int productID, String productName, double productQuantity, double productCost);
+
+    boolean deleteProduct(int productId);
+
+    void createProduct(Product product);
 }

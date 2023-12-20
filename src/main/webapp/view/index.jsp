@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="/products?action=displayProductByUserId">
                         <span>BÁN HÀNG CÙNG LAZADA</span>
                     </a>
                 </div>
@@ -205,32 +205,6 @@
                 </div>
 
 <%--                            List product dùng c:forEach--%>
-<%--                <div class="product-container">--%>
-<%--                    <%--%>
-<%--                        IProductDAO productDAO = new ProductDAO();--%>
-<%--                        List<Product> products = productDAO.getAllProduct();--%>
-<%--                        for (Product product : products--%>
-<%--                        ) { %>--%>
-<%--                    <a href="/products?action=showProductById&productId=<%= product.getProductId()%>">--%>
-<%--                        <div class="product-item">--%>
-<%--                            <div class="product-thumbnail">--%>
-<%--                                <img src="../images/just-for-you/<%= product.getProductId()%>.jpg" alt="product-thumbnail">--%>
-<%--                            </div>--%>
-
-<%--                            <div class="product-description">--%>
-<%--                                <div class="product-name">--%>
-<%--                                    <p><%=product.getProductName()%>--%>
-<%--                                    </p>--%>
-<%--                                </div>--%>
-<%--                                <div class="product-price">--%>
-<%--                                    <p><%=product.getProductCost()%>--%>
-<%--                                    </p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </a>--%>
-<%--                    <% } %>--%>
-<%--                </div>--%>
                 <div class="product-container">
                     <c:if test="${empty param.categoryId}">
                         <%

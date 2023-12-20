@@ -17,7 +17,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_all_product);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_ALL_PRODUCT);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 
@@ -39,7 +39,7 @@ public class ProductDAO implements IProductDAO {
     public Product getProductById(int id) {
         Product product = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_product_by_id);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_PRODUCT_BY_ID);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -57,11 +57,35 @@ public class ProductDAO implements IProductDAO {
         return product;
     }
 
+
+    @Override
+    public List<Product> getProductByUserId() {
+        List<Product> productList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_PRODUCT_BY_USER_ID);
+//            preparedStatement.setInt(1, userIdParam);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int userId = resultSet.getInt("user_id");
+                int productId = resultSet.getInt("product_id");
+                String productName = resultSet.getString("product_name");
+                int productQuantity = resultSet.getInt("product_quantity");
+                double productCost = resultSet.getDouble("product_cost");
+                boolean isActive = resultSet.getBoolean("is_delete");
+                Product product = new Product(productId, userId, productName, productQuantity, productCost ,isActive);
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productList;
+    }
+
     @Override
     public List<Product> getProductByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.select_product_by_category);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.SELECT_PRODUCT_BY_CATEGORY);
             preparedStatement.setInt(1, categoryID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -77,5 +101,46 @@ public class ProductDAO implements IProductDAO {
             e.printStackTrace();
         }
         return products;
+    }
+
+    @Override
+    public boolean updateProduct(int productID, String productName, double productQuantity, double productCost) {
+        boolean rowStatement = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PRODUCT_BY_ID);
+            preparedStatement.setString(1, productName);
+            preparedStatement.setDouble(2, productQuantity);
+            preparedStatement.setDouble(3, productCost);
+            preparedStatement.setInt(4, productID);
+            rowStatement = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowStatement;
+    }
+    @Override
+    public boolean deleteProduct(int productId) {
+        boolean rowUpdate = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.DELETE_PRODUCT_BY_ID);
+            preparedStatement.setInt(1, productId);
+            rowUpdate = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdate;
+    }
+
+    @Override
+    public void createProduct(Product product) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.INSERT_PRODUCT_SQL)){
+            preparedStatement.setInt(1, product.getProductUserId());
+            preparedStatement.setString(2, product.getProductName());
+            preparedStatement.setDouble(3, product.getProductQuantity());
+            preparedStatement.setDouble(4, product.getProductCost());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
