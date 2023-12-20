@@ -1,3 +1,4 @@
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -72,16 +73,48 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
+                <%
+                    User currentUser = (User) request.getSession().getAttribute("currentUser");
+                    String currentUsername = (currentUser != null) ? currentUser.getUsername() : null;
+                    boolean isLoggedIn = (currentUsername != null);
+                %>
+
+                <%
+                    if (isLoggedIn) {
+                        // User is logged in, display username
+                %>
                 <div class="navbar-item">
                     <a href="">
+                        <span>XIN CHÀO, <%= currentUsername %> </span>
+                    </a>
+                </div>
+                <div class="navbar-item">
+                    <a href="<c:url value="/users?action=logOut"/>">
+                        <span>ĐĂNG XUẤT</span>
+                    </a>
+                </div>
+
+
+                <%
+                } else {
+                    // User is not logged in, display login link
+                %>
+                <div class="navbar-item">
+                    <a href="<c:url value="/users?action=displayLogin"/>">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
+
                 <div class="navbar-item">
                     <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
+                <%
+                    }
+                %>
+
+
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -90,41 +123,41 @@
             </div>
         </div>
     </div>
-</div>
-<div class="menu-container">
-    <div class="menu">
-        <div class="menu-logo">
-            <a href="">
-                <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
-            </a>
-        </div>
-        <div class="menu-bar">
-            <form class="menu-search-bar" action="" method="get">
-                <div class="search-input">
-                    <label for="search-input"></label>
-                    <input type="text" name="search-input" id="search-input"
-                           placeholder="Tìm kiếm trên Lazada">
-                </div>
 
-                <div class="search-icon">
-                    <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xl"
-                           style="color: #ffffff;"></i>
-                    </button>
-                </div>
-            </form>
-
-            <div class="menu-cart">
-                <a href="">
-                    <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+    <div class="menu-container">
+        <div class="menu">
+            <div class="menu-logo">
+                <a href="../index">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
+            <div class="menu-bar">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
+                    <div class="search-input">
+                        <input type="text" name="search-input"
+                               placeholder="Tìm kiếm trên Lazada">
+                    </div>
 
-            <div class="menu-ad">
-                <a href="">
-                    <img src="../images/header/vib.png" alt="">
-                </a>
+                    <div class="search-icon">
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xl"
+                               style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="menu-cart">
+                    <a href="<c:url value="/checkOut"/>">
+                        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+                    </a>
+                </div>
+
+                <div class="menu-ad">
+                    <a href="">
+                        <img src="../../images/header/vib.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
     </div>

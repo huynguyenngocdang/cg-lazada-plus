@@ -17,7 +17,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_all_product);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_ALL_PRODUCT);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 
@@ -40,7 +40,7 @@ public class ProductDAO implements IProductDAO {
     public Product getProductById(int id) {
         Product product = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_product_by_id);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_PRODUCT_BY_ID);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -79,7 +79,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> searchProductByName(String keyword) {
         List<Product> searchResult = new ArrayList<>();
         String queryKeyword = "%" + keyword + "%";
-        generateSearchResult(queryKeyword, QueryConstant.search_product_by_name, searchResult);
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_BY_NAME, searchResult);
         return searchResult;
     }
 
@@ -87,7 +87,7 @@ public class ProductDAO implements IProductDAO {
     public List<Product> searchProductByPriceMin(String keyword) {
         List<Product> searchResult = new ArrayList<>();
         String queryKeyword = "%" + keyword + "%";
-        generateSearchResult(queryKeyword, QueryConstant.search_product_sort_by_price_min, searchResult);
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_SORT_BY_PRICE_MIN, searchResult);
         return searchResult;
     }
 
@@ -95,13 +95,13 @@ public class ProductDAO implements IProductDAO {
     public List<Product> searchProductByPriceMax(String keyword) {
         List<Product> searchResult = new ArrayList<>();
         String queryKeyword = "%" + keyword + "%";
-        generateSearchResult(queryKeyword, QueryConstant.search_product_sort_by_price_max, searchResult);
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_SORT_BY_PRICE_MAX, searchResult);
         return searchResult;    }
 
     public List<Product> getProductByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.select_product_by_category);
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.SELECT_PRODUCT_BY_CATEGORY);
             preparedStatement.setInt(1, categoryID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

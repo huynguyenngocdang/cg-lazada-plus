@@ -115,13 +115,13 @@ public class UserController extends HttpServlet {
                 System.out.println(currentUser.toString());
 
                 request.getSession().setAttribute("currentUser", currentUser);
-                message = VarConstant.login_success_noti;
+                message = VarConstant.LOGIN_SUCCESS_NOTI;
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
                 dispatcher.forward(request, response);
 
             } else {
-                message = VarConstant.login_failed_noti;
+                message = VarConstant.LOGIN_FAILED_NOTI;
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/login/login.jsp");
                 dispatcher.forward(request, response);

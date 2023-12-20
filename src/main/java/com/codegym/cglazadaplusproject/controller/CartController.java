@@ -46,7 +46,7 @@ public class CartController extends HttpServlet {
             request.setAttribute("productAmount", productAmount);
 
             ShoppingCartSingleton.getInstance().addToCart(new CartItem(currentProduct, productAmount));
-            String message = VarConstant.add_to_cart_noti;
+            String message = VarConstant.ADD_TO_CART_NOTI;
             request.setAttribute("message", message);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/productDetail.jsp");
             dispatcher.forward(request, response);

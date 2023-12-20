@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/users?action=logOut">
+                    <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/users?action=displayLogin">
+                    <a href="<c:url value="/users?action=displayLogin"/>">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -129,42 +129,42 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="menu-container">
-    <div class="menu">
-        <div class="menu-logo">
-            <a href="${pageContext.request.contextPath}/index">
-                <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
-            </a>
-        </div>
-        <div class="menu-bar">
-            <form class="menu-search-bar" action="" method="get">
-                <div class="search-input">
-                    <label for="search-input"></label>
-                    <input type="text" name="search-input" id="search-input"
-                           placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
-                </div>
-
-                <div class="search-icon">
-                    <button type="submit">
-                        <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xl"
-                           style="color: #ffffff;"></i>
-                    </button>
-                </div>
-            </form>
-
-            <div class="menu-cart">
-                <a href="${pageContext.request.contextPath}/checkOut">
-                    <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+    <div class="menu-container">
+        <div class="menu">
+            <div class="menu-logo">
+                <a href="<c:url value="/index"/>">
+                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
+            <div class="menu-bar">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
+                    <div class="search-input">
+                        <label for="search-input"></label>
+                        <input type="text" name="search-input" id="search-input"
+                               placeholder="Tìm kiếm trên Lazada">
+                    </div>
 
-            <div class="menu-ad">
-                <a href="">
-                    <img src="../../images/header/vib.png" alt="">
-                </a>
+                    <div class="search-icon">
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-2xl"
+                               style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="menu-cart">
+                    <a href="<c:url value="/checkOut"/>">
+                        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+                    </a>
+                </div>
+
+                <div class="menu-ad">
+                    <a href="">
+                        <img src="../images/header/vib.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -206,7 +206,7 @@
                     <i class="fa-solid fa-magnifying-glass fa-flip-horizontal" style="color: #bababa;"></i>          </div>
 
                 <div class="back-to-main-button">
-                    <a href="${pageContext.request.contextPath}/index">
+                    <a href="<c:url value="/index"/>">
                         <button>Trở về</button>
                     </a>
                 </div>

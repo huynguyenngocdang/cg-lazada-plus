@@ -104,7 +104,7 @@
     flex-grow: 1;
 }
 
-.product-checkout-delete button {
+.product-checkout-delete a {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     color: red;

@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/users?action=logOut">
+                    <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-                    <a href="${pageContext.request.contextPath}/users?action=displayLogin">
+                    <a href="<c:url value="/users?action=displayLogin"/>">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -133,13 +133,13 @@
     <div class="menu-container">
         <div class="menu">
             <div class="menu-logo">
-                <a href="../index">
+                <a href="<c:url value="/index"/>">
                     <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
                     <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="${pageContext.request.contextPath}/products?action=searchProduct" method="get">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
@@ -155,7 +155,7 @@
                 </form>
 
                 <div class="menu-cart">
-                    <a href="">
+                    <a href="<c:url value="/checkOut"/>">
                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                     </a>
                 </div>
@@ -201,6 +201,7 @@
                     </div>
                 </div>
 
+
                 <div class="product-container">
                     <c:if test="${empty param.categoryId}">
                         <%
@@ -212,18 +213,19 @@
 
                     <c:if test="${not empty products}">
                         <c:forEach items="${products}" var="product">
-                            <a href="${pageContext.request.contextPath}/products?action=showProductById&productId=${product.getProductId()}">
+                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
-                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg" alt="product-thumbnail">
+                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
+                                             alt="product-thumbnail">
                                     </div>
 
                                     <div class="product-description">
                                         <div class="product-name">
-                                            <p>${product.getProductName()}</p>
+                                            <p><c:out value="${product.getProductName()}"/></p>
                                         </div>
                                         <div class="product-price">
-                                            <p>${product.getProductCost()}</p>
+                                            <p><c:out value="đ${product.getProductCost()}"/></p>
                                         </div>
                                     </div>
                                 </div>
