@@ -1,6 +1,7 @@
 package com.codegym.cglazadaplusproject.dao;
 
 import com.codegym.cglazadaplusproject.constant.QueryConstant;
+import com.codegym.cglazadaplusproject.constant.VarConstant;
 import com.codegym.cglazadaplusproject.model.CartItem;
 import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.PurchaseOrder;
@@ -8,6 +9,7 @@ import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
@@ -44,14 +46,48 @@ public class CheckOutDAO implements ICheckOutDAO {
     public boolean updateBuyer(CartItem cartItem, double cost, Customer buyer) {
         boolean rowStatement = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_BUYER);
-            preparedStatement.setDouble(1,  buyer.getCustomerBalance() - cost);
-            preparedStatement.setInt(2, buyer.getUserId());
+
+            double pointAdd = Math.round( cost / VarConstant.POINT_PER_BILL);
+            double pointOrigin = buyer.getCustomerPoint();
+            double pointFinal = pointAdd + pointOrigin;
+
+            int newMembershipId = getNewMembershipId(pointFinal);
+            PreparedStatement preparedStatement;
+            if(newMembershipId > 0) {
+                preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_BUYER_NEW_RANK);
+                preparedStatement.setDouble(1,  buyer.getCustomerBalance() - cost);
+                preparedStatement.setDouble(2, pointFinal);
+                preparedStatement.setInt(3, newMembershipId);
+                preparedStatement.setInt(4, buyer.getUserId());
+
+            } else {
+                preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_PURCHASE_BUYER);
+                preparedStatement.setDouble(1,  buyer.getCustomerBalance() - cost);
+                preparedStatement.setDouble(2, pointFinal);
+                preparedStatement.setInt(3, buyer.getUserId());
+            }
             rowStatement = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return rowStatement;
+    }
+
+    private int getNewMembershipId(double points)  {
+        // Query the database to retrieve the membership information based on points
+        int newMembershipId = -1;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_CUSTOMER_MEMBERSHIP_RANK_WITH_POINT);
+            preparedStatement.setDouble(1, points);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                newMembershipId = resultSet.getInt("customer_membership_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return newMembershipId;
     }
     @Override
     public boolean addNewPO(PurchaseOrder po) {
