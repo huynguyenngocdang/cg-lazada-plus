@@ -183,13 +183,13 @@ public class UserController extends HttpServlet {
         try {
             String message = null;
             if (validator.checkUser()){
-                message = "Account already exists";
+                message = "Tên đăng ký hoặc mật khẩu không hợp lệ. Đăng ký thất bại!";
                 request.setAttribute("message",message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
-                message= "Successful account registration";
+                message= "Đăng ký thành công";
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);
@@ -205,7 +205,7 @@ public class UserController extends HttpServlet {
             String message = null;
             List<User> listUser = userDAO.getAllUser();
             userDAO.deleteUser(userId);
-            message= "The account has been successfully deleted";
+            message= "Tài khoản đã được xoá thành công.";
             request.setAttribute("message", message);
             request.getSession().setAttribute("users", listUser);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
