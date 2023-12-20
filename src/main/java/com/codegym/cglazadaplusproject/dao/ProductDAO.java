@@ -1,9 +1,7 @@
 package com.codegym.cglazadaplusproject.dao;
 
 import com.codegym.cglazadaplusproject.constant.QueryConstant;
-import com.codegym.cglazadaplusproject.model.CartItem;
 import com.codegym.cglazadaplusproject.model.Product;
-import com.codegym.cglazadaplusproject.model.PurchaseOrder;
 import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
 import java.sql.Connection;
@@ -87,11 +85,11 @@ public class ProductDAO implements IProductDAO {
 
 
     @Override
-    public List<Product> getProductByUserId() {
+    public List<Product> getProductByUserId(int userIdParam) {
         List<Product> productList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_PRODUCT_BY_USER_ID);
-//            preparedStatement.setInt(1, userIdParam);
+            preparedStatement.setInt(1, userIdParam);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int userId = resultSet.getInt("user_id");

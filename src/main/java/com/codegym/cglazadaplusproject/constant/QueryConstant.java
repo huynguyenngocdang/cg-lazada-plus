@@ -16,7 +16,7 @@ public interface QueryConstant {
     String INSERT_PRODUCT_SQL = "INSERT INTO product(user_id,product_name,product_quantity,product_cost) VALUES (?, ?, ?, ?);";
     String UPDATE_PRODUCT_BY_ID = "UPDATE `product` SET `product_name` = ?, `product_quantity` = ?, `product_cost` = ? WHERE (`product_id` = ?);";
     String DELETE_PRODUCT_BY_ID = "UPDATE `product` SET `is_delete` = 1 WHERE (`product_id` = ?);";
-    String GET_PRODUCT_BY_USER_ID = "SELECT * FROM product WHERE user_id = 1 AND is_delete = 0;";
+    String GET_PRODUCT_BY_USER_ID = "SELECT * FROM product WHERE user_id = ? AND is_delete = 0;";
     String SELECT_CUSTOMER_BY_USERID = "SELECT * FROM customer WHERE user_id = ?";
     String UPDATE_PURCHASE_PRODUCT = "UPDATE product SET product_quantity = ? WHERE product_id = ?";
     String UPDATE_PURCHASE_SELLER = "UPDATE customer SET customer_balance = ? WHERE user_id = ? ";

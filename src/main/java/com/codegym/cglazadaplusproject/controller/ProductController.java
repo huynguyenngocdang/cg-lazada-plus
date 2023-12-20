@@ -258,10 +258,11 @@ public class ProductController extends HttpServlet {
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int userId = Integer.parseInt(request.getParameter("userId"));
         int productId = Integer.parseInt(request.getParameter("productId"));
         try {
             productDAO.deleteProduct(productId);
-            List<Product> products = productDAO.getProductByUserId();
+            List<Product> products = productDAO.getProductByUserId(userId);
             request.setAttribute("products", products);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
             dispatcher.forward(request, response);
@@ -271,7 +272,8 @@ public class ProductController extends HttpServlet {
     }
 
     private void displayProductByUserId(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> products = productDAO.getProductByUserId();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        List<Product> products = productDAO.getProductByUserId(userId);
         request.setAttribute("products", products);
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");

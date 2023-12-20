@@ -113,6 +113,7 @@ public class UserController extends HttpServlet {
             if (validator.isCheck()) {
                 currentUser = userDAO.getUserByName(username);
                 System.out.println(currentUser.toString());
+                System.out.println(currentUser.getUserId());
 
                 request.getSession().setAttribute("currentUser", currentUser);
                 message = VarConstant.LOGIN_SUCCESS_NOTI;
