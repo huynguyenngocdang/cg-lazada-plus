@@ -83,24 +83,39 @@
                     if (isLoggedIn) {
                         // User is logged in, display username
                 %>
-                <div class="navbar-item">
-                    <a href="">
+                <div class="navbar-item user-overlay">
+                    <a href="" id="AccountOverlayButton">
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
+
+                    <div class="account-overlay-container" id="AccountOverlay">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
+                            <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+                        <a href="">
+                            <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
+                            <span>Danh sách mặt hàng</span>
+                        </a>
+                        <a href="">
+                            <i class="fa-regular fa-credit-card" style="color: #d6d6d6;"></i>
+                            <span>Lịch sử giao dịch</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="navbar-item">
                     <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
-
-
                 <%
                 } else {
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
+
                     <a href="<c:url value="/users?action=displayLogin"/>">
+
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
@@ -114,7 +129,6 @@
                     }
                 %>
 
-
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -127,15 +141,16 @@
     <div class="menu-container">
         <div class="menu">
             <div class="menu-logo">
-                <a href="../index">
-                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                <a href="<c:url value="/index"/>">
+                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
                 <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
                     <div class="search-input">
-                        <input type="text" name="search-input"
+                        <label for="search-input"></label>
+                        <input type="text" name="search-input" id="search-input"
                                placeholder="Tìm kiếm trên Lazada">
                     </div>
 
