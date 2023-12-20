@@ -1,18 +1,20 @@
 package com.codegym.cglazadaplusproject.dao;
 
 import com.codegym.cglazadaplusproject.constant.QueryConstant;
+import com.codegym.cglazadaplusproject.model.CartItem;
 import com.codegym.cglazadaplusproject.model.Product;
+import com.codegym.cglazadaplusproject.model.PurchaseOrder;
 import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ProductDAO implements IProductDAO {
     private final Connection connection = JDBCConnection.getConnection();
+
     @Override
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
@@ -35,6 +37,7 @@ public class ProductDAO implements IProductDAO {
         }
         return products;
     }
+
     @Override
     public Product getProductById(int id) {
         Product product = null;
@@ -55,6 +58,31 @@ public class ProductDAO implements IProductDAO {
             e.printStackTrace();
         }
         return product;
+    }
+    private void generateSearchResult(String queryKeyword, String sortQuery, List<Product> searchResult) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sortQuery);
+            preparedStatement.setString(1, queryKeyword);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("product_id");
+                int userId = resultSet.getInt("user_id");
+                String productName = resultSet.getString("product_name");
+                double productQuantity = resultSet.getDouble("product_quantity");
+                double productCost = resultSet.getDouble("product_cost");
+                boolean isDelete = resultSet.getBoolean("is_delete");
+                searchResult.add(new Product(productId, userId, productName, productQuantity, productCost, isDelete));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public List<Product> searchProductByName(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_BY_NAME, searchResult);
+        return searchResult;
     }
 
 
@@ -82,6 +110,20 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public List<Product> searchProductByPriceMin(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_SORT_BY_PRICE_MIN, searchResult);
+        return searchResult;
+    }
+
+    @Override
+    public List<Product> searchProductByPriceMax(String keyword) {
+        List<Product> searchResult = new ArrayList<>();
+        String queryKeyword = "%" + keyword + "%";
+        generateSearchResult(queryKeyword, QueryConstant.SEARCH_PRODUCT_SORT_BY_PRICE_MAX, searchResult);
+        return searchResult;    }
+
     public List<Product> getProductByCategory(int categoryID) {
         List<Product> products = new ArrayList<>();
         try {

@@ -38,12 +38,6 @@ a {
 .header {
   width: 100vw;
 }
-
-/*.header-container {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*}*/
-
 .navbar-container {
   background-color: #f7f7f7;
   display: flex;
@@ -161,7 +155,7 @@ a {
   width: 100%;
   padding: 0.5em 0.6em;
   border: none;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .search-input input:focus {
@@ -180,7 +174,6 @@ a {
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
   height: 100%;
-  /*padding: 0.2em;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,14 +254,13 @@ a {
 }
 
 .product-thumbnail {
-  object-fit: fill;
   width: 100%;
-
 }
 
 .product-thumbnail img {
   width: 100%;
   height: 37em;
+  object-fit: cover;
 }
 
 .product-description {
@@ -292,8 +284,9 @@ a {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* From which line on to truncate */
+  -webkit-line-clamp: 2;
   overflow: hidden;
+  color: black;
 }
 
 .product-price {
@@ -371,6 +364,16 @@ a {
   float: right;
   color: black;
 }
+.content-frame form button {
+  border-radius: 7px;
+  border: none;
+  background: #F57224;
+  color: white;
+  font-size: 6em;
+  padding: 1em 0;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 1em;
+}
 
 .noti-exit-button button:hover {
   background-color: #ececec;
@@ -393,6 +396,27 @@ a {
 button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+hr {
+  background: #E9E9E9;
+  height: 1px;
+  border: none;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 3em;
+}
+
+.bookmark span {
+  color: #7e7b7b;
+}
+
+.bookmark span:first-child {
+  color: #1a9cb7;
 }
 
 @keyframes fadeIn {

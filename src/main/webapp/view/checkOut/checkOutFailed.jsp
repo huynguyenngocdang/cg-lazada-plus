@@ -1,33 +1,31 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Category" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ICategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.CategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.IProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Product" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
+    <title>Thanh toán</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/titleIcon.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="shortcut icon" href="../../images/titleIcon.png">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/checkout.css">
 </head>
 <body>
-
 <c:if test='${not empty requestScope["message"]}'>
     <div class="noti-container" id="noti-container">
         <div class="noti-content">
             <div class="noti-icon">
-                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+                <img src="../../images/header/logo-heart.png" alt="this is lazada icon">
             </div>
 
             <div class="noti-title">
@@ -47,7 +45,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -65,7 +63,7 @@
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="/products?action=displayProductByUserId">
+                    <a href="">
                         <span>BÁN HÀNG CÙNG LAZADA</span>
                     </a>
                 </div>
@@ -172,76 +170,23 @@
 
 <div class="body-container">
     <div class="body">
-
-        <div class="body-column-1 categories-container">
-            <div class="categories-title">
-                <p>Danh mục</p>
-            </div>
-
-            <hr>
-
-            <div class="categories-content">
-                <%
-                    ICategoryDAO categoryDAO = new CategoryDAO();
-                    List<Category> categories = categoryDAO.getAllCategory();
-                    for (Category category : categories) { %>
-                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
-                    <a href="${pageContext.request.contextPath}/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%>
-                    </a>
-                </button>
-                <% } %>
-            </div>
+        <div class="checkout-content">
+            <p>Thanh toán thất bại</p>
+            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>
         </div>
 
-        <div class="body-column-2">
-            <div class="just-for-you product-section">
-                <div class="title-bar">
-                    <div class="title">
-                        <p>Dành riêng cho bạn</p>
-                    </div>
-                </div>
+        <div class="checkout-image">
+            <div class="checkout-icon">
+                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>
+            </div>
 
-<<<<<<< HEAD
-<%--                            List product dùng c:forEach--%>
-=======
-
->>>>>>> 8a1d8b6f1f9cb56a5d7bc5fceaaf4f82731a7c93
-                <div class="product-container">
-                    <c:if test="${empty param.categoryId}">
-                        <%
-                            IProductDAO productDAO = new ProductDAO();
-                            List<Product> products = productDAO.getAllProduct();
-                        %>
-                        <c:set var="products" value="<%= products %>" scope="request"/>
-                    </c:if>
-
-                    <c:if test="${not empty products}">
-                        <c:forEach items="${products}" var="product">
-                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
-                                <div class="product-item">
-                                    <div class="product-thumbnail">
-                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
-                                             alt="product-thumbnail">
-                                    </div>
-
-                                    <div class="product-description">
-                                        <div class="product-name">
-                                            <p><c:out value="${product.getProductName()}"/></p>
-                                        </div>
-                                        <div class="product-price">
-                                            <p><c:out value="đ${product.getProductCost()}"/></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </c:forEach>
-                    </c:if>
-                </div>
+            <div class="back-to-main-button">
+                <a href="<c:url value="/index"/>">
+                    <button>Trở về</button>
+                </a>
             </div>
         </div>
     </div>
 </div>
-
-<script src="../js/animation.js"></script>
 </body>
 </html>
