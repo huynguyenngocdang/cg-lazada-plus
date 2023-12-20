@@ -8,5 +8,7 @@ public interface VarConstant {
     String LOGIN_SUCCESS_NOTI = "Đăng nhập thành công";
     String LOGIN_FAILED_NOTI = "Tên đăng nhập hoặc mật khẩu không hợp lệ. Đăng nhập thất bại!";
     String ADD_TO_CART_NOTI = "Thêm sản phẩm vào giỏ hàng thành công";
-    double DELIVERYFEE = 15000;
+    double DELIVERYFEE = 25;
+    double PERCENT = 100;
+    double POINT_PER_BILL = 100;
 }
