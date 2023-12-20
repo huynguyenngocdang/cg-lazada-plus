@@ -61,6 +61,8 @@ public class UserController extends HttpServlet {
     }
 
     private void displayUser(HttpServletRequest request, HttpServletResponse response){
+        List<User> users = userDAO.getAllUser();
+        request.setAttribute("users", users);
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/edit.jsp");
             dispatcher.forward(request,response);

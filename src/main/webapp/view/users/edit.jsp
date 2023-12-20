@@ -230,11 +230,24 @@
                 </button>
                 <% } %>
             </div>
-            <%--            <c:if test="${not empty products}">--%>
-            <%--                <c:forEach items="${products}" var="product">--%>
-            <%--                    <p><c:out value="${product.productName}"></c:out></p>--%>
-            <%--                </c:forEach>--%>
-            <%--            </c:if>--%>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>UserPassword</th>
+                    <th></th>
+                </tr>
+                <c:forEach var="user" items="${users}">
+                <tr>
+                    <td><c:out value="${user.getUsername()}"/></td>
+                    <td><c:out value="${user.getUserPassword()}"/></td>
+                    <td><a href="<c:url value="/users?action=showEdit&userId=${user.getUserId()}"/>"> Edit </a>
+                        <a href="/users?action=deleteUser&userId=${user.getUserId()}">Delete</a></td>
+                </tr>
+            </table>
+            </c:forEach>
         </div>
 <script src="../js/animation.js"></script>
 </body>
