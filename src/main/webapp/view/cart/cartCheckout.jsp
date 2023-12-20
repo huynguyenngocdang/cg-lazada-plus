@@ -1,3 +1,4 @@
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -68,16 +69,46 @@
                         <span>KIỂM TRA ĐƠN HÀNG</span>
                     </a>
                 </div>
+                <%
+                    User currentUser = (User) request.getSession().getAttribute("currentUser");
+                    String currentUsername = (currentUser != null) ? currentUser.getUsername() : null;
+                    boolean isLoggedIn = (currentUsername != null);
+                %>
+
+                <%
+                    if (isLoggedIn) {
+                        // User is logged in, display username
+                %>
                 <div class="navbar-item">
                     <a href="">
+                        <span>XIN CHÀO, <%= currentUsername %> </span>
+                    </a>
+                </div>
+                <div class="navbar-item">
+                    <a href="/users?action=logOut">
+                        <span>ĐĂNG XUẤT</span>
+                    </a>
+                </div>
+
+
+                <%
+                } else {
+                    // User is not logged in, display login link
+                %>
+                <div class="navbar-item">
+                    <a href="/users?action=displayLogin">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
+
                 <div class="navbar-item">
                     <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
+                <%
+                    }
+                %>
                 <div class="navbar-item">
                     <a href="">
                         <span>NGÔN NGỮ</span>
@@ -127,7 +158,7 @@
 </div>
 
 <div class="body-container">
-    <form action="" method="post" class="body">
+    <form action="/checkOut?action=purchase" method="post" class="body">
         <div class="cart-product-list content-frame">
 
             <!--        Bắt đầu vòng lặp forEach-->
@@ -153,17 +184,11 @@
                                     <input type="number" name="product-id-quantity" id="product-id-quantity" min="1" max="99" value="${cartItem.productQuantity}">
                                 </div>
                             </div>
-
-
                     </div>
                 </div>
 
                 <div class="product-checkout-delete">
-                    <form action="${pageContext.request.contextPath}/checkOut" method="post">
-                        <input type="hidden" name="action" value="removeCartItem">
-                        <input type="hidden" name="productId" value="${cartItem.product.productId}">
-                        <button type="submit">Xóa sản phẩm</button>
-                    </form>
+                     <a style="font-size: medium" href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${cartItem.product.productId}">Xóa sản phẩm</a>
                 </div>
             </div>
 
@@ -176,7 +201,8 @@
         <div class="product-checkout-bill-confirm content-frame">
             <div class="product-checkout-bill-info">
                 <p>Thông tin đơn hàng</p>
-
+                <p> Address </p>
+                <input type="text" id="deliveryAddress" name="deliveryAddress" value="${currentCustomer.customerAddress}">
                 <div class="product-checkout-bill-detail">
                     <div class="bill-product">
                         <!--              Đếm số lượng sản phẩm-->
