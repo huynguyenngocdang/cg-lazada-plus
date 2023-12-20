@@ -11,5 +11,7 @@ public interface VarConstant {
     String REGISTER_SUCCESS_NOTI = "Đăng ký thành công";
     String REGISTER_FAILED_NOTI = "Tên đăng ký hoặc mật khẩu không hợp lệ. Đăng ký thất bại!";
     String ADD_TO_CART_NOTI = "Thêm sản phẩm vào giỏ hàng thành công";
-    double DELIVERYFEE = 15000;
+    double DELIVERYFEE = 25;
+    double PERCENT = 100;
+    double POINT_PER_BILL = 100;
 }

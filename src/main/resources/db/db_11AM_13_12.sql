@@ -66,7 +66,7 @@ references customer_membership(customer_membership_id)
 insert into customer
 (user_id, customer_name, customer_address, customer_balance, customer_point, customer_membership_id)
 values
-(1, 'Nguyen Ngoc Dang Huy', 'HCMC', 1000000, 1000, 4),
+(1, 'Nguyen Ngoc Dang Huy', 'HCMC', 1000000, 499, 3),
 (2, 'Vu Phuong Giang', 'HCMC', 0, 120, 2),
 (4, 'Le Phi Long', 'HCMC', 0, 0, 1)
 ;
