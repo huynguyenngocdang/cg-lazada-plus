@@ -47,7 +47,7 @@ public class CheckOutDAO implements ICheckOutDAO {
         boolean rowStatement = false;
         try {
 
-            double pointAdd = Math.round( cost / VarConstant.PERCENT);
+            double pointAdd = Math.round( cost / VarConstant.POINT_PER_BILL);
             double pointOrigin = buyer.getCustomerPoint();
             double pointFinal = pointAdd + pointOrigin;
 

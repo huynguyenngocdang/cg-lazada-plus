@@ -89,8 +89,13 @@
                     if (isLoggedIn) {
                         // User is logged in, display username
                 %>
+
+                <div class="navbar-item">
+                    <a href="/users?action=displayUser">
+
                 <div class="navbar-item user-overlay">
                     <a href="" id="AccountOverlayButton">
+
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
 
@@ -99,7 +104,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -127,7 +132,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="/users?action=displayCreate">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -214,6 +219,9 @@
                         <p>Dành riêng cho bạn</p>
                     </div>
                 </div>
+
+
+<%--                            List product dùng c:forEach--%>
 
 
                 <div class="product-container">
