@@ -59,10 +59,9 @@
     <link rel="stylesheet" type="text/css" href="../css/home.css">
 </head>
 <body>
-<<<<<<< HEAD
-=======
+
 <form action="<c:url value="/users?action=edit&userId=${selectUser.getUserId()}"/>" method="post">
->>>>>>> c531a569fa8372dd9bf070039af890bcea1af7bc
+
 
 <c:if test='${not empty requestScope["message"]}'>
     <div class="noti-container" id="noti-container">
