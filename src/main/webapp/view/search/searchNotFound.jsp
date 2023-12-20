@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="<c:url value="/users?action=displayCreate"/>">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -157,7 +157,7 @@
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada">
+                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
                     </div>
 
                     <div class="search-icon">
@@ -212,7 +212,7 @@
         <div class="search-not-found-content">
             <div class="search-not-found-text">
                 <p>Tìm kiếm không có kết quả...</p>
-                <p>Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</p>
+                <p>Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với từ khóa của bạn</p>
             </div>
 
             <div class="search-not-found-image">
