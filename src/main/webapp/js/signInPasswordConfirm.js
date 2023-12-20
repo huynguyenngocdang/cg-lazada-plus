@@ -20,8 +20,10 @@ function checkConfirmPassword() {
         passwordConfirmBox.style.boxShadow = "0 0 7px 1px rgba(14, 190,146, 0.58)";
     }
 }
+
 function preventSubmit() {
     event.preventDefault();
 }
+
 passwordConfirmBox.addEventListener("input", checkConfirmPassword);
 passwordBox.addEventListener("input", checkConfirmPassword);
