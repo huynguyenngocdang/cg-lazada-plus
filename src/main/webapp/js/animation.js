@@ -1,5 +1,7 @@
 let notiContainer = document.getElementById("noti-container");
-
+let cellViewButton = document.getElementById("CellViewButton");
+let listViewButton = document.getElementById("ListViewButton");
+let viewCSS = document.getElementById("viewMode");
 function hideNoti() {
   notiContainer.style.animation = "fadeOut 1s ease";
   setTimeout(() => {
@@ -8,8 +10,12 @@ function hideNoti() {
   }, 1000);
 }
 
-function showNoti(event) {
+function preventSubmit(event) {
   event.preventDefault();
+}
+
+function showNoti(event) {
+  preventSubmit(event);
 
   notiContainer.style.visibility = "visible";
   notiContainer.style.animation = "fadeIn 0.5s ease";
@@ -18,10 +24,17 @@ function showNoti(event) {
   }, 400);
 }
 
-function cartUpdate() {
+function displayCellView() {
 
+  viewCSS.href = "../../css/searchProductCellView.css";
+}
+
+function displayListView() {
+  viewCSS.href = "../../css/searchProductListView.css";
 }
 
 
+cellViewButton.addEventListener("click", displayCellView);
+listViewButton.addEventListener("click", displayListView);
 document.getElementById("hide-noti").addEventListener("click", hideNoti);
 

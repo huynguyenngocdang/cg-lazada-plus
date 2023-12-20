@@ -12,12 +12,19 @@
     <title></title>
 </head>
 <body>
-    <table>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>UserPassword</th>
+        <th></th>
+    </tr>
+    <c:forEach var="user" items="${users}">
         <tr>
-            <th>Username</th>
-            <th>UserPassword</th>
-            <th></th>
+            <td><c:out value="${user.getUsername()}"/></td>
+            <td><c:out value="${user.getUserPassword()}"/></td>
+            <td><a href="<c:url value="/users?action=showEdit&userId=${user.getUserId()}"/>"> Edit </a></td>
         </tr>
+<<<<<<< HEAD
         <c:forEach var="user" items="${users}">
             <tr>
                 <td> <c:out value="${user.getUsername()}" /> </td>
@@ -29,5 +36,9 @@
             </tr>
         </c:forEach>
     </table>
+=======
+    </c:forEach>
+</table>
+>>>>>>> c531a569fa8372dd9bf070039af890bcea1af7bc
 </body>
 </html>

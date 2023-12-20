@@ -56,8 +56,8 @@ public class CheckoutController extends HttpServlet {
             request.setAttribute("cartItems", cartItems);
             request.setAttribute("totalCartCost", totalCartCost);
             request.setAttribute("totalCartAmount", totalCartQuantity);
-            request.setAttribute("deliveryFee", VarConstant.deliveryFee);
-            request.setAttribute("totalCartCostWithDeliveryFee", totalCartCost + VarConstant.deliveryFee);
+            request.setAttribute("deliveryFee", VarConstant.DELIVERYFEE);
+            request.setAttribute("totalCartCostWithDeliveryFee", totalCartCost + VarConstant.DELIVERYFEE);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/cart/cartCheckout.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

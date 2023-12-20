@@ -17,7 +17,7 @@ public class CategoryDAO implements ICategoryDAO {
         public List<Category> getAllCategory() {
             List<Category> categories = new ArrayList<>();
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.get_all_category);
+                PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_ALL_CATEGORY);
                 preparedStatement.setBoolean(1, false);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {

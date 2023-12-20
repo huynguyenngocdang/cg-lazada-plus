@@ -1,74 +1,31 @@
-<%--&lt;%&ndash;--%>
-<%--  Created by IntelliJ IDEA.--%>
-<%--  User: Admin--%>
-<%--  Date: 12/13/2023--%>
-<%--  Time: 9:53 AM--%>
-<%--  To change this template use File | Settings | File Templates.--%>
-<%--&ndash;%&gt;--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Title</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<form action="/users?action=edit&userId=${selectUser.getUserId()}" method="post">--%>
-
-<%--    <table>--%>
-<%--        <tr>--%>
-<%--            <td>Name</td>--%>
-<%--            <td>--%>
-<%--                <input type="text" name="newUsername" value="${selectUser.getUsername()}">--%>
-<%--            </td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Password</td>--%>
-<%--            <td>--%>
-<%--                <input type="text" name="newUserPassword" value="${selectUser.getUserPassword()}">--%>
-<%--            </td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td><button type="submit">Edit</button></td>--%>
-<%--            <td></td>--%>
-<%--        </tr>--%>
-<%--    </table>--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Category" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ICategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.CategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.IProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Product" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
+  Created by IntelliJ IDEA.
+  User: Hgiang
+  Date: 19/12/2023
+  Time: 1:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
+    <title>Thanh toán</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/title.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="shortcut icon" href="../../images/titleIcon.png">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/checkout.css">
 </head>
 <body>
-<<<<<<< HEAD
-=======
-<form action="<c:url value="/users?action=edit&userId=${selectUser.getUserId()}"/>" method="post">
->>>>>>> c531a569fa8372dd9bf070039af890bcea1af7bc
-
 <c:if test='${not empty requestScope["message"]}'>
     <div class="noti-container" id="noti-container">
         <div class="noti-content">
             <div class="noti-icon">
-                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+                <img src="../../images/header/logo-heart.png" alt="this is lazada icon">
             </div>
 
             <div class="noti-title">
@@ -88,7 +45,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -131,12 +88,12 @@
                         // User is logged in, display username
                 %>
                 <div class="navbar-item">
-                    <a href="/users?action=displayUser">
+                    <a href="">
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
                 </div>
                 <div class="navbar-item">
-                    <a href="/users?action=logOut">
+                    <a href="<c:url value="/users?action=logOut"/>">
                         <span>ĐĂNG XUẤT</span>
                     </a>
                 </div>
@@ -147,13 +104,13 @@
                     // User is not logged in, display login link
                 %>
                 <div class="navbar-item">
-                    <a href="/users?action=displayLogin">
+                    <a href="<c:url value="/users?action=displayLogin"/>">
                         <span>ĐĂNG NHẬP</span>
                     </a>
                 </div>
 
                 <div class="navbar-item">
-                    <a href="/users?action=displayCreate">
+                    <a href="">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -174,13 +131,13 @@
     <div class="menu-container">
         <div class="menu">
             <div class="menu-logo">
-                <a href="../index">
+                <a href="<c:url value="/index"/>">
                     <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
                     <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="" method="get">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
@@ -196,7 +153,7 @@
                 </form>
 
                 <div class="menu-cart">
-                    <a href="${pageContext.request.contextPath}/checkOut">
+                    <a href="<c:url value="/checkOut"/>">
                         <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
                     </a>
                 </div>
@@ -209,33 +166,33 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <div class="body-container">
     <div class="body">
+        <div class="checkout-content">
+            <p>Thanh toán thành công</p>
+            <p>Đơn hàng sẽ sớm được vận chuyển tới bạn</p>
 
-        <div class="body-column-1 categories-container">
-            <div class="categories-title">
-                <p>Danh mục</p>
-            </div>
-            <div class="categories-content">
-                <%
-                    ICategoryDAO categoryDAO = new CategoryDAO();
-                    List<Category> categories = categoryDAO.getAllCategory();
-                    for (Category category : categories) { %>
-                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
-                    <a href="/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a>
-                </button>
-                <% } %>
-            </div>
-            <%--            <c:if test="${not empty products}">--%>
-            <%--                <c:forEach items="${products}" var="product">--%>
-            <%--                    <p><c:out value="${product.productName}"></c:out></p>--%>
-            <%--                </c:forEach>--%>
-            <%--            </c:if>--%>
+            <%--            Checkout Fail--%>
+            <%--            <p>Thanh toán thất bại</p>--%>
+            <%--            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>--%>
         </div>
-<script src="../js/animation.js"></script>
+
+        <div class="checkout-image">
+            <div class="checkout-icon">
+                <i class="fa-solid fa-circle-check" style="color: #18b470;"></i>
+                <%--                Checkout fail--%>
+                <%--                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>--%>
+            </div>
+
+            <div class="back-to-main-button">
+                <a href="<c:url value="/index"/>">
+                    <button>Trở về</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
