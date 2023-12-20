@@ -176,7 +176,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../../images/header/vib.png" alt="">
+                        <img src="../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
