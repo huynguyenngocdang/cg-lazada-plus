@@ -173,17 +173,11 @@
         <div class="checkout-content">
             <p>Thanh toán thành công</p>
             <p>Đơn hàng sẽ sớm được vận chuyển tới bạn</p>
-
-            <%--            Checkout Fail--%>
-            <%--            <p>Thanh toán thất bại</p>--%>
-            <%--            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>--%>
         </div>
 
         <div class="checkout-image">
             <div class="checkout-icon">
                 <i class="fa-solid fa-circle-check" style="color: #18b470;"></i>
-                <%--                Checkout fail--%>
-                <%--                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>--%>
             </div>
 
             <div class="back-to-main-button">
