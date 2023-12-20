@@ -256,7 +256,7 @@
                                             <p><c:out value="${product.getProductName()}"/></p>
                                         </div>
                                         <div class="product-price">
-                                            <p><c:out value="đ${product.getProductCost()}"/></p>
+                                            <p><c:out value="$${product.getProductCost()}"/></p>
                                         </div>
                                     </div>
 
