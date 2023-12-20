@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="">
+                    <a href="<c:url value="/users?action=displayCreate"/>">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>

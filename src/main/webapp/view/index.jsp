@@ -47,7 +47,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../../images/header/head-banner-1.webp" alt="">
+            <img src="../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -89,13 +89,8 @@
                     if (isLoggedIn) {
                         // User is logged in, display username
                 %>
-
-                <div class="navbar-item">
-                    <a href="/users?action=displayUser">
-
                 <div class="navbar-item user-overlay">
                     <a href="" id="AccountOverlayButton">
-
                         <span>XIN CHÀO, <%= currentUsername %> </span>
                     </a>
 
@@ -104,7 +99,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
+                        <a href="">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -132,7 +127,7 @@
                 </div>
 
                 <div class="navbar-item">
-                    <a href="/users?action=displayCreate">
+                    <a href="<c:url value="/users?action=displayCreate"/>">
                         <span>ĐĂNG KÝ</span>
                     </a>
                 </div>
@@ -181,7 +176,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../../images/header/vib.png" alt="">
+                        <img src="../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -221,7 +216,7 @@
                 </div>
 
 
-<%--                            List product dùng c:forEach--%>
+                <%--                            List product dùng c:forEach--%>
 
 
                 <div class="product-container">

@@ -1,4 +1,6 @@
-
+body {
+  overflow-y: hidden;
+}
 .user-container {
   width: 1000px;
   margin: 0 auto;
@@ -17,7 +19,7 @@ form, form div {
 }
 
 form {
-  gap: 6em;
+  gap: 4.5em;
 }
 
 .form-input {
@@ -37,6 +39,13 @@ form label {
   font-size: 4em;
 }
 
+.re-enter-confirm-password {
+  display: none;
+  margin-left: 0.5em;
+  color: red;
+  font-size: 4em;
+}
+
 .content-frame form button {
   border-radius: 7px;
   border: none;
@@ -46,4 +55,34 @@ form label {
   padding: 1em 0;
   font-family: 'Roboto', sans-serif;
   margin-top: 1em;
+}
+
+.form-checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+}
+
+.form-checkbox input {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.form-checkbox label {
+  color: #8F8F8F;
+  line-height: 1.5;
+}
+
+.form-checkbox a, .other-option a {
+  color: #224EB7;
+}
+
+.other-option {
+  margin-top: 1.5em;
+  font-size: 4.5em;
+  text-align: center;
+}
+
+.other-option p {
+  color:#8F8F8F;
 }
