@@ -183,13 +183,13 @@ public class UserController extends HttpServlet {
         try {
             String message = null;
             if (validator.checkUser()){
-                message = "Tên đăng ký hoặc mật khẩu không hợp lệ. Đăng ký thất bại!";
+                message = VarConstant.REGISTER_FAILED_NOTI;
                 request.setAttribute("message",message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
-                message= "Đăng ký thành công";
+                message= VarConstant.REGISTER_SUCCESS_NOTI;
                 request.setAttribute("message", message);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);

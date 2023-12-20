@@ -225,7 +225,7 @@
                     ICategoryDAO categoryDAO = new CategoryDAO();
                     List<Category> categories = categoryDAO.getAllCategory();
                     for (Category category : categories) { %>
-                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
+                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">Thông tin tài khoản
                     <a href="/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a>
                 </button>
                 <% } %>
