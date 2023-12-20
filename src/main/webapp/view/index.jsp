@@ -201,11 +201,10 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
-<%--                            List product dùng c:forEach--%>
-=======
 
->>>>>>> 8a1d8b6f1f9cb56a5d7bc5fceaaf4f82731a7c93
+<%--                            List product dùng c:forEach--%>
+
+
                 <div class="product-container">
                     <c:if test="${empty param.categoryId}">
                         <%
