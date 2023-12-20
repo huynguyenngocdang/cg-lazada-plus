@@ -13,15 +13,14 @@ insert into user_role(
     ('customer'),
     ('admin');
     
-create table user(
-user_id int primary key auto_increment,
-user_name varchar(50),
-user_password varchar(50),
-user_role_id int default 1,
-is_active bit(1) default 1,
-is_delete bit(1) default 0,
-foreign key (user_role_id)
-references user_role(user_role_id)
+CREATE TABLE user (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_name VARCHAR(50),
+    user_password VARCHAR(50),
+    user_role_id INT DEFAULT 1,
+    is_active BIT(1) DEFAULT 1,
+    is_delete BIT(1) DEFAULT 0,
+    FOREIGN KEY (user_role_id) REFERENCES user_role(user_role_id)
 );
 
 insert into `user`

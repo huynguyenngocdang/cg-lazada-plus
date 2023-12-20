@@ -193,12 +193,12 @@
 
                     <div class="form-input">
                         <label for="password">Mật khẩu*</label>
-                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu"
+                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()"
                                required>
                     </div>
                     <div class="form-input">
                         <label for="passwordConfirm">Nhập lại mật khẩu*</label>
-                        <input type="password" name="passwordConfirm" id="passwordConfirm"
+                        <input type="password" name="passwordConfirm" id="passwordConfirm" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()"
                                placeholder="Vui lòng nhập lại mật khẩu" required/>
                         <p class="re-enter-confirm-password" id="passwordNoti">Mật khẩu không trùng khớp</p>
                     </div>
@@ -225,5 +225,9 @@
 
 <script src="../../js/signInPasswordConfirm.js"></script>
 <script src="../../js/animation.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 </body>
 </html>
