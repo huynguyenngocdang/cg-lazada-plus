@@ -23,6 +23,12 @@ public interface QueryConstant {
     String SELECT_CUSTOMER_BY_USERID = "SELECT * FROM customer WHERE user_id = ?";
     String UPDATE_PURCHASE_PRODUCT = "UPDATE product SET product_quantity = ? WHERE product_id = ?";
     String UPDATE_PURCHASE_SELLER = "UPDATE customer SET customer_balance = ? WHERE user_id = ? ";
-    String UPDATE_PURCHASE_BUYER = "UPDATE customer SET customer_balance = ? WHERE user_id = ?";
+
+    String UPDATE_PURCHASE_BUYER = "UPDATE customer SET customer_balance = ?, customer_point = ? WHERE user_id = ?";
+    String UPDATE_PURCHASE_BUYER_NEW_RANK = "UPDATE customer SET customer_balance = ?, customer_point = ?, customer_membership_id = ? WHERE user_id = ?";
+
     String INSERT_NEW_PO = "INSERT INTO purchase_order (product_id, buyer_id, seller_id, purchase_order_date, purchase_order_address, purchase_order_quantity, purchase_order_unit_price, purchase_order_total_cost, purchase_order_final_cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String GET_CUSTOMER_MEMBERSHIP_RANK = "SELECT * FROM customer_membership WHERE customer_membership_id = ?";
+    String GET_CUSTOMER_MEMBERSHIP_RANK_WITH_POINT = "SELECT * FROM customer_membership WHERE customer_membership_point_reference <= ? ORDER BY customer_membership_point_reference DESC LIMIT 1";
+
 }
