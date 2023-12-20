@@ -60,12 +60,8 @@ public class UserController extends HttpServlet {
     }
 
     private void displayUser(HttpServletRequest request, HttpServletResponse response){
-//        int userId = Integer.parseInt(  request.getParameter("userId"));
-//        List<User> users = userDAO.getUserById(userId);
-//        request.setAttribute("users", users);
-        
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/edit.jsp");
             dispatcher.forward(request,response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
