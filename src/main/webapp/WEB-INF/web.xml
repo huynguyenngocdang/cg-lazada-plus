@@ -9,11 +9,16 @@
     </welcome-file-list>
 
 <!--    <welcome-file-list>-->
+<!--        <welcome-file>/view/product/listProduct.jsp</welcome-file>-->
+<!--    </welcome-file-list>-->
+
+<!--    <welcome-file-list>-->
 <!--        <welcome-file>/view/checkOut/checkOutCompleted.jsp</welcome-file>-->
 <!--    </welcome-file-list>-->
 
 <!--    <welcome-file-list>-->
 <!--        <welcome-file>/view/checkOut/checkOutFailed.jsp</welcome-file>-->
 <!--    </welcome-file-list>-->
+
 
 </web-app>

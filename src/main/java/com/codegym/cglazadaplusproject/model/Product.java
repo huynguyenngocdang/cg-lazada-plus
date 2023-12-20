@@ -8,6 +8,14 @@ public class Product {
     private double productCost;
     private boolean isDelete;
 
+
+    public Product(int productUserId, String productName, double productQuantity, double productCost) {
+        this.productUserId = productUserId;
+        this.productName = productName;
+        this.productQuantity = productQuantity;
+        this.productCost = productCost;
+    }
+
     public Product(int productId, int productUserId, String productName, double productQuantity, double productCost, boolean isDelete) {
         this.productId = productId;
         this.productUserId = productUserId;
