@@ -48,10 +48,6 @@ select {
     background-color: #fcfcfc;
 }
 
-option {
-    font-size: 1.1em;
-}
-
 .display-options {
     display: flex;
     gap: 0;
@@ -73,17 +69,3 @@ option {
     background-color: #ececec;
     color: #424242;
 }
-
-.product-container {
-    display: grid;
-    justify-content: space-between;
-    row-gap: 4em;
-    grid-template-columns: repeat(6, 45em);
-}
-
-.product-thumbnail img {
-    width: 100%;
-    height: 45em;
-    object-fit: cover;
-}
-

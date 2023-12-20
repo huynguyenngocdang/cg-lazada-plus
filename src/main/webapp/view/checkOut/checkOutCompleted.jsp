@@ -11,16 +11,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--  Thay keyword vào title-->
-    <title><c:out value="${keyword}"/> - Tìm kiếm</title>
+    <title>Thanh toán</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/searchProduct.css">
-    <link rel="stylesheet" type="text/css" href="../../css/searchNotFound.css">
+    <link rel="stylesheet" type="text/css" href="../../css/checkout.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -143,7 +141,7 @@
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
+                               placeholder="Tìm kiếm trên Lazada">
                     </div>
 
                     <div class="search-icon">
@@ -172,44 +170,26 @@
 
 <div class="body-container">
     <div class="body">
-        <div class="bookmark">
-            <a href="${pageContext.request.contextPath}/index">
-                <span>Trang chủ</span>
-            </a>
-            <span>></span>
-            <span>Kết quả tìm kiếm</span>
+        <div class="checkout-content">
+            <p>Thanh toán thành công</p>
+            <p>Đơn hàng sẽ sớm được vận chuyển tới bạn</p>
+
+            <%--            Checkout Fail--%>
+            <%--            <p>Thanh toán thất bại</p>--%>
+            <%--            <p>Số dư của bạn không đủ để thực hiện giao dịch này</p>--%>
         </div>
 
-        <hr>
-
-        <div class="search-result">
-            <div class="search-keyword-setting">
-                <div class="keyword-setting">
-                    <!--            Thay keyword-->
-                    <p><c:out value="${keyword}"/></p>
-                </div>
-
-                <div class="search-result-setting">
-                    <p><c:out value="${searchResult.size()}"/> kết quả cho "<c:out value="${keyword}"/>"</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="search-not-found-content">
-            <div class="search-not-found-text">
-                <p>Tìm kiếm không có kết quả...</p>
-                <p>Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</p>
+        <div class="checkout-image">
+            <div class="checkout-icon">
+                <i class="fa-solid fa-circle-check" style="color: #18b470;"></i>
+                <%--                Checkout fail--%>
+                <%--                <i class="fa-solid fa-circle-xmark" style="color: #bababa;"></i>--%>
             </div>
 
-            <div class="search-not-found-image">
-                <div class="search-not-found-icon">
-                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal" style="color: #bababa;"></i>          </div>
-
-                <div class="back-to-main-button">
-                    <a href="<c:url value="/index"/>">
-                        <button>Trở về</button>
-                    </a>
-                </div>
+            <div class="back-to-main-button">
+                <a href="<c:url value="/index"/>">
+                    <button>Trở về</button>
+                </a>
             </div>
         </div>
     </div>
