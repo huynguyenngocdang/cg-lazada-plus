@@ -196,7 +196,7 @@
                             </div>
 
                             <div class="product-checkout-detail">
-                                <p class="product-checkout-price"><c:out value="đ${cartItem.product.productCost}"/></p>
+                                <p class="product-checkout-price"><c:out value="$${cartItem.product.productCost}"/></p>
                                 <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
                                 <div class="product-checkout-quantity">
                                     <label for="product-id-quantity">Số lượng:</label>
