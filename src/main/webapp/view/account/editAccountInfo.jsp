@@ -221,7 +221,7 @@
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
 
 </body>
 </html>
