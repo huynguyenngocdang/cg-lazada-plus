@@ -5,6 +5,7 @@ import com.codegym.cglazadaplusproject.dao.*;
 import com.codegym.cglazadaplusproject.model.Category;
 import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.Product;
+import com.codegym.cglazadaplusproject.model.PurchaseOrder;
 import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.validator.UserValidator;
 import com.codegym.cglazadaplusproject.validator.Validator;
@@ -26,6 +27,7 @@ public class UserController extends HttpServlet {
     private final IProductDAO productDAO = new ProductDAO();
     private final ICategoryDAO categoryDAO = new CategoryDAO();
     private final ICustomerMembershipDAO membershipDAO = new CustomerMembershipDAO();
+    private final IPurchaseOrderDAO purchaseOrderDAO = new PurchaseOrderDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,8 +55,23 @@ public class UserController extends HttpServlet {
             case "displayUser":
                 displayUser(request,response);
                 break;
+            case "history":
+                displayHistory(request, response);
             default:
                 break;
+        }
+    }
+
+    private void displayHistory(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
+            List<PurchaseOrder> purchaseOrders = purchaseOrderDAO.getPurchaseOrder(currentUser.getUserId());
+            request.setAttribute("poItems", purchaseOrders);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/userHistory.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

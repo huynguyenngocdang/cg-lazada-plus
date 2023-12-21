@@ -29,6 +29,18 @@ public class PurchaseOrder {
         this.poFinalCost = poFinalCost;
     }
 
+    public PurchaseOrder(int productId, int buyerId, int sellerId,Date poDate,String poAddress, double poQuantity, double poUnitPrice, double poTotalCost, double poFinalCost) {
+        this.productId = productId;
+        this.buyerId = buyerId;
+        this.sellerId = sellerId;
+        this.poAddress = poAddress;
+        this.poDate = poDate;
+        this.poQuantity = poQuantity;
+        this.poUnitPrice = poUnitPrice;
+        this.poTotalCost = poTotalCost;
+        this.poFinalCost = poFinalCost;
+    }
+
     public int getProductId() {
         return productId;
     }

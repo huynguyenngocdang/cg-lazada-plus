@@ -1,13 +1,6 @@
 <%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Category" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ICategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.CategoryDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.IProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.dao.ProductDAO" %>
-<%@ page import="com.codegym.cglazadaplusproject.model.Product" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,17 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/titleIcon.png">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="shortcut icon" href="../../images/titleIcon.png">
+    <link rel="stylesheet" type="text/css" href="../../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../css/cartCheckOut.css">
 </head>
 <body>
-
 <c:if test='${not empty requestScope["message"]}'>
     <div class="noti-container" id="noti-container">
         <div class="noti-content">
             <div class="noti-icon">
-                <img src="../images/header/logo-heart.png" alt="this is lazada icon">
+                <img src="../../images/header/logo-heart.png" alt="this is lazada icon">
             </div>
 
             <div class="noti-title">
@@ -43,11 +35,10 @@
         </div>
     </div>
 </c:if>
-
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -95,17 +86,15 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <%--                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">--%>
-                        <a href="<c:out value="/users?action=showEdit"/>">
+                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
                         <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
-
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
-                        <a href="/users?action=history">
+                        <a href="">
                             <i class="fa-regular fa-credit-card" style="color: #d6d6d6;"></i>
                             <span>Lịch sử giao dịch</span>
                         </a>
@@ -150,8 +139,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -178,7 +167,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -187,93 +176,43 @@
 </div>
 
 <div class="body-container">
-    <div class="body">
 
-        <div class="body-column-1 categories-container">
-            <div class="categories-title">
-                <p>Danh mục</p>
-            </div>
+    <form action="<c:url value="/checkOut?action=purchase"/>" method="post" class="body">
 
-            <hr>
+        <div class="cart-product-list content-frame">
 
-            <div class="categories-content">
-                <%
-                    ICategoryDAO categoryDAO = new CategoryDAO();
-                    List<Category> categories = categoryDAO.getAllCategory();
-                    for (Category category : categories) { %>
-                <button type="submit" name="categoryID" value="<%=category.getCategoryId()%>">
-                    <a href="${pageContext.request.contextPath}/products?action=displayProductByCategory&categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%>
-                    </a>
-                </button>
-                <% } %>
-            </div>
-        </div>
+            <!--        Bắt đầu vòng lặp forEach-->
+            <c:forEach var="poItem" items="${poItems}">
+                <div class="product-checkout-item">
+                    <div class="product-checkout-info">
+                        <div class="product-checkout-description">
 
-        <div class="body-column-2">
-            <div class="just-for-you product-section">
-                <div class="title-bar">
-                    <div class="title">
-                        <p>Dành riêng cho bạn</p>
+                            <div class="product-checkout-name">
+                                <p><c:out value="${poItem.productId}"/></p>
+                                <p><c:out value="$${poItem.poUnitPrice}"/></p>
+                                <p><c:out value="${poItem.poDate}"/></p>
+                            </div>
+
+                            <div class="product-checkout-detail">
+                                <p class="product-checkout-price"><c:out value="$${poTotalCost}"/></p>
+                                <div class="product-checkout-quantity">
+                                    <label for="product-id-quantity">Số lượng:</label>
+                                    <input type="number" name="product-id-quantity" id="product-id-quantity" value="${poItem.poQuantity}" disabled>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+                <hr>
+            </c:forEach>
+            <!--        Kết thúc vòng lặp-->
 
-                <div class="product-container">
-
-                    <c:if test="${not empty products}">
-                        <c:forEach items="${products}" var="product">
-                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
-                                <div class="product-item">
-                                    <div class="product-thumbnail">
-                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
-                                             alt="product-thumbnail">
-                                    </div>
-
-                                    <div class="product-description">
-                                        <div class="product-name">
-                                            <p><c:out value="${product.getProductName()}"/></p>
-                                        </div>
-                                        <div class="product-price">
-                                            <p><c:out value="$${product.getProductCost()}"/></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </c:forEach>
-                    </c:if>
-
-                    <c:if test="${empty products}">
-                        <%
-                            IProductDAO productDAO = new ProductDAO();
-                            List<Product> products = productDAO.getAllProduct();
-                        %>
-                        <c:set var="products" value="<%= products %>" scope="request"/>
-
-                        <c:forEach items="${products}" var="product">
-                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
-                                <div class="product-item">
-                                    <div class="product-thumbnail">
-                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
-                                             alt="product-thumbnail">
-                                    </div>
-
-                                    <div class="product-description">
-                                        <div class="product-name">
-                                            <p><c:out value="${product.getProductName()}"/></p>
-                                        </div>
-                                        <div class="product-price">
-                                            <p><c:out value="$${product.getProductCost()}"/></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </c:forEach>
-                    </c:if>
-                </div>
-            </div>
         </div>
-    </div>
+
+    </form>
 </div>
-<script src="../js/animation.js"></script><script src="../../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
 <script>
     let accountOverlayButton = document.getElementById("AccountOverlayButton");
     let accountOverlay = document.getElementById("AccountOverlay");
