@@ -99,7 +99,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -242,7 +242,7 @@
                                             <p><c:out value="${product.getProductName()}"/></p>
                                         </div>
                                         <div class="product-price">
-                                            <p><c:out value="đ${product.getProductCost()}"/></p>
+                                            <p><c:out value="$${product.getProductCost()}"/></p>
                                         </div>
                                     </div>
                                 </div>

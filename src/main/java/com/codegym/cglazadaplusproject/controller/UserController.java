@@ -64,7 +64,7 @@ public class UserController extends HttpServlet {
         List<User> users = userDAO.getAllUser();
         request.setAttribute("users", users);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/editUser.jsp");
             dispatcher.forward(request,response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class UserController extends HttpServlet {
     }
     private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class UserController extends HttpServlet {
         int userId = Integer.parseInt(  request.getParameter("userId"));
         User selectUser = userDAO.getUserById(userId);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/editUser.jsp");
             request.setAttribute("selectUser", selectUser);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -103,7 +103,7 @@ public class UserController extends HttpServlet {
         List<User> users = userDAO.getAllUser();
         request.setAttribute("users", users);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/listUser.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -172,7 +172,7 @@ public class UserController extends HttpServlet {
             selectUser = userDAO.getUserById(userId);
             request.setAttribute("selectUser", selectUser);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/editUser.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -188,13 +188,13 @@ public class UserController extends HttpServlet {
             if (validator.checkUser()){
                 message = VarConstant.REGISTER_FAILED_NOTI;
                 request.setAttribute("message",message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
                 message= VarConstant.REGISTER_SUCCESS_NOTI;
                 request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             }
         } catch (ServletException | IOException e) {
@@ -211,7 +211,7 @@ public class UserController extends HttpServlet {
             message= "Tài khoản đã được xoá thành công.";
             request.setAttribute("message", message);
             request.getSession().setAttribute("users", listUser);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/listUser.jsp");
             dispatcher.forward(request,response);
         } catch (ServletException | IOException e){
             e.printStackTrace();

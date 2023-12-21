@@ -99,7 +99,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -148,8 +148,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -157,7 +157,7 @@
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
+                               placeholder="Tìm kiếm trên Lazada">
                     </div>
 
                     <div class="search-icon">

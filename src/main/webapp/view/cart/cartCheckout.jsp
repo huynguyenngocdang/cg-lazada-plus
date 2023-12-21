@@ -90,7 +90,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -139,8 +139,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -196,7 +196,7 @@
                             </div>
 
                             <div class="product-checkout-detail">
-                                <p class="product-checkout-price"><c:out value="đ${cartItem.product.productCost}"/></p>
+                                <p class="product-checkout-price"><c:out value="$${cartItem.product.productCost}"/></p>
                                 <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
                                 <div class="product-checkout-quantity">
                                     <label for="product-id-quantity">Số lượng:</label>

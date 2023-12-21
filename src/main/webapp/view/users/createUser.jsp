@@ -92,7 +92,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -141,8 +141,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -193,12 +193,12 @@
 
                     <div class="form-input">
                         <label for="password">Mật khẩu*</label>
-                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu"
+                        <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()"
                                required>
                     </div>
                     <div class="form-input">
                         <label for="passwordConfirm">Nhập lại mật khẩu*</label>
-                        <input type="password" name="passwordConfirm" id="passwordConfirm"
+                        <input type="password" name="passwordConfirm" id="passwordConfirm" oninput="checkConfirmPassword()" onchange="checkConfirmPassword()"
                                placeholder="Vui lòng nhập lại mật khẩu" required/>
                         <p class="re-enter-confirm-password" id="passwordNoti">Mật khẩu không trùng khớp</p>
                     </div>
@@ -225,5 +225,9 @@
 
 <script src="../../js/signInPasswordConfirm.js"></script>
 <script src="../../js/animation.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 </body>
 </html>

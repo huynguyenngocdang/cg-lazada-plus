@@ -1,26 +1,19 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
-  Created by IntelliJ IDEA.
-  User: Hgiang
-  Date: 19/12/2023
-  Time: 11:31 SA
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--  Thay keyword vào title-->
-    <title><c:out value="${keyword}"/> - Tìm kiếm</title>
+    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/searchProduct.css">
-    <link rel="stylesheet" type="text/css" id="viewMode" href="../../css/searchProductCellView.css">
+    <link rel="stylesheet" type="text/css" href="../../css/home.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -99,7 +92,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -153,11 +146,12 @@
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>"
+                      method="post">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
-                               placeholder="Tìm kiếm trên Lazada" value="<c:out value="${keyword}"/>">
+                               placeholder="Tìm kiếm trên Lazada">
                     </div>
 
                     <div class="search-icon">
@@ -183,105 +177,25 @@
         </div>
     </div>
 </div>
-<div class="body-container">
-    <form class="body" name="sortResultForm" action="<c:url value="/products?action=sortSearchResult"/>" method="post">
-        <div class="bookmark">
-            <a href="<c:url value="/index"/>">
-                <span>Trang chủ</span>
-            </a>
-            <span>></span>
-            <span>Kết quả tìm kiếm</span>
-        </div>
-
-        <hr>
-        <input type="text" hidden="hidden" name="keyword" value="${keyword}">
-
-        <div class="search-result">
-            <div class="search-keyword-setting">
-                <div class="keyword-setting">
-                    <!--            Thay keyword-->
-                    <p><c:out value="${keyword}"/></p>
-                </div>
-
-                <div class="search-result-setting">
-                    <p><c:out value="${searchResult.size()}"/> kết quả cho "<c:out value="${keyword}"/>"</p>
-
-                    <div class="display-sort-result">
-                        <div class="sort-result">
-                            <p>Sắp xếp theo: </p>
-                            <select name="sort" id="sort" class="sort-result">
-                                <c:choose>
-                                    <c:when test="${sortMode=='sortByPriceMin'}">
-                                        <option value="sortById">Phù hợp nhất</option>
-                                        <option value="sortByPriceMin" selected>Giá từ thấp tới cao</option>
-                                        <option value="sortByPriceMax">Giá từ cao xuống thấp</option>
-                                    </c:when>
-                                    <c:when test="${sortMode=='sortByPriceMax'}">
-                                        <option value="sortById">Phù hợp nhất</option>
-                                        <option value="sortByPriceMin">Giá từ thấp tới cao</option>
-                                        <option value="sortByPriceMax" selected>Giá từ cao xuống thấp</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="sortById" selected>Phù hợp nhất</option>
-                                        <option value="sortByPriceMin">Giá từ thấp tới cao</option>
-                                        <option value="sortByPriceMax">Giá từ cao xuống thấp</option>
-                                    </c:otherwise>
-                                </c:choose>
-                            </select>
-                        </div>
-                        <div class="display-result">
-                            <p>Hiển thị: </p>
-                            <div class="display-options">
-                                <i class="fa-solid fa-table-cells-large" id="CellViewButton"></i>
-                                <i class="fa-solid fa-table-list" id="ListViewButton"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="search-result-list">
-                <div class="product-container">
-                    <c:forEach var="product" items="${searchResult}">
-                        <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
-                            <div class="product-item">
-                                <div class="product-thumbnail">
-                                    <img src="../../images/products/<c:out value="${product.getProductId()}"/>.jpg"
-                                         alt="product-thumbnail">
-                                </div>
-
-                                <div class="product-description">
-                                    <div class="product-detail">
-                                        <div class="product-name">
-                                            <p><c:out value="${product.getProductName()}"/></p>
-                                        </div>
-                                        <div class="product-price">
-                                            <p><c:out value="$${product.getProductCost()}"/></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-sale">
-                                        <i class="fa-solid fa-star" style="color: #faca51;"></i>
-                                        <i class="fa-solid fa-star" style="color: #faca51;"></i>
-                                        <i class="fa-solid fa-star" style="color: #faca51;"></i>
-                                        <i class="fa-solid fa-star" style="color: #faca51;"></i>
-                                        <i class="fa-solid fa-star" style="color: #faca51;"></i>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-<script src="../../js/animation.js"></script>
-
+<form action="<c:url value="/users?action=edit&userId=${selectUser.getUserId()}"/>" method="post">
+    <div>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>UserPassword</th>
+                <th></th>
+            </tr>
+            <c:forEach var="user" items="${users}">
+            <tr>
+                <td><c:out value="${user.getUsername()}"/></td>
+                <td><c:out value="${user.getUserPassword()}"/></td>
+                <td><a href="<c:url value="/users?action=showEdit&userId=${user.getUserId()}"/>"> Edit </a>
+                    <a href="/users?action=deleteUser&userId=${user.getUserId()}">Delete</a></td>
+            </tr>
+        </table>
+        </c:forEach>
+    </div>
+</form>
+    <script src="../../js/animation.js"></script>
 </body>
 </html>
-
