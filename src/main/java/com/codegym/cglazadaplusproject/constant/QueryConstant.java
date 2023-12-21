@@ -18,7 +18,6 @@ public interface QueryConstant {
     String SEARCH_PRODUCT_SORT_BY_PRICE_MAX = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost DESC";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MIN = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
     String GET_ALL_CATEGORY = "Select * from category WHERE is_delete = ? ";
-
     String GET_ALL_PRODUCT = "Select * from product WHERE is_delete = 0";
     String GET_ALL_PRODUCT_NOT_OWNED_BY_USER = "Select * from product p1 WHERE NOT EXISTS (SELECT 1 FROM product p2 WHERE p2.user_id = ? and p1.product_id = p2.product_id)";
     String GET_PRODUCT_BY_ID = "Select * from product WHERE product_id = ? ";
@@ -38,4 +37,5 @@ public interface QueryConstant {
     String GET_CUSTOMER_MEMBERSHIP_RANK_WITH_POINT = "SELECT * FROM customer_membership WHERE customer_membership_point_reference <= ? ORDER BY customer_membership_point_reference DESC LIMIT 1";
     String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET customer_name = ?, customer_address = ?, customer_balance = ? WHERE (customer_id = ?);";
     String GET_CUSTOMER_BY_ID = "SELECT * from customer where customer_id = ?";
+    String GET_PO_BY_USER_ID = "SELECT * from purchase_order where buyer_id = ?";
 }
