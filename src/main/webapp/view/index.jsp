@@ -95,7 +95,8 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
+<%--                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">--%>
+                             <a href="<c:out value="/users?action=showEdit"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
