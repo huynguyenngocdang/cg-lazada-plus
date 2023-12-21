@@ -138,8 +138,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
