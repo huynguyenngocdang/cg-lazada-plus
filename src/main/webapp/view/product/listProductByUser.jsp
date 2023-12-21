@@ -484,12 +484,8 @@
                     </div>
                     <div class="product-checkout-delete">
                         <a style="font-size: medium"
-<<<<<<< HEAD
                            href="${pageContext.request.contextPath}/products?action=showEditProductForm&productID=${product.productId}">Sửa
                             sản phẩm</a>
-=======
-                           href="${pageContext.request.contextPath}/products?action=showEditProductForm&productID=${product.productId}">Sửa sản phẩm</a>
->>>>>>> 499863933fc98db9ec53f6697a67fe064c199bb2
                     </div>
                     <div class="product-checkout-delete">
                         <a style="font-size: medium"
@@ -500,7 +496,7 @@
                 <hr>
             </c:forEach>
             <!--        Kết thúc vòng lặp-->
-                <a class="addUserProduct" href="/products?action=showCreateProductForm">Thêm sản phẩm</a>
+            <a class="addUserProduct" href="/products?action=showCreateProductForm">Thêm sản phẩm</a>
 
         </div>
     </form>
