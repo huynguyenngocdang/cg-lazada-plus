@@ -30,5 +30,6 @@ public interface IProductDAO {
 
     boolean deleteProduct(int productId);
 
-    void createProduct(Product product);
+    boolean createProduct(Product product);
+    boolean createProductCategory(int categoryId);
 }

@@ -195,15 +195,33 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public void createProduct(Product product) {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.INSERT_PRODUCT_SQL)){
+    public boolean createProduct(Product product) {
+        boolean rowStatement = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.INSERT_PRODUCT_SQL);
             preparedStatement.setInt(1, product.getProductUserId());
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setDouble(3, product.getProductQuantity());
             preparedStatement.setDouble(4, product.getProductCost());
-            preparedStatement.executeUpdate();
+            rowStatement = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowStatement;
     }
+
+    @Override
+    public boolean createProductCategory(int categoryId) {
+        boolean rowStatement = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.INSERT_PRODUCT_CATEGORY_SQL);
+            preparedStatement.setInt(1, categoryId);
+            rowStatement = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rowStatement;
+    }
+
+
 }

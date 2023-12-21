@@ -1,6 +1,10 @@
 package com.codegym.cglazadaplusproject.controller;
+import com.codegym.cglazadaplusproject.constant.QueryConstant;
+import com.codegym.cglazadaplusproject.dao.CategoryDAO;
+import com.codegym.cglazadaplusproject.dao.ICategoryDAO;
 import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
+import com.codegym.cglazadaplusproject.model.Category;
 import com.codegym.cglazadaplusproject.model.Product;
 import com.codegym.cglazadaplusproject.model.User;
 
@@ -16,6 +20,7 @@ import java.util.List;
 @WebServlet(name = "ProductController", urlPatterns = "/products")
 public class ProductController extends HttpServlet {
     private final IProductDAO productDAO = new ProductDAO();
+    private final ICategoryDAO categoryDAO = new CategoryDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -200,13 +205,16 @@ public class ProductController extends HttpServlet {
     public void createProduct(HttpServletRequest request, HttpServletResponse response) {
         User currentUser = (User) request.getSession().getAttribute("currentUser");
         int currentUserId = (currentUser != null) ? currentUser.getUserId() : null;
-//        int userID = Integer.parseInt(request.getParameter("userID"));
         String productName = request.getParameter("productName");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        double quantity = Double.parseDouble((request.getParameter("quantity")));
         double price = Double.parseDouble(request.getParameter("price"));
         Product newProduct = new Product(currentUserId,productName,quantity,price);
+        int prodCategoryId = Integer.parseInt(request.getParameter("category"));
         productDAO.createProduct(newProduct);
+        productDAO.createProductCategory(prodCategoryId);
         try {
+            List<Product> products = productDAO.getProductByUserId(currentUser.getUserId());
+            request.setAttribute("products", products);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
             dispatcher.forward(request, response);
 
@@ -217,6 +225,9 @@ public class ProductController extends HttpServlet {
 
     private void showCreateProductForm(HttpServletRequest request, HttpServletResponse response) {
         try {
+            System.out.println("show create");
+            List<Category> categories = categoryDAO.getAllCategory();
+            request.setAttribute("categories", categories);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/createProduct.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -265,11 +276,12 @@ public class ProductController extends HttpServlet {
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-        int userId = Integer.parseInt(request.getParameter("userId"));
+        User currentUser = (User) request.getSession().getAttribute("currentUser");
+        int currentUserId = (currentUser != null) ? currentUser.getUserId() : null;
         int productId = Integer.parseInt(request.getParameter("productId"));
         try {
             productDAO.deleteProduct(productId);
-            List<Product> products = productDAO.getProductByUserId(userId);
+            List<Product> products = productDAO.getProductByUserId(currentUserId);
             request.setAttribute("products", products);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
             dispatcher.forward(request, response);

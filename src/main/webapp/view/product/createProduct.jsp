@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
   Created by IntelliJ IDEA.
   User: long
@@ -7,14 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-=======
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
 <!DOCTYPE html>
 <html lang="en">
->>>>>>> fa19d4173861fdf1e572a7d390199cb25e7eb65a
+
 <head>
     <meta charset="UTF-8">
     <title>Thông tin sản phẩm</title>
@@ -27,37 +23,47 @@
     <link rel="stylesheet" type="text/css" href="../../css/user.css">
 </head>
 <body>
-<<<<<<< HEAD
+
 <center>
     <h1>New Product</h1>
 </center>
 <div align="center">
-    <<form action="/products?action=createProduct" method="post">
+    <form action="/products?action=createProduct" method="post">
         <table>
-<%--            <tr>--%>
-<%--                <th>User ID:</th>--%>
-<%--                <td>--%>
-<%--                    <input type="text" name="userID" id="userID" size="45"/>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
             <tr>
-                <th>Product Name:</th>
+                <td>Product Name:</td>
                 <td>
                     <input type="text" name="productName" id="productName" size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>Quantity:</th>
+                <td>Quantity:</td>
                 <td>
-                    <input type="text" name="quantity" id="quantity" size="45"/>
+                    <input type="number" name="quantity" id="quantity" min="0"  size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>Price:</th>
+                <td>Price:</td>
                 <td>
-                    <input type="text" name="price" id="price" size="45"/>
+                    <input type="number" name="price" id="price" min="0"  size="45"/>
                 </td>
             </tr>
+            <tr>
+                <td>Category:</td>
+                <td>
+                    <select name="category" id="category">
+                        <c:forEach var="category" items="${categories}">
+                            <option value="${category.categoryId}">${category.categoryName}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit"> SaveProduct</button>
+                </td>
+            </tr>
+
         </table>
     </form>
 </div>
