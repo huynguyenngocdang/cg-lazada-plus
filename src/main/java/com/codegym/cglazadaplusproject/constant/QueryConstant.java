@@ -18,6 +18,7 @@ public interface QueryConstant {
     String SEARCH_PRODUCT_SORT_BY_PRICE_MAX = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost DESC";
     String SEARCH_PRODUCT_SORT_BY_PRICE_MIN = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
     String GET_ALL_CATEGORY = "Select * from category WHERE is_delete = ? ";
+
     String GET_ALL_PRODUCT = "Select * from product WHERE is_delete = 0";
     String GET_ALL_PRODUCT_NOT_OWNED_BY_USER = "Select * from product p1 WHERE NOT EXISTS (SELECT 1 FROM product p2 WHERE p2.user_id = ? and p1.product_id = p2.product_id)";
     String GET_PRODUCT_BY_ID = "Select * from product WHERE product_id = ? ";
