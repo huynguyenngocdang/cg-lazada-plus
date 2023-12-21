@@ -4,8 +4,13 @@ public interface QueryConstant {
     String GET_ALL_USER = "Select * from user";
     String GET_USER_BY_ID = "Select * from user where user_id = ?";
     String GET_USER_BY_NAME = "Select * from user where user_name = ?";
+
     String UPDATE_USER_BY_ID =
             "UPDATE `user` SET `user_name` = ?, `user_password` = ? WHERE (`user_id` = ?);";
+
+    String UPDATE_USER_PASSWORD_BY_ID =
+            "UPDATE `user` SET  `user_password` = ? WHERE (`user_id` = ?);";
+
 
     String INSERT_USER = "INSERT INTO `user`(user_name,user_password) VALUES(?,?)";
     String DELETE_USER = "update user set is_delete = 1 where user_id = ?;";
@@ -30,5 +35,6 @@ public interface QueryConstant {
     String INSERT_NEW_PO = "INSERT INTO purchase_order (product_id, buyer_id, seller_id, purchase_order_date, purchase_order_address, purchase_order_quantity, purchase_order_unit_price, purchase_order_total_cost, purchase_order_final_cost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String GET_CUSTOMER_MEMBERSHIP_RANK = "SELECT * FROM customer_membership WHERE customer_membership_id = ?";
     String GET_CUSTOMER_MEMBERSHIP_RANK_WITH_POINT = "SELECT * FROM customer_membership WHERE customer_membership_point_reference <= ? ORDER BY customer_membership_point_reference DESC LIMIT 1";
-
+    String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET customer_name = ?, customer_address = ?, customer_balance = ? WHERE (customer_id = ?);";
+    String GET_CUSTOMER_BY_ID = "SELECT * from customer where customer_id = ?";
 }

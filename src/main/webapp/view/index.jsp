@@ -95,11 +95,12 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">
+<%--                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">--%>
+                             <a href="<c:out value="/users?action=showEdit"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -254,7 +255,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <script src="../js/animation.js"></script>
 </body>
 </html>
