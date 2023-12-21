@@ -6,6 +6,7 @@ import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.model.Category;
 import com.codegym.cglazadaplusproject.model.Product;
+import com.codegym.cglazadaplusproject.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,12 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexController extends HttpServlet {
     private final ICategoryDAO categoryDAO = new CategoryDAO();
-    private final IProductDAO productDao = new ProductDAO();
+    private final IProductDAO productDAO = new ProductDAO();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -36,7 +39,13 @@ public class IndexController extends HttpServlet {
     private void displayIndex(HttpServletRequest req, HttpServletResponse resp) {
         try {
             List<Category> categories = categoryDAO.getAllCategory();
-            List<Product> products = productDao.getAllProduct();
+            List<Product> products;
+            User currentUser = (User) req.getSession().getAttribute("currentUser");
+            if(currentUser != null) {
+                products = productDAO.getAllProductNotOwnedByUser(currentUser.getUserId());
+             } else {
+                products = productDAO.getAllProduct();
+            }
             req.setAttribute("categories", categories);
             req.setAttribute("products", products);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/view/index.jsp");

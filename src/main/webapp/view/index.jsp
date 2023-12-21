@@ -216,20 +216,37 @@
                     </div>
                 </div>
 
-
-                <%--                            List product dùng c:forEach--%>
-
-
                 <div class="product-container">
-                    <c:if test="${empty param.categoryId}">
+
+                    <c:if test="${not empty products}">
+                        <c:forEach items="${products}" var="product">
+                            <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
+                                <div class="product-item">
+                                    <div class="product-thumbnail">
+                                        <img src="../images/products/<c:out value="${product.getProductId()}"/>.jpg"
+                                             alt="product-thumbnail">
+                                    </div>
+
+                                    <div class="product-description">
+                                        <div class="product-name">
+                                            <p><c:out value="${product.getProductName()}"/></p>
+                                        </div>
+                                        <div class="product-price">
+                                            <p><c:out value="$${product.getProductCost()}"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="${empty products}">
                         <%
                             IProductDAO productDAO = new ProductDAO();
                             List<Product> products = productDAO.getAllProduct();
                         %>
                         <c:set var="products" value="<%= products %>" scope="request"/>
-                    </c:if>
 
-                    <c:if test="${not empty products}">
                         <c:forEach items="${products}" var="product">
                             <a href="<c:url value="/products?action=showProductById&productId=${product.getProductId()}"/>">
                                 <div class="product-item">
