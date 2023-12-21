@@ -36,20 +36,28 @@ public class IndexController extends HttpServlet {
         }
     }
 
-    private void displayIndex(HttpServletRequest req, HttpServletResponse resp) {
+    private void displayIndex(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Category> categories = categoryDAO.getAllCategory();
             List<Product> products;
-            User currentUser = (User) req.getSession().getAttribute("currentUser");
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
             if(currentUser != null) {
                 products = productDAO.getAllProductNotOwnedByUser(currentUser.getUserId());
+                System.out.println(products.size());
              } else {
                 products = productDAO.getAllProduct();
             }
-            req.setAttribute("categories", categories);
-            req.setAttribute("products", products);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/view/index.jsp");
-            dispatcher.forward(req, resp);
+            System.out.println("display Index");
+            System.out.println(products.size());
+            for (Product product: products
+                 ) {
+
+                System.out.println(product.toString());
+            }
+            request.setAttribute("categories", categories);
+            request.setAttribute("products", products);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
+            dispatcher.forward(request, response);
 
 
         } catch (ServletException | IOException e) {

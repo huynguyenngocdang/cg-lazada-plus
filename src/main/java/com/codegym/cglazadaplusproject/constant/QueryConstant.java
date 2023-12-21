@@ -19,7 +19,7 @@ public interface QueryConstant {
     String SEARCH_PRODUCT_SORT_BY_PRICE_MIN = "Select * from product WHERE product_name LIKE ? ORDER BY product_cost ASC";
     String GET_ALL_CATEGORY = "Select * from category WHERE is_delete = ? ";
     String GET_ALL_PRODUCT = "Select * from product WHERE is_delete = 0";
-    String GET_ALL_PRODUCT_NOT_OWNED_BY_USER = "Select * from product WHERE NOT EXISTS (SELECT 1 FROM product WHERE user_id = ?) AND is_delete = 0";
+    String GET_ALL_PRODUCT_NOT_OWNED_BY_USER = "Select * from product p1 WHERE NOT EXISTS (SELECT 1 FROM product p2 WHERE p2.user_id = ? and p1.product_id = p2.product_id)";
     String GET_PRODUCT_BY_ID = "Select * from product WHERE product_id = ? ";
     String SELECT_PRODUCT_BY_CATEGORY = "SELECT * FROM product p JOIN product_category pc ON p.product_id = pc.product_id WHERE pc.category_id = ? AND p.is_delete = 0 AND pc.is_delete = 0;";
     String INSERT_PRODUCT_SQL = "INSERT INTO product(user_id,product_name,product_quantity,product_cost) VALUES (?, ?, ?, ?);";
