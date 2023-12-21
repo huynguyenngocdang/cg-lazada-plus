@@ -91,7 +91,7 @@ a {
 
 .account-overlay-container {
   display: none;
-  /*visibility: hidden;*/
+
   position: absolute;
   top: 5rem;
   left: 0;

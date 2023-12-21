@@ -1,8 +1,17 @@
 package com.codegym.cglazadaplusproject.controller;
 
 import com.codegym.cglazadaplusproject.constant.VarConstant;
+import com.codegym.cglazadaplusproject.dao.CategoryDAO;
+import com.codegym.cglazadaplusproject.dao.CustomerDAO;
+import com.codegym.cglazadaplusproject.dao.ICategoryDAO;
+import com.codegym.cglazadaplusproject.dao.ICustomerDAO;
+import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
+import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
+import com.codegym.cglazadaplusproject.model.Category;
+import com.codegym.cglazadaplusproject.model.Customer;
+import com.codegym.cglazadaplusproject.model.Product;
 import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.validator.UserValidator;
 import com.codegym.cglazadaplusproject.validator.Validator;
@@ -14,11 +23,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserController extends HttpServlet {
     private final IUserDAO userDAO = new UserDAO();
+    private final ICustomerDAO customerDAO = new CustomerDAO();
+    private final IProductDAO productDAO = new ProductDAO();
+    private final ICategoryDAO categoryDAO = new CategoryDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +77,7 @@ public class UserController extends HttpServlet {
         List<User> users = userDAO.getAllUser();
         request.setAttribute("users", users);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/editUser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/edit.jsp");
             dispatcher.forward(request,response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -72,7 +85,7 @@ public class UserController extends HttpServlet {
     }
     private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -88,11 +101,16 @@ public class UserController extends HttpServlet {
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) {
-        int userId = Integer.parseInt(  request.getParameter("userId"));
-        User selectUser = userDAO.getUserById(userId);
+
+
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/editUser.jsp");
-            request.setAttribute("selectUser", selectUser);
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
+//            int userId = Integer.parseInt(  request.getParameter("userId"));
+            int userId =  currentUser.getUserId();
+//            User selectUser = userDAO.getUserById(userId);
+            Customer selectCustomer = customerDAO.getCustomerByUserid(userId);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/account/editAccountInfo.jsp");
+            request.setAttribute("selectCustomer", selectCustomer);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -103,7 +121,7 @@ public class UserController extends HttpServlet {
         List<User> users = userDAO.getAllUser();
         request.setAttribute("users", users);
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/listUser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -148,6 +166,18 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute("currentUser", currentUser);
                 message = VarConstant.LOGIN_SUCCESS_NOTI;
                 request.setAttribute("message", message);
+
+                List<Category> categories = categoryDAO.getAllCategory();
+                List<Product> filteredProducts  = productDAO.getAllProduct();
+                Iterator<Product> productIterator = filteredProducts .iterator();
+                while (productIterator.hasNext()) {
+                    Product currentProduct = productIterator.next();
+                    if(currentProduct.getProductUserId() == currentUser.getUserId()) {
+                        productIterator.remove();
+                    }
+                }
+                request.setAttribute("categories", categories);
+                request.setAttribute("products", filteredProducts );
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
                 dispatcher.forward(request, response);
             } else {
@@ -168,11 +198,10 @@ public class UserController extends HttpServlet {
         String newPassword = request.getParameter("newUserPassword");
         try {
             userDAO.updateUser(userId, newUsername, newPassword);
-
             selectUser = userDAO.getUserById(userId);
             request.setAttribute("selectUser", selectUser);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/editUser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -188,13 +217,13 @@ public class UserController extends HttpServlet {
             if (validator.checkUser()){
                 message = VarConstant.REGISTER_FAILED_NOTI;
                 request.setAttribute("message",message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
                 message= VarConstant.REGISTER_SUCCESS_NOTI;
                 request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
                 dispatcher.forward(request,response);
             }
         } catch (ServletException | IOException e) {
@@ -211,7 +240,7 @@ public class UserController extends HttpServlet {
             message= "Tài khoản đã được xoá thành công.";
             request.setAttribute("message", message);
             request.getSession().setAttribute("users", listUser);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/listUser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/list.jsp");
             dispatcher.forward(request,response);
         } catch (ServletException | IOException e){
             e.printStackTrace();

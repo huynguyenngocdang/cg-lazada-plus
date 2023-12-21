@@ -181,23 +181,35 @@
                 <p>Thay đổi thông tin cá nhân</p>
             </div>
             <div class="content-frame">
-                <form action="" method="post">
+                <form action="/customers?action=editCustomer&customerId=${selectCustomer.customerId}&userId=${currentUser.userId}" method="post">
                     <div class="form-input">
-                        <label for="name">Họ tên</label>
+                        <label for="customerName">Họ tên</label>
 <%--                        Bổ sung họ tên cũ vào trờng value của input--%>
-                        <input type="text" name="name" id="name" placeholder="Vui lòng nhập họ tên mới">
+                        <input type="text" name="customerName" id="customerName" value="${selectCustomer.customerName}" placeholder="Vui lòng nhập họ tên mới">
                     </div>
 
                     <div class="form-input">
-                        <label for="address">Địa chỉ</label>
+                        <label for="userPassword">Password</label>
+                        <%--                        Bổ sung họ tên cũ vào trờng value của input--%>
+                        <input type="password" name="userPassword" id="userPassword" value="${currentUser.userPassword}" placeholder="Vui lòng nhập password mới">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="customerAddress">Địa chỉ</label>
 <%--                        Bổ sung địa chỉ cũ vào trường value của input--%>
-                        <input type="text" name="address" id="address" placeholder="Vui lòng nhập địa chỉ mới">
+                        <input type="text" name="customerAddress" id="customerAddress" value="${selectCustomer.customerAddress}" placeholder="Vui lòng nhập địa chỉ mới">
                     </div>
 
                     <div class="form-input">
-                        <label for="balance">Số dư trong tài khoản</label>
-<%--                        Bổ sung min max--%>
-                        <input type="number" name="balance" id="balance">
+                        <label for="customerCurrentBalance">Số dư trong tài khoản</label>
+                        <input type="number" name="customerCurrentBalance" id="customerCurrentBalance" value="${selectCustomer.customerBalance}" readonly>
+                    </div>
+
+
+                    <div class="form-input">
+                        <label for="customerBalance">Nạp thêm tiền </label>
+                        <%--                        Bổ sung min max--%>
+                        <input type="number" name="customerBalance" id="customerBalance" min="0" value="0" >
                     </div>
 
                     <div class="submit-button">
@@ -209,7 +221,7 @@
     </div>
 </div>
 
-<script src="../js/animation.js"></script>
+<script src="../../js/animation.js"></script>
 
 </body>
 </html>

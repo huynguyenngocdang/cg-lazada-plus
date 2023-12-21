@@ -12,6 +12,8 @@ public interface IUserDAO {
 
     boolean updateUser(int userId, String newUsername, String newUserPassword);
 
+    boolean updateUserPassword(int userId, String newUserPassword);
+
     boolean insertUser(String userName, String password);
 
     User getUserByName(String username);
