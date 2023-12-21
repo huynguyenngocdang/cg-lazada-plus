@@ -374,7 +374,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -489,7 +489,7 @@
                     </div>
                     <div class="product-checkout-delete">
                         <a style="font-size: medium"
-                           href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${product.productId}">
+                           href="${pageContext.request.contextPath}/products?action=deleteProduct&productId=${product.productId}">
                             Xóa sản phẩm</a>
                     </div>
                 </div>
