@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Thông tin sản phẩm</title>
+    <title>Tạo mặt hàng mới</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
 <div class="header">
     <div class="header-ad">
         <a href="">
-            <img src="../images/header/head-banner-1.webp" alt="">
+            <img src="../../images/header/head-banner-1.webp" alt="">
         </a>
     </div>
 
@@ -140,8 +140,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -168,7 +168,7 @@
 
                 <div class="menu-ad">
                     <a href="">
-                        <img src="../images/header/vib.png" alt="">
+                        <img src="../../images/header/vib.png" alt="">
                     </a>
                 </div>
             </div>
@@ -184,10 +184,6 @@
             </div>
             <div class="content-frame">
                 <form action="<c:url value="/products?action=createProduct"/>" method="post">
-                    <div class="form-input">
-                        <label for="userID">User ID:</label>
-                        <input type="text" name="userID" id="userID"/>
-                    </div>
                     <div class="form-input">
                         <label for="productName">Product Name:</label>
                         <input type="text" name="productName" id="productName"/>
