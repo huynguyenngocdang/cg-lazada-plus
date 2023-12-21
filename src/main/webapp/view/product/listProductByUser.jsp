@@ -496,7 +496,7 @@
                 <hr>
             </c:forEach>
             <!--        Kết thúc vòng lặp-->
-            <a class="addUserProduct" href="/products?action=showCreateProductForm">Thêm sản phẩm</a>
+            <h1><a class="addUserProduct" href="/products?action=showCreateProductForm">Thêm sản phẩm</a></h1>
 
         </div>
     </form>
