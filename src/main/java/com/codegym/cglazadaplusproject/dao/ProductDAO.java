@@ -38,6 +38,28 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public List<Product> getAllProductNotOwnedByUser(int userId) {
+        List<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.GET_ALL_PRODUCT_NOT_OWNED_BY_USER);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("product_id");
+                String productName = resultSet.getString("product_name");
+                double productQuantity = resultSet.getDouble("product_quantity");
+                double productCost = resultSet.getDouble("product_cost");
+                boolean isDelete = resultSet.getBoolean("is_delete");
+                products.add(new Product(productId, userId, productName, productQuantity, productCost, isDelete));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+    @Override
     public Product getProductById(int id) {
         Product product = null;
         try {

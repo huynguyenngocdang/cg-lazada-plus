@@ -253,6 +253,9 @@ public class ProductController extends HttpServlet {
             Product product = productDAO.getProductById(productID);
             request.setAttribute("selectProduct", product);
             request.setAttribute("message", message);
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
+            List<Product> products = productDAO.getProductByUserId(currentUser.getUserId());
+            request.setAttribute("products", products);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");
             dispatcher.forward(request, response);
 

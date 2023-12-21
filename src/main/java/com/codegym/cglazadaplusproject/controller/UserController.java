@@ -1,11 +1,17 @@
 package com.codegym.cglazadaplusproject.controller;
 
 import com.codegym.cglazadaplusproject.constant.VarConstant;
+import com.codegym.cglazadaplusproject.dao.CategoryDAO;
 import com.codegym.cglazadaplusproject.dao.CustomerDAO;
+import com.codegym.cglazadaplusproject.dao.ICategoryDAO;
 import com.codegym.cglazadaplusproject.dao.ICustomerDAO;
+import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
+import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
+import com.codegym.cglazadaplusproject.model.Category;
 import com.codegym.cglazadaplusproject.model.Customer;
+import com.codegym.cglazadaplusproject.model.Product;
 import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.validator.UserValidator;
 import com.codegym.cglazadaplusproject.validator.Validator;
@@ -17,12 +23,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserController extends HttpServlet {
     private final IUserDAO userDAO = new UserDAO();
     private final ICustomerDAO customerDAO = new CustomerDAO();
+    private final IProductDAO productDAO = new ProductDAO();
+    private final ICategoryDAO categoryDAO = new CategoryDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -157,6 +166,18 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute("currentUser", currentUser);
                 message = VarConstant.LOGIN_SUCCESS_NOTI;
                 request.setAttribute("message", message);
+
+                List<Category> categories = categoryDAO.getAllCategory();
+                List<Product> filteredProducts  = productDAO.getAllProduct();
+                Iterator<Product> productIterator = filteredProducts .iterator();
+                while (productIterator.hasNext()) {
+                    Product currentProduct = productIterator.next();
+                    if(currentProduct.getProductUserId() == currentUser.getUserId()) {
+                        productIterator.remove();
+                    }
+                }
+                request.setAttribute("categories", categories);
+                request.setAttribute("products", filteredProducts );
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/index.jsp");
                 dispatcher.forward(request, response);
             } else {
