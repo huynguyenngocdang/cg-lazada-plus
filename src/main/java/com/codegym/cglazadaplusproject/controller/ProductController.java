@@ -2,6 +2,8 @@ package com.codegym.cglazadaplusproject.controller;
 import com.codegym.cglazadaplusproject.dao.IProductDAO;
 import com.codegym.cglazadaplusproject.dao.ProductDAO;
 import com.codegym.cglazadaplusproject.model.Product;
+import com.codegym.cglazadaplusproject.model.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -196,11 +198,13 @@ public class ProductController extends HttpServlet {
     }
 
     public void createProduct(HttpServletRequest request, HttpServletResponse response) {
-        int userID = Integer.parseInt(request.getParameter("userID"));
+        User currentUser = (User) request.getSession().getAttribute("currentUser");
+        int currentUserId = (currentUser != null) ? currentUser.getUserId() : null;
+//        int userID = Integer.parseInt(request.getParameter("userID"));
         String productName = request.getParameter("productName");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         double price = Double.parseDouble(request.getParameter("price"));
-        Product newProduct = new Product(userID,productName,quantity,price);
+        Product newProduct = new Product(currentUserId,productName,quantity,price);
         productDAO.createProduct(newProduct);
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/product/listProductByUser.jsp");

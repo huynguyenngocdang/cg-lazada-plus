@@ -2,6 +2,7 @@ package com.codegym.cglazadaplusproject.dao;
 
 import com.codegym.cglazadaplusproject.constant.QueryConstant;
 import com.codegym.cglazadaplusproject.model.Product;
+import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.utils.JDBCConnection;
 
 import java.sql.Connection;

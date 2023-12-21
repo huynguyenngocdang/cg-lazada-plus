@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
   Created by IntelliJ IDEA.
   User: long
   Date: 12/13/2023
@@ -16,14 +16,14 @@
 </center>
 <div align="center">
     <form action="/products?action=createProduct" method="post">
-        <table>
 
-            <tr>
-                <th>User ID:</th>
-                <td>
-                    <input type="text" name="userID" id="userID" size="45"/>
-                </td>
-            </tr>
+        <table>
+<%--            <tr>--%>
+<%--                <th>User ID:</th>--%>
+<%--                <td>--%>
+<%--                    <input type="text" name="userID" id="userID" size="45"/>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
             <tr>
                 <th>Product Name:</th>
                 <td>
