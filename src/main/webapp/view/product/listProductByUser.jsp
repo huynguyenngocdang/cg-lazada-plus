@@ -164,51 +164,41 @@
                 <div class="product-checkout-item">
                     <div class="product-checkout-info">
                         <div class="product-checkout-thumbnail">
-                            <img src="../../images/just-for-you/${product.productId}.jpg" alt="">
+                            <img src="../../images/products/${product.productId}.jpg" alt="">
                         </div>
 
                         <div class="product-checkout-description">
 
-
                             <div class="product-checkout-name">
-                                <p><c:out value="${product.productName}"></c:out> </p>
+                                <p><c:out value="${product.productName}"/></p>
                             </div>
 
                             <div class="product-checkout-detail">
-                                <p class="product-checkout-price"><c:out value="${product.productCost}"></c:out> </p>
-                                <!--              Thay đổi tên trường name & id củ input trong vòng lặp-->
+                                <p class="product-checkout-price"><c:out value="đ${product.productCost}"/></p>
                             </div>
-
-
                         </div>
                     </div>
                     <div class="product-checkout-delete">
-                        <form action="${pageContext.request.contextPath}/checkOut" method="post">
-                            <input type="hidden" name="action" value="removeCartItem">
-                            <input type="hidden" name="productId" value="${product.productId}">
-                            <button type="submit">
-                                <a href="/products?action=showEditProductForm&productID=${product.productId}">Sửa sản phẩm</a>
-                            </button>
-                        </form>
+                        <a style="font-size: medium"
+                           href="${pageContext.request.contextPath}/products?action=showEditProductForm&productID=${product.productId}">Sửa sản phẩm</a>
                     </div>
                     <div class="product-checkout-delete">
-                        <form action="${pageContext.request.contextPath}/checkOut" method="post">
-                            <input type="hidden" name="action" value="removeCartItem">
-                            <input type="hidden" name="productId" value="${product.productId}">
-                            <button type="submit">
-                                <a href="/products?action=deleteProduct&productId=${product.productId}">Xóa sản phẩm</a>
-                            </button>
-                        </form>
+                        <a style="font-size: medium"
+                           href="${pageContext.request.contextPath}/checkOut?action=removeCartItem&productId=${product.productId}">
+                            Xóa sản phẩm</a>
                     </div>
                 </div>
-
                 <hr>
             </c:forEach>
+            <!--        Kết thúc vòng lặp-->
             <div class="product-detail-quantity">
                 <button type="submit">
                     <a href="/products?action=showCreateProductForm">THÊM SẢN PHẨM</a>
                 </button>
             </div>
+        </div>
+    </form>
+</div>
 <script src="../../js/animation.js"></script>
 </body>
 </html>
