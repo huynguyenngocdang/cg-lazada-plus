@@ -79,7 +79,7 @@ public class UserController extends HttpServlet {
     }
     private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -213,13 +213,13 @@ public class UserController extends HttpServlet {
             if (validator.checkUser()){
                 message = VarConstant.REGISTER_FAILED_NOTI;
                 request.setAttribute("message",message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
                 message= VarConstant.REGISTER_SUCCESS_NOTI;
                 request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             }
         } catch (ServletException | IOException e) {
