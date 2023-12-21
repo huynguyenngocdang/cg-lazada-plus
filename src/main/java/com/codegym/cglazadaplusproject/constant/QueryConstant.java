@@ -4,11 +4,13 @@ public interface QueryConstant {
     String GET_ALL_USER = "Select * from user";
     String GET_USER_BY_ID = "Select * from user where user_id = ?";
     String GET_USER_BY_NAME = "Select * from user where user_name = ?";
+
     String UPDATE_USER_BY_ID =
             "UPDATE `user` SET `user_name` = ?, `user_password` = ? WHERE (`user_id` = ?);";
 
     String UPDATE_USER_PASSWORD_BY_ID =
             "UPDATE `user` SET  `user_password` = ? WHERE (`user_id` = ?);";
+
 
     String INSERT_USER = "INSERT INTO `user`(user_name,user_password) VALUES(?,?)";
     String DELETE_USER = "update user set is_delete = 1 where user_id = ?;";
