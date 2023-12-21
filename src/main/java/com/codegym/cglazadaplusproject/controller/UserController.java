@@ -1,8 +1,11 @@
 package com.codegym.cglazadaplusproject.controller;
 
 import com.codegym.cglazadaplusproject.constant.VarConstant;
+import com.codegym.cglazadaplusproject.dao.CustomerDAO;
+import com.codegym.cglazadaplusproject.dao.ICustomerDAO;
 import com.codegym.cglazadaplusproject.dao.IUserDAO;
 import com.codegym.cglazadaplusproject.dao.UserDAO;
+import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.User;
 import com.codegym.cglazadaplusproject.validator.UserValidator;
 import com.codegym.cglazadaplusproject.validator.Validator;
@@ -19,6 +22,7 @@ import java.util.List;
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserController extends HttpServlet {
     private final IUserDAO userDAO = new UserDAO();
+    private final ICustomerDAO customerDAO = new CustomerDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -88,11 +92,16 @@ public class UserController extends HttpServlet {
     }
 
     private void showEdit(HttpServletRequest request, HttpServletResponse response) {
-        int userId = Integer.parseInt(  request.getParameter("userId"));
-        User selectUser = userDAO.getUserById(userId);
+
+
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/edit.jsp");
-            request.setAttribute("selectUser", selectUser);
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
+//            int userId = Integer.parseInt(  request.getParameter("userId"));
+            int userId =  currentUser.getUserId();
+//            User selectUser = userDAO.getUserById(userId);
+            Customer selectCustomer = customerDAO.getCustomerByUserid(userId);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/account/editAccountInfo.jsp");
+            request.setAttribute("selectCustomer", selectCustomer);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -168,7 +177,6 @@ public class UserController extends HttpServlet {
         String newPassword = request.getParameter("newUserPassword");
         try {
             userDAO.updateUser(userId, newUsername, newPassword);
-
             selectUser = userDAO.getUserById(userId);
             request.setAttribute("selectUser", selectUser);
 

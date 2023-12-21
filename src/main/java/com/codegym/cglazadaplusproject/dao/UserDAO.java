@@ -96,6 +96,22 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public boolean updateUserPassword(int userId, String newUserPassword) {
+        boolean rowStatement = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QueryConstant.UPDATE_USER_PASSWORD_BY_ID);
+
+            preparedStatement.setString(1, newUserPassword);
+            preparedStatement.setInt(2, userId);
+            rowStatement = preparedStatement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowStatement;
+    }
+
+    @Override
     public boolean insertUser(String userName, String password) {
         boolean rowUpdate = false;
         try {
