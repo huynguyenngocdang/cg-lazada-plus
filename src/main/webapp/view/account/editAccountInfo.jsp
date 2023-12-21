@@ -212,6 +212,18 @@
                         <input type="number" name="customerBalance" id="customerBalance" min="0" value="0" >
                     </div>
 
+                    <div class="form-input">
+                        <label for="customerPoint">Điểm thưởng</label>
+                        <%--                        Bổ sung địa chỉ cũ vào trường value của input--%>
+                        <input type="text" name="customerPoint" id="customerPoint" value="${selectCustomer.customerPoint}" readonly>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="customerRank">Hạng tài khoản</label>
+                        <%--                        Bổ sung địa chỉ cũ vào trường value của input--%>
+                        <input type="text" name="customerRank" id="customerRank" value="${customerMembershipRank}" readonly>
+                    </div>
+
                     <div class="submit-button">
                         <button type="submit">XÁC NHẬN THAY ĐỔI</button>
                     </div>
