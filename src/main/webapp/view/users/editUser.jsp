@@ -1,23 +1,19 @@
-<%@ page import="com.codegym.cglazadaplusproject.model.User" %><%--
-  Created by IntelliJ IDEA.
-  User: long
-  Date: 12/14/2023
-  Time: 10:41 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="com.codegym.cglazadaplusproject.model.User" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sửa mặt hàng</title>
+    <title>Lazada - Mua Sắm Hàng Chất Giá Tốt Online</title>
     <script src="https://kit.fontawesome.com/94d7aff8f4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="../../images/titleIcon.png">
     <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../../css/home.css">
 </head>
 <body>
 <c:if test='${not empty requestScope["message"]}'>
@@ -150,7 +146,8 @@
                 </a>
             </div>
             <div class="menu-bar">
-                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>" method="post">
+                <form class="menu-search-bar" action="<c:url value="/products?action=searchProduct"/>"
+                      method="post">
                     <div class="search-input">
                         <label for="search-input"></label>
                         <input type="text" name="search-input" id="search-input"
@@ -180,36 +177,26 @@
         </div>
     </div>
 </div>
-
-<div class="body-container">
-    <div class="body">
-        <div class="user-container">
-            <div class="user-title">
-                <p>Thay đổi thông tin mặt hàng</p>
-            </div>
-            <div class="content-frame">
-                <form action="/products?action=editProduct&productID=${selectProduct.productId}" method="post">
-                    <div class="form-input">
-                        <label for="productName">Product Name</label>
-                        <input type="text" name="productName" id="productName" value="${selectProduct.productName}">
-                    </div>
-
-                    <div class="form-input">
-                        <label for="quantity">Quantity</label>
-                        <input type="text" name="quantity" id="quantity" value="${selectProduct.productQuantity}">
-                    </div>
-                    <div class="form-input">
-                        <label for="price">Price</label>
-                        <input type="text" name="price" id="price" value="${selectProduct.productCost}">
-                    </div>
-
-                    <button type="submit">Xác nhận thay đổi</button>
-                </form>
-            </div>
-        </div>
+<form action="<c:url value="/users?action=edit&userId=${selectUser.getUserId()}"/>" method="post">
+    <div>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>UserPassword</th>
+                <th></th>
+            </tr>
+            <c:forEach var="user" items="${users}">
+            <tr>
+                <td><c:out value="${user.getUsername()}"/></td>
+                <td><c:out value="${user.getUserPassword()}"/></td>
+                <td><a href="<c:url value="/users?action=showEdit&userId=${user.getUserId()}"/>"> Edit </a>
+                    <a href="/users?action=deleteUser&userId=${user.getUserId()}">Delete</a></td>
+            </tr>
+        </table>
+        </c:forEach>
     </div>
-</div>
-<script src="../../js/animation.js"></script>
+</form>
+    <script src="../../js/animation.js"></script>
 <script>
     let accountOverlayButton = document.getElementById("AccountOverlayButton");
     let accountOverlay = document.getElementById("AccountOverlay");

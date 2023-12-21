@@ -92,7 +92,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -141,8 +141,8 @@
         <div class="menu">
             <div class="menu-logo">
                 <a href="<c:url value="/index"/>">
-                    <img src="../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
-                    <img src="../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
+                    <img src="../../images/header/logo-heart.png" alt="This is Lazada logo icon" class="logo-heart">
+                    <img src="../../images/header/logo-text.png" alt="This is Lazada logo text" class="logo-text">
                 </a>
             </div>
             <div class="menu-bar">
@@ -229,5 +229,38 @@
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
+<script>
+    let accountOverlayButton = document.getElementById("AccountOverlayButton");
+    let accountOverlay = document.getElementById("AccountOverlay");
+    function displayAccountOverlay() {
+        accountOverlay.style.opacity = "1";
+        accountOverlay.style.visibility = "visible";
+        accountOverlay.style.display = "flex";
+    }
+
+    function inDisplayAccountOverlay() {
+        accountOverlay.style.opacity = "0";
+        // accountOverlay.style.visibility = "hidden";
+        accountOverlay.style.display = "none";
+    }
+
+    function inDisplayAccountOverlay2() {
+        accountOverlay.style.opacity = "0";
+        accountOverlay.style.visibility = "hidden";
+        // accountOverlay.style.display = "none";
+    }
+
+    function displayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#f25c05";
+    }
+
+    function inDisplayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#9d9d9d";
+    }
+    accountOverlayButton.addEventListener("mouseover", displayAccountOverlay);
+    accountOverlayButton.addEventListener("mouseout", inDisplayAccountOverlay2);
+    accountOverlay.addEventListener("mouseover", displayAccountOverlay, displayOrangeAccountButton);
+    accountOverlay.addEventListener("mouseout", inDisplayAccountOverlay, inDisplayOrangeAccountButton);
+</script>
 </body>
 </html>

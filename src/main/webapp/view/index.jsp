@@ -95,12 +95,13 @@
                     </a>
 
                     <div class="account-overlay-container" id="AccountOverlay">
-<%--                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">--%>
-                             <a href="<c:out value="/users?action=showEdit"/>">
+                        <%--                        <a href="<c:out value="/view/account/editAccountInfo.jsp"/>">--%>
+                        <a href="<c:out value="/users?action=showEdit"/>">
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="/products?action=displayProductByUserId&userId=${currentUser.userId}">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
+
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -272,6 +273,39 @@
         </div>
     </div>
 </div>
-<script src="../js/animation.js"></script>
+<script src="../js/animation.js"></script><script src="../../js/animation.js"></script>
+<script>
+    let accountOverlayButton = document.getElementById("AccountOverlayButton");
+    let accountOverlay = document.getElementById("AccountOverlay");
+    function displayAccountOverlay() {
+        accountOverlay.style.opacity = "1";
+        accountOverlay.style.visibility = "visible";
+        accountOverlay.style.display = "flex";
+    }
+
+    function inDisplayAccountOverlay() {
+        accountOverlay.style.opacity = "0";
+        // accountOverlay.style.visibility = "hidden";
+        accountOverlay.style.display = "none";
+    }
+
+    function inDisplayAccountOverlay2() {
+        accountOverlay.style.opacity = "0";
+        accountOverlay.style.visibility = "hidden";
+        // accountOverlay.style.display = "none";
+    }
+
+    function displayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#f25c05";
+    }
+
+    function inDisplayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#9d9d9d";
+    }
+    accountOverlayButton.addEventListener("mouseover", displayAccountOverlay);
+    accountOverlayButton.addEventListener("mouseout", inDisplayAccountOverlay2);
+    accountOverlay.addEventListener("mouseover", displayAccountOverlay, displayOrangeAccountButton);
+    accountOverlay.addEventListener("mouseout", inDisplayAccountOverlay, inDisplayOrangeAccountButton);
+</script>
 </body>
 </html>

@@ -1,14 +1,7 @@
 package com.codegym.cglazadaplusproject.controller;
 
 import com.codegym.cglazadaplusproject.constant.VarConstant;
-import com.codegym.cglazadaplusproject.dao.CategoryDAO;
-import com.codegym.cglazadaplusproject.dao.CustomerDAO;
-import com.codegym.cglazadaplusproject.dao.ICategoryDAO;
-import com.codegym.cglazadaplusproject.dao.ICustomerDAO;
-import com.codegym.cglazadaplusproject.dao.IProductDAO;
-import com.codegym.cglazadaplusproject.dao.IUserDAO;
-import com.codegym.cglazadaplusproject.dao.ProductDAO;
-import com.codegym.cglazadaplusproject.dao.UserDAO;
+import com.codegym.cglazadaplusproject.dao.*;
 import com.codegym.cglazadaplusproject.model.Category;
 import com.codegym.cglazadaplusproject.model.Customer;
 import com.codegym.cglazadaplusproject.model.Product;
@@ -32,6 +25,7 @@ public class UserController extends HttpServlet {
     private final ICustomerDAO customerDAO = new CustomerDAO();
     private final IProductDAO productDAO = new ProductDAO();
     private final ICategoryDAO categoryDAO = new CategoryDAO();
+    private final ICustomerMembershipDAO membershipDAO = new CustomerMembershipDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -85,7 +79,7 @@ public class UserController extends HttpServlet {
     }
     private void displayCreate(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -109,8 +103,10 @@ public class UserController extends HttpServlet {
             int userId =  currentUser.getUserId();
 //            User selectUser = userDAO.getUserById(userId);
             Customer selectCustomer = customerDAO.getCustomerByUserid(userId);
+            String customerMembershipRank = membershipDAO.getCustomerRank(selectCustomer.getCustomerMemebershipId());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/view/account/editAccountInfo.jsp");
             request.setAttribute("selectCustomer", selectCustomer);
+            request.setAttribute("customerMembershipRank", customerMembershipRank);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -217,13 +213,13 @@ public class UserController extends HttpServlet {
             if (validator.checkUser()){
                 message = VarConstant.REGISTER_FAILED_NOTI;
                 request.setAttribute("message",message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             } else {
                 userDAO.insertUser(username,password);
                 message= VarConstant.REGISTER_SUCCESS_NOTI;
                 request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/create.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/users/createUser.jsp");
                 dispatcher.forward(request,response);
             }
         } catch (ServletException | IOException e) {

@@ -89,7 +89,7 @@
                             <i class="fa-solid fa-user" style="color: #d6d6d6;"></i>
                             <span>Thông tin cá nhân</span>
                         </a>
-                        <a href="">
+                        <a href="<c:out value="/products?action=displayProductByUserId&userId=${currentUser.userId}"/>">
                             <i class="fa-solid fa-bag-shopping" style="color: #d6d6d6;"></i>
                             <span>Danh sách mặt hàng</span>
                         </a>
@@ -212,6 +212,18 @@
                         <input type="number" name="customerBalance" id="customerBalance" min="0" value="0" >
                     </div>
 
+                    <div class="form-input">
+                        <label for="customerPoint">Điểm thưởng</label>
+                        <%--                        Bổ sung địa chỉ cũ vào trường value của input--%>
+                        <input type="text" name="customerPoint" id="customerPoint" value="${selectCustomer.customerPoint}" readonly>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="customerRank">Hạng tài khoản</label>
+                        <%--                        Bổ sung địa chỉ cũ vào trường value của input--%>
+                        <input type="text" name="customerRank" id="customerRank" value="${customerMembershipRank}" readonly>
+                    </div>
+
                     <div class="submit-button">
                         <button type="submit">XÁC NHẬN THAY ĐỔI</button>
                     </div>
@@ -222,6 +234,38 @@
 </div>
 
 <script src="../../js/animation.js"></script>
+<script>
+    let accountOverlayButton = document.getElementById("AccountOverlayButton");
+    let accountOverlay = document.getElementById("AccountOverlay");
+    function displayAccountOverlay() {
+        accountOverlay.style.opacity = "1";
+        accountOverlay.style.visibility = "visible";
+        accountOverlay.style.display = "flex";
+    }
 
+    function inDisplayAccountOverlay() {
+        accountOverlay.style.opacity = "0";
+        // accountOverlay.style.visibility = "hidden";
+        accountOverlay.style.display = "none";
+    }
+
+    function inDisplayAccountOverlay2() {
+        accountOverlay.style.opacity = "0";
+        accountOverlay.style.visibility = "hidden";
+        // accountOverlay.style.display = "none";
+    }
+
+    function displayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#f25c05";
+    }
+
+    function inDisplayOrangeAccountButton() {
+        accountOverlayButton.style.color = "#9d9d9d";
+    }
+    accountOverlayButton.addEventListener("mouseover", displayAccountOverlay);
+    accountOverlayButton.addEventListener("mouseout", inDisplayAccountOverlay2);
+    accountOverlay.addEventListener("mouseover", displayAccountOverlay, displayOrangeAccountButton);
+    accountOverlay.addEventListener("mouseout", inDisplayAccountOverlay, inDisplayOrangeAccountButton);
+</script>
 </body>
 </html>
